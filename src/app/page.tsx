@@ -53,7 +53,7 @@ export default async function Home() {
       <Navbar cvUrl={content.hero.cvUrl} />
 
       <main>
-        <Hero data={content.hero} projectCount={content.projects.length} />
+        <Hero data={content.hero} />
         <Projects projects={content.projects} />
         <About data={content.about} />
         <Skills data={content.skills} />
