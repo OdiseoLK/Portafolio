@@ -12,7 +12,6 @@ import BrandBand from '@/components/sections/BrandBand';
 import ConsoleSignature from '@/components/ui/ConsoleSignature';
 import SocialRail from '@/components/layout/SocialRail';
 import Projects from '@/components/sections/Projects';
-import Social from '@/components/sections/Social';
 import Contact from '@/components/sections/Contact';
 import { getContent } from '@/lib/content';
 
@@ -61,7 +60,6 @@ export default async function Home() {
         <About data={content.about} />
         <Skills data={content.skills} />
         <Process data={content.process} />
-        <Social socials={content.socials} />
         <Contact data={content.contact} />
       </main>
 

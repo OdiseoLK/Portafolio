@@ -1,9 +1,9 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
+import NodeNetwork from '@/components/ui/NodeNetwork';
 import { ArrowRight } from 'lucide-react';
-import dynamic from 'next/dynamic';
-const Globe3D = dynamic(() => import('@/components/ui/Globe3D'), { ssr: false });
+
 import type { HeroContent } from '@/lib/types';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -23,58 +23,10 @@ export default function Hero({ data }: { data: HeroContent }) {
       className="relative flex min-h-[100svh] flex-col overflow-hidden"
       style={{ background: 'radial-gradient(ellipse at 20% 40%, #0a1628 0%, #03080f 60%, #000 100%)' }}
     >
-      {/* Estrellas */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        {Array.from({ length: 80 }).map((_, i) => (
-          <span
-            key={i}
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              left: `${(i * 137.5) % 100}%`,
-              top: `${(i * 97.3) % 100}%`,
-              width: i % 5 === 0 ? 2 : 1,
-              height: i % 5 === 0 ? 2 : 1,
-              borderRadius: '50%',
-              background: `rgba(255,255,255,${0.2 + (i % 4) * 0.15})`,
-            }}
-          />
-        ))}
-      </div>
+      {/* Red de nodos animada */}
+      <NodeNetwork className="absolute inset-0 h-full w-full" />
 
-      {/* Tierra: ocupa la mitad inferior, centrada */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[35%]"
-      >
-        <Globe3D className="h-[680px] w-[680px] md:h-[900px] md:w-[900px] lg:h-[1100px] lg:w-[1100px]" />
-      </div>
 
-      {/* Atmosfera de borde: difumina la tierra en el borde inferior */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 left-0 right-0 h-48"
-        style={{ background: 'linear-gradient(to top, #03080f 0%, transparent 100%)' }}
-      />
-
-      {/* Navbar */}
-      <nav className="relative z-20 flex items-center justify-between px-8 py-7 md:px-12">
-        <span className="font-display text-lg font-medium tracking-wide text-fg">
-          ODISEO
-        </span>
-        <ul className="hidden items-center gap-10 md:flex">
-          {['Proyectos', 'Servicios', 'Sobre mí', 'Skills', 'Contacto'].map((item) => (
-            <li key={item}>
-              <a
-                href={`#${item.toLowerCase().replace(' ', '-').replace('é', 'e').replace('í', 'i')}`}
-                className="text-sm text-fg/70 transition-colors duration-300 hover:text-fg"
-              >
-                {item}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
 
       {/* Contenido principal — arriba izquierda como la referencia */}
       <div className="relative z-10 flex flex-1 flex-col justify-start px-8 pt-8 md:px-14 md:pt-12 lg:px-20 lg:pt-16">
