@@ -18,7 +18,7 @@ function TechTile({ name }: { name: string }) {
         <svg
           viewBox="0 0 24 24"
           aria-hidden="true"
-          className="h-8 w-8 fill-[var(--brand)] transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_var(--brand)]"
+          className="h-8 w-8 fill-fg transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(255,255,255,0.4)]"
         >
           <path d={icon.path} />
         </svg>
@@ -26,7 +26,7 @@ function TechTile({ name }: { name: string }) {
         <Code2
           size={30}
           aria-hidden="true"
-          className="text-accent transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(139,92,246,0.9)]"
+          className="text-accent transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(255,255,255,0.9)]"
         />
       )}
       <span className="text-center text-xs leading-tight text-muted transition-colors duration-300 group-hover:text-fg">

@@ -24,7 +24,7 @@ export const DEFAULT_CONTENT: SiteContent = {
       'Hola, soy Alexis.',
       'Soy desarrollador web y el creador de ODISEO, una marca personal enfocada en el desarrollo de productos digitales modernos.',
       'Me apasiona construir experiencias intuitivas, interfaces limpias y soluciones que combinen diseño, rendimiento y escalabilidad.',
-      'Actualmente continúo ampliando mis conocimientos en desarrollo de videojuegos y busco crear productos que las personas realmente disfruten utilizar.',
+      'Actualmente continúo profundizando en el ecosistema moderno de desarrollo web y busco crear productos que las personas realmente disfruten utilizar.',
     ],
   },
   skills: {

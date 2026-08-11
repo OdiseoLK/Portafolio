@@ -229,7 +229,7 @@ export default function Testimonials({ items }: { items: Testimonial[] }) {
                   <button
                     type="submit"
                     disabled={status === 'sending'}
-                    className="grad-bg group inline-flex items-center gap-2.5 rounded-md px-6 py-3 text-sm font-semibold text-bg transition-all duration-300 hover:shadow-[0_0_28px_rgba(139,92,246,0.4)] hover:brightness-110 disabled:opacity-60"
+                    className="grad-bg group inline-flex items-center gap-2.5 rounded-md px-6 py-3 text-sm font-semibold text-bg transition-all duration-300 hover:shadow-[0_0_28px_rgba(255,255,255,0.4)] hover:brightness-110 disabled:opacity-60"
                   >
                     {status === 'sending' ? 'Enviando…' : 'Enviar testimonio'}
                     <Send size={14} aria-hidden="true" className="transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

@@ -24,7 +24,7 @@ export default function SocialRail({ socials }: { socials: SocialsContent }) {
           target={href.startsWith('mailto:') ? undefined : '_blank'}
           rel="noopener noreferrer"
           aria-label={label}
-          className="text-muted transition-all duration-300 hover:-translate-y-0.5 hover:text-fg hover:drop-shadow-[0_0_10px_rgba(139,92,246,0.8)]"
+          className="text-muted transition-all duration-300 hover:-translate-y-0.5 hover:text-fg hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
         >
           {icon}
         </a>

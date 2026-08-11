@@ -11,13 +11,13 @@ const S = ({ children }: { children: React.ReactNode }) => (
   <span className="text-lima">{children}</span>
 );
 const C = ({ children }: { children: React.ReactNode }) => (
-  <span className="text-sky-400">{children}</span>
+  <span className="text-neutral-400">{children}</span>
 );
 const P = ({ children }: { children: React.ReactNode }) => (
-  <span className="text-violet-300">{children}</span>
+  <span className="text-neutral-300">{children}</span>
 );
 const N = ({ children }: { children: React.ReactNode }) => (
-  <span className="text-amber-400">{children}</span>
+  <span className="text-neutral-200">{children}</span>
 );
 
 const LINES: React.ReactNode[] = [
@@ -109,7 +109,7 @@ export default function CodeWindow() {
       <motion.div
         animate={reduced ? undefined : { y: [0, -8, 0] }}
         transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
-        className="relative rounded-xl p-px [background:linear-gradient(135deg,rgba(139,92,246,.55),rgba(37,37,37,.9)_38%,rgba(37,37,37,.9)_62%,rgba(34,197,94,.5))]"
+        className="relative rounded-xl p-px [background:linear-gradient(135deg,rgba(255,255,255,.55),rgba(37,37,37,.9)_38%,rgba(37,37,37,.9)_62%,rgba(163,163,163,.5))]"
       >
         <div className="overflow-hidden rounded-[11px] bg-[#0c0c11]/95 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] backdrop-blur">
           {/* Barra de la ventana */}

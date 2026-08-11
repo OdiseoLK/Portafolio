@@ -7,7 +7,6 @@ import { Download, Menu, X } from 'lucide-react';
 const LINKS = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Proyectos', href: '#proyectos' },
-  { label: 'Testimonios', href: '#testimonios' },
   { label: 'Sobre mí', href: '#sobre-mi' },
   { label: 'Skills', href: '#skills' },
   { label: 'Contacto', href: '#contacto' },
@@ -88,7 +87,7 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
                     />
                     <span
                       aria-hidden="true"
-                      className={`absolute -bottom-[13px] left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-lima shadow-[0_0_8px_rgba(34,197,94,0.9)] transition-opacity duration-300 ${
+                      className={`absolute -bottom-[13px] left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-lima shadow-[0_0_8px_rgba(163,163,163,0.9)] transition-opacity duration-300 ${
                         isActive ? 'opacity-100' : 'opacity-0'
                       }`}
                     />
@@ -101,7 +100,7 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
             href={cvHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="grad-bg rounded-md p-px transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.35)]"
+            className="grad-bg rounded-md p-px transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.35)]"
           >
             <span className="flex items-center gap-2 rounded-[5px] bg-bg px-4 py-2 text-sm text-fg">
               <Download size={14} aria-hidden="true" />

@@ -26,7 +26,7 @@ export default function About({ data }: { data: AboutContent }) {
           <div className="max-w-2xl space-y-6">
             {lead && (
               <Reveal delay={0.15}>
-                <p className="font-display text-2xl font-medium tracking-tight text-fg md:text-3xl">
+                <p className="font-display text-2xl font-light tracking-tight text-fg md:text-3xl">
                   {lead}
                 </p>
               </Reveal>

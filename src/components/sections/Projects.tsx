@@ -21,7 +21,7 @@ function EmptyState() {
           />
           <span className="eyebrow">En desarrollo</span>
         </div>
-        <p className="font-display text-xl font-medium tracking-tight text-fg md:text-2xl">
+        <p className="font-display text-xl font-light tracking-tight text-fg md:text-2xl">
           Actualmente me encuentro desarrollando nuevos proyectos.
         </p>
         <p className="mx-auto mt-5 max-w-xl leading-relaxed text-muted">
@@ -36,7 +36,7 @@ function EmptyState() {
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <Reveal delay={(index % 2) * 0.08}>
-      <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-line bg-card transition-colors duration-300 hover:border-accent/40 hover:shadow-[0_0_32px_-8px_rgba(139,92,246,0.3)]">
+      <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-line bg-card transition-colors duration-300 hover:border-accent/40 hover:shadow-[0_0_32px_-8px_rgba(255,255,255,0.3)]">
         <div className="relative aspect-video overflow-hidden border-b border-line bg-surface">
           {project.image_url ? (
             <Image
@@ -48,7 +48,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             />
           ) : (
             <div className="absolute inset-0 grid place-items-center">
-              <span aria-hidden="true" className="font-display text-5xl font-medium text-line">
+              <span aria-hidden="true" className="font-display text-5xl font-light text-line">
                 O.
               </span>
             </div>
@@ -56,7 +56,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </div>
 
         <div className="flex flex-1 flex-col p-6 md:p-7">
-          <h3 className="flex items-start justify-between gap-4 font-display text-xl font-medium tracking-tight text-fg">
+          <h3 className="flex items-start justify-between gap-4 font-display text-xl font-light tracking-tight text-fg">
             {project.title}
             <ArrowUpRight
               size={18}

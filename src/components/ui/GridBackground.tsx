@@ -57,7 +57,7 @@ export default function GridBackground() {
 
         // Cruz de acento sobre las líneas más cercanas al cursor.
         const tint = ctx.createRadialGradient(cursor.x, cursor.y, 0, cursor.x, cursor.y, RADIUS);
-        tint.addColorStop(0, 'rgba(139, 92, 246, 0.16)');
+        tint.addColorStop(0, 'rgba(255, 255, 255, 0.16)');
         tint.addColorStop(1, 'rgba(92, 107, 192, 0)');
         const gx = Math.round(cursor.x / SPACING) * SPACING + 0.5;
         const gy = Math.round(cursor.y / SPACING) * SPACING + 0.5;

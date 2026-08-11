@@ -84,8 +84,8 @@ export default function Contact({ data }: { data: ContactContent }) {
       >
         <defs>
           <linearGradient id="wave-grad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#8B5CF6" />
-            <stop offset="100%" stopColor="#22C55E" stopOpacity="0.4" />
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="100%" stopColor="#A3A3A3" stopOpacity="0.4" />
           </linearGradient>
         </defs>
         {[0, 22, 44, 66].map((off) => (
@@ -202,7 +202,7 @@ export default function Contact({ data }: { data: ContactContent }) {
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="grad-bg group inline-flex items-center gap-2.5 rounded-md px-6 py-3.5 text-sm font-semibold text-bg transition-all duration-300 hover:shadow-[0_0_28px_rgba(139,92,246,0.4)] hover:brightness-110 disabled:opacity-60"
+                  className="grad-bg group inline-flex items-center gap-2.5 rounded-md px-6 py-3.5 text-sm font-semibold text-bg transition-all duration-300 hover:shadow-[0_0_28px_rgba(255,255,255,0.4)] hover:brightness-110 disabled:opacity-60"
                 >
                   {status === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
                   <Send

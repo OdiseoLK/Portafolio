@@ -8,7 +8,6 @@ import type { FooterContent, SocialsContent } from '@/lib/types';
 const QUICK_LINKS = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Proyectos', href: '#proyectos' },
-  { label: 'Testimonios', href: '#testimonios' },
   { label: 'Sobre mí', href: '#sobre-mi' },
   { label: 'Skills', href: '#skills' },
   { label: 'Contacto', href: '#contacto' },
@@ -115,7 +114,7 @@ export default function Footer({
                     target={link.href.startsWith('mailto:') ? undefined : '_blank'}
                     rel="noopener noreferrer"
                     aria-label={link.label}
-                    className="grid h-10 w-10 place-items-center rounded-md border border-line text-muted transition-all duration-300 hover:border-accent hover:text-fg hover:shadow-[0_0_16px_rgba(139,92,246,0.35)]"
+                    className="grid h-10 w-10 place-items-center rounded-md border border-line text-muted transition-all duration-300 hover:border-accent hover:text-fg hover:shadow-[0_0_16px_rgba(255,255,255,0.35)]"
                   >
                     {link.icon}
                   </a>

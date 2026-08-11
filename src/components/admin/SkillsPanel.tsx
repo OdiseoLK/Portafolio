@@ -27,7 +27,7 @@ export default function SkillsPanel() {
     <section className="space-y-6">
       <PanelTitle
         title="Skills"
-        description="Grupos de tecnologías. Agrega Unreal Engine y C++ aquí cuando estés listo."
+        description="Grupos de tecnologías que muestras en el sitio."
       />
 
       <div className="space-y-5">
@@ -54,7 +54,7 @@ export default function SkillsPanel() {
             <Field
               label="Tecnologías"
               htmlFor={`skill-items-${i}`}
-              hint="Separadas por comas. Los iconos se asignan solos (HTML, CSS, JS, React, Unreal, C++…)."
+              hint="Separadas por comas. Los iconos se asignan solos (HTML, CSS, JS, React, Node…)."
             >
               <TextInput
                 id={`skill-items-${i}`}
