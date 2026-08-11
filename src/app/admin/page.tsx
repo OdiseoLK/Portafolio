@@ -10,6 +10,7 @@ import GeneralPanel from '@/components/admin/GeneralPanel';
 import AboutPanel from '@/components/admin/AboutPanel';
 import SkillsPanel from '@/components/admin/SkillsPanel';
 import ProcessPanel from '@/components/admin/ProcessPanel';
+import ServicesPanel from '@/components/admin/ServicesPanel';
 import TestimonialsPanel from '@/components/admin/TestimonialsPanel';
 import ProjectsPanel from '@/components/admin/ProjectsPanel';
 import SocialsPanel from '@/components/admin/SocialsPanel';
@@ -20,6 +21,7 @@ const PANELS = [
   { id: 'general', label: 'General', component: GeneralPanel },
   { id: 'about', label: 'Sobre mí', component: AboutPanel },
   { id: 'skills', label: 'Skills', component: SkillsPanel },
+  { id: 'services', label: 'Servicios', component: ServicesPanel },
   { id: 'process', label: 'Proceso', component: ProcessPanel },
   { id: 'projects', label: 'Proyectos', component: ProjectsPanel },
   { id: 'testimonials', label: 'Testimonios', component: TestimonialsPanel },

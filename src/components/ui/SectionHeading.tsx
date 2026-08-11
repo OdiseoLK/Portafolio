@@ -21,7 +21,7 @@ export default function SectionHeading({ eyebrow, title }: SectionHeadingProps) 
         </span>
         <span aria-hidden="true" className="h-px flex-1 bg-line" />
       </div>
-      <h2 className="font-display text-4xl font-light tracking-[-0.02em] text-fg md:text-6xl">
+      <h2 className="font-serif text-5xl tracking-tight text-fg md:text-7xl">
         {title}
       </h2>
     </Reveal>

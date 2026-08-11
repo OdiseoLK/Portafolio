@@ -202,7 +202,7 @@ export default function Contact({ data }: { data: ContactContent }) {
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="grad-bg group inline-flex items-center gap-2.5 rounded-md px-6 py-3.5 text-sm font-semibold text-bg transition-all duration-300 hover:shadow-[0_0_28px_rgba(255,255,255,0.4)] hover:brightness-110 disabled:opacity-60"
+                  className="button-glow group inline-flex items-center gap-2.5 rounded-full bg-fg px-8 py-3.5 text-sm font-medium tracking-wide text-bg transition-all duration-300 hover:bg-white/90 disabled:opacity-60"
                 >
                   {status === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
                   <Send

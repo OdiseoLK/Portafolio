@@ -7,6 +7,7 @@ import { Download, Menu, X } from 'lucide-react';
 const LINKS = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Servicios', href: '#servicios' },
   { label: 'Sobre mí', href: '#sobre-mi' },
   { label: 'Skills', href: '#skills' },
   { label: 'Contacto', href: '#contacto' },
@@ -96,17 +97,7 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
               );
             })}
           </ul>
-          <a
-            href={cvHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="grad-bg rounded-md p-px transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.35)]"
-          >
-            <span className="flex items-center gap-2 rounded-[5px] bg-bg px-4 py-2 text-sm text-fg">
-              <Download size={14} aria-hidden="true" />
-              Descargar CV
-            </span>
-          </a>
+          
         </div>
 
         {/* Toggle móvil */}
@@ -160,16 +151,7 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
                   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
                 }}
               >
-                <a
-                  href={cvHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
-                  className="mt-8 inline-flex items-center gap-2 rounded-md border border-accent/60 px-5 py-3 text-sm text-fg"
-                >
-                  <Download size={14} aria-hidden="true" />
-                  Descargar CV
-                </a>
+                
               </motion.li>
             </motion.ul>
           </motion.div>

@@ -7,6 +7,8 @@ import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import Skills from '@/components/sections/Skills';
 import Process from '@/components/sections/Process';
+import Services from '@/components/sections/Services';
+import BrandBand from '@/components/sections/BrandBand';
 import ConsoleSignature from '@/components/ui/ConsoleSignature';
 import SocialRail from '@/components/layout/SocialRail';
 import Projects from '@/components/sections/Projects';
@@ -52,8 +54,10 @@ export default async function Home() {
       <Navbar cvUrl={content.hero.cvUrl} />
 
       <main>
-        <Hero data={content.hero} projectCount={content.projects.length} />
+        <Hero data={content.hero} />
         <Projects projects={content.projects} />
+        <Services data={content.services} />
+        <BrandBand />
         <About data={content.about} />
         <Skills data={content.skills} />
         <Process data={content.process} />

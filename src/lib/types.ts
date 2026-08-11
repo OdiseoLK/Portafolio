@@ -24,6 +24,16 @@ export interface SkillsContent {
   groups: SkillGroup[];
 }
 
+export interface ServiceItem {
+  title: string;
+  text: string;
+}
+
+export interface ServicesContent {
+  title: string;
+  items: ServiceItem[];
+}
+
 export interface ProcessStep {
   title: string;
   text: string;
@@ -90,6 +100,7 @@ export interface SiteContent {
   hero: HeroContent;
   about: AboutContent;
   skills: SkillsContent;
+  services: ServicesContent;
   process: ProcessContent;
   socials: SocialsContent;
   contact: ContactContent;

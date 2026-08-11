@@ -8,6 +8,7 @@ import type { FooterContent, SocialsContent } from '@/lib/types';
 const QUICK_LINKS = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Servicios', href: '#servicios' },
   { label: 'Sobre mí', href: '#sobre-mi' },
   { label: 'Skills', href: '#skills' },
   { label: 'Contacto', href: '#contacto' },
@@ -62,17 +63,6 @@ export default function Footer({
           <div>
             <p className="eyebrow mb-5">Recursos</p>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href={cvUrl || '/cv.pdf'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-muted transition-colors duration-300 hover:text-fg"
-                >
-                  <Download size={13} aria-hidden="true" />
-                  Descargar CV
-                </a>
-              </li>
               {socials.email && (
                 <li>
                   <a

@@ -43,6 +43,7 @@ export async function getContent(): Promise<SiteContent> {
       hero: merge(DEFAULT_CONTENT.hero, map.hero),
       about: merge(DEFAULT_CONTENT.about, map.about),
       skills: merge(DEFAULT_CONTENT.skills, map.skills),
+      services: merge(DEFAULT_CONTENT.services, map.services),
       process: merge(DEFAULT_CONTENT.process, map.process),
       socials: merge(DEFAULT_CONTENT.socials, map.socials),
       contact: merge(DEFAULT_CONTENT.contact, map.contact),

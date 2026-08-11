@@ -36,7 +36,7 @@ function EmptyState() {
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <Reveal delay={(index % 2) * 0.08}>
-      <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-line bg-card transition-colors duration-300 hover:border-accent/40 hover:shadow-[0_0_32px_-8px_rgba(255,255,255,0.3)]">
+      <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-line bg-card transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-fg/40 hover:shadow-[0_24px_60px_-24px_rgba(0,0,0,0.9)]">
         <div className="relative aspect-video overflow-hidden border-b border-line bg-surface">
           {project.image_url ? (
             <Image
@@ -44,7 +44,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               alt={`Vista previa de ${project.title}`}
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
             />
           ) : (
             <div className="absolute inset-0 grid place-items-center">
@@ -52,6 +52,17 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 O.
               </span>
             </div>
+          )}
+
+          {/* Overlay al pasar el cursor */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          />
+          {project.project_url && (
+            <span className="pointer-events-none absolute bottom-4 left-4 inline-flex translate-y-3 items-center gap-2 rounded-full border border-fg/30 bg-bg/70 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-fg opacity-0 backdrop-blur transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+              Visitar sitio ↗
+            </span>
           )}
         </div>
 

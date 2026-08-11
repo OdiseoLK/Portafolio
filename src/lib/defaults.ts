@@ -38,6 +38,27 @@ export const DEFAULT_CONTENT: SiteContent = {
       { name: 'Herramientas', items: ['Git', 'GitHub', 'Figma', 'Visual Studio Code'] },
     ],
   },
+  services: {
+    title: 'Soluciones que ofrezco',
+    items: [
+      {
+        title: 'Diseño web a la medida',
+        text: 'Sitios totalmente personalizados que se ajustan a las necesidades reales de tu negocio. Desde páginas corporativas hasta landings con funcionalidades únicas, con gran rendimiento y cuidado en cada detalle.',
+      },
+      {
+        title: 'Catálogos y pedidos en línea',
+        text: 'Catálogos de productos con precios reales y pedidos directos vía WhatsApp Business. Navegación intuitiva, carga rápida y una experiencia que convierte visitas en clientes.',
+      },
+      {
+        title: 'Desarrollo full stack',
+        text: 'Del diseño visual al desarrollo funcional: paneles auto-administrables, bases de datos y plataformas a la medida con Next.js y Supabase, para que gestiones tu sitio sin depender de nadie.',
+      },
+      {
+        title: 'Mantenimiento y soporte',
+        text: 'No desaparezco después de la entrega. Actualizaciones de contenido, monitoreo, seguridad y soporte técnico para que tu sitio esté siempre al día y en línea.',
+      },
+    ],
+  },
   process: {
     title: 'Cómo trabajo',
     steps: [
