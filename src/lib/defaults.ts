@@ -90,6 +90,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     title: 'Trabajemos juntos.',
     text: 'Si tienes una idea, una oportunidad o simplemente quieres conversar sobre tecnología, estaré encantado de hablar contigo.',
     email: 'Developerlk23@gmail.com',
+    whatsappUrl: 'https://wa.me/message/HSPNSWYWNGWBN1',
     location: 'Orizaba, Veracruz — México',
   },
   footer: {

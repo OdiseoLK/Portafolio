@@ -141,7 +141,21 @@ export default function Contact({ data }: { data: ContactContent }) {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <form onSubmit={handleSubmit} className="space-y-8" noValidate>
+            {data.whatsappUrl && (
+          <a
+            href={data.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mb-8 inline-flex items-center gap-2 text-sm text-muted transition-colors duration-300 hover:text-fg"
+          >
+            ¿Prefieres WhatsApp?
+            <span className="border-b border-lima/50 pb-0.5 text-fg transition-colors duration-300 group-hover:border-[#25D366] group-hover:text-[#25D366]">
+              Escríbeme directo
+            </span>
+            <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+          </a>
+        )}
+        <form onSubmit={handleSubmit} className="space-y-8" noValidate>
               {/* Honeypot anti-bots: oculto para humanos, tentador para bots. */}
               <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
                 <label htmlFor="contact-company">No llenar</label>

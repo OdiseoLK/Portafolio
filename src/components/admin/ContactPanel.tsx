@@ -43,6 +43,20 @@ export default function ContactPanel() {
       </Field>
 
       <Field
+        label="WhatsApp (enlace)"
+        htmlFor="contact-wa"
+        hint="Tu enlace de WhatsApp Business (wa.me/...). Déjalo vacío para ocultar el botón flotante."
+      >
+        <TextInput
+          id="contact-wa"
+          type="url"
+          value={contact.value.whatsappUrl}
+          onChange={(e) => contact.setValue({ ...contact.value, whatsappUrl: e.target.value })}
+          placeholder="https://wa.me/message/..."
+        />
+      </Field>
+
+      <Field
         label="Ubicación"
         htmlFor="contact-location"
         hint="Ej. Orizaba, Veracruz — México. Déjalo vacío para ocultarla."

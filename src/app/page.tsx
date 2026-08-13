@@ -3,6 +3,7 @@ import CustomCursor from '@/components/ui/CustomCursor';
 import ScrollProgress from '@/components/ui/ScrollProgress';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import WhatsAppFloat from '@/components/ui/WhatsAppFloat';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import Skills from '@/components/sections/Skills';
@@ -64,6 +65,7 @@ export default async function Home() {
       </main>
 
       <Footer socials={content.socials} footer={content.footer} cvUrl={content.hero.cvUrl} />
+      <WhatsAppFloat url={content.contact.whatsappUrl} />
 
       <script
         type="application/ld+json"

@@ -55,6 +55,7 @@ export interface ContactContent {
   title: string;
   text: string;
   email: string;
+  whatsappUrl: string;
   /** Ubicación mostrada junto al formulario, ej. "Orizaba, México". */
   location: string;
 }
