@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUp, Download, Mail } from 'lucide-react';
 import { buildSocialLinks } from '@/components/sections/Social';
 import type { FooterContent, SocialsContent } from '@/lib/types';
@@ -36,9 +37,18 @@ export default function Footer({
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.6fr,1fr,1fr,1fr]">
           {/* Marca */}
           <div>
-            <p className="font-display text-sm font-medium tracking-[0.28em] text-fg">
-              ODIS<span className="text-lima">E</span><span className="text-accent">O</span>
-            </p>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo-head.png"
+                alt="Logo de ODISEO: un husky con lentes"
+                width={44}
+                height={44}
+                className="rounded-lg border border-line"
+              />
+              <p className="font-display text-sm font-medium tracking-[0.28em] text-fg">
+                ODIS<span className="text-lima">E</span><span className="text-accent">O</span>
+              </p>
+            </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">{footer.tagline}</p>
           </div>
 

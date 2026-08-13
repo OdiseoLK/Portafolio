@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useRef } from 'react';
 
@@ -28,6 +28,7 @@ export default function NodeNetwork({ className = '' }: { className?: string }) 
     const W = () => canvas.clientWidth;
     const H = () => canvas.clientHeight;
 
+    // Puntos
     const pts = Array.from({ length: N }, () => ({
       x:  Math.random() * W(),
       y:  Math.random() * H(),
@@ -35,11 +36,13 @@ export default function NodeNetwork({ className = '' }: { className?: string }) 
       vy: (Math.random() - 0.5) * SPEED,
     }));
 
+    // Mouse
     const mouse = { x: -9999, y: -9999 };
     const onMove = (e: MouseEvent) => {
       const r = canvas.getBoundingClientRect();
       const x = e.clientX - r.left;
       const y = e.clientY - r.top;
+      // Solo reaccionar si el cursor está dentro del área del hero
       if (x >= 0 && x <= r.width && y >= 0 && y <= r.height) {
         mouse.x = x;
         mouse.y = y;
@@ -55,6 +58,7 @@ export default function NodeNetwork({ className = '' }: { className?: string }) 
       const w = W(), h = H();
       ctx.clearRect(0, 0, w, h);
 
+      // Mover puntos
       if (!reduced) {
         pts.forEach(p => {
           p.x += p.vx; p.y += p.vy;
@@ -63,6 +67,7 @@ export default function NodeNetwork({ className = '' }: { className?: string }) 
         });
       }
 
+      // Conexiones entre puntos
       for (let i = 0; i < N; i++) {
         for (let j = i + 1; j < N; j++) {
           const dx = pts[i].x - pts[j].x;
@@ -80,6 +85,7 @@ export default function NodeNetwork({ className = '' }: { className?: string }) 
         }
       }
 
+      // Conexión cursor → puntos cercanos
       pts.forEach(p => {
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
@@ -95,6 +101,7 @@ export default function NodeNetwork({ className = '' }: { className?: string }) 
         }
       });
 
+      // Puntos
       pts.forEach(p => {
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
