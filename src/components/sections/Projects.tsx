@@ -33,11 +33,37 @@ function EmptyState() {
   );
 }
 
+
+/** La imagen entera es clicable cuando el proyecto tiene sitio en vivo. */
+function MediaWrapper({
+  project,
+  children,
+}: {
+  project: Project;
+  children: React.ReactNode;
+}) {
+  const cls = 'relative block aspect-video overflow-hidden border-b border-line bg-surface';
+  if (project.project_url) {
+    return (
+      <a
+        href={project.project_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Visitar el sitio de ${project.title}`}
+        className={`${cls} cursor-pointer`}
+      >
+        {children}
+      </a>
+    );
+  }
+  return <div className={cls}>{children}</div>;
+}
+
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <Reveal delay={(index % 2) * 0.08}>
       <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-line bg-card transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-fg/40 hover:shadow-[0_24px_60px_-24px_rgba(0,0,0,0.9)]">
-        <div className="relative aspect-video overflow-hidden border-b border-line bg-surface">
+        <MediaWrapper project={project}>
           {project.image_url ? (
             <Image
               src={project.image_url}
@@ -64,7 +90,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               Visitar sitio ↗
             </span>
           )}
-        </div>
+        </MediaWrapper>
 
         <div className="flex flex-1 flex-col p-6 md:p-7">
           <h3 className="flex items-start justify-between gap-4 font-display text-xl font-light tracking-tight text-fg">
