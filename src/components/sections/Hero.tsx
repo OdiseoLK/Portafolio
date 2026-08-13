@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import NodeNetwork from '@/components/ui/NodeNetwork';
 import { ArrowRight } from 'lucide-react';
@@ -26,10 +27,39 @@ export default function Hero({ data }: { data: HeroContent }) {
       {/* Red de nodos animada */}
       <NodeNetwork className="absolute inset-0 h-full w-full" />
 
+      {/* Emblema husky — flota con profundidad sobre la red */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[9%] top-[51%] hidden -translate-y-1/2 lg:block"
+      >
+      <motion.div
+        initial={reduced ? false : { opacity: 0, scale: 0.94 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.4, ease: EASE, delay: 0.6 }}
+      >
+        <motion.div
+          animate={reduced ? undefined : { y: [0, -14, 0], rotateY: [-10, -6, -10] }}
+          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+          style={{ transformPerspective: 900, rotateX: 4 }}
+          className="relative"
+        >
+          <div className="absolute inset-0 scale-110 rounded-full bg-white/10 blur-[100px]" />
+          <Image
+            src="/logo-mark.png"
+            alt=""
+            width={520}
+            height={481}
+            priority
+            className="relative opacity-90 drop-shadow-[0_0_50px_rgba(255,255,255,0.12)]"
+          />
+        </motion.div>
+      </motion.div>
+      </div>
+
 
 
       {/* Contenido principal — arriba izquierda como la referencia */}
-      <div className="relative z-10 flex flex-1 flex-col justify-start px-8 pt-8 md:px-14 md:pt-12 lg:px-20 lg:pt-16">
+      <div className="relative z-10 flex flex-1 flex-col justify-center px-8 md:px-14 lg:pl-48 lg:pr-20">
         <div className="max-w-4xl">
           <motion.p
             {...fadeUp(0.1)}

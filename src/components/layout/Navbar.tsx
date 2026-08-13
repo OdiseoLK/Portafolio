@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Download, Menu, X } from 'lucide-react';
@@ -60,8 +62,16 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
       <nav className="wrap flex h-16 items-center justify-between" aria-label="Principal">
         <a
           href="#inicio"
-          className="font-display text-sm font-medium tracking-[0.28em] text-fg transition-colors hover:text-white"
+          className="flex items-center gap-2.5 font-display text-sm font-medium tracking-[0.28em] text-fg transition-colors hover:text-white"
         >
+          <Image
+            src="/logo-mark.png"
+            alt=""
+            width={30}
+            height={30}
+            priority
+            className="h-[30px] w-[30px] object-contain"
+          />
           ODIS<span className="text-lima">E</span><span className="text-accent">O</span>
         </a>
 
