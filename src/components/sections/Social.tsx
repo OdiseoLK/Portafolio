@@ -11,6 +11,8 @@ interface SocialLink {
 }
 
 export function buildSocialLinks(socials: SocialsContent): SocialLink[] {
+  // ODISEO es un estudio: el perfil personal de GitHub queda fuera de la marca.
+  const isGithub = (v: string) => /github/i.test(v);
   const links: SocialLink[] = [];
   if (socials.github) {
     links.push({
@@ -44,7 +46,7 @@ export function buildSocialLinks(socials: SocialsContent): SocialLink[] {
       icon: <Mail size={19} aria-hidden="true" />,
     });
   }
-  return links;
+  return links.filter((l) => !isGithub(l.label) && !isGithub(l.href));
 }
 
 export default function Social({ socials }: { socials: SocialsContent }) {

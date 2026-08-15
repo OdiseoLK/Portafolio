@@ -14,7 +14,7 @@ export default function About({ data }: { data: AboutContent }) {
         {'</>'}
       </span>
       <div className="wrap">
-        <SectionHeading eyebrow="Sobre mí" title={data.title} />
+        <SectionHeading eyebrow="Nosotros" title={data.title} />
 
         <div className="grid gap-12 md:grid-cols-[1fr,1.7fr]">
           <Reveal delay={0.1}>

@@ -10,7 +10,7 @@ export const DEFAULT_CONTENT: SiteContent = {
   hero: {
     roles: ['Código', 'Diseño', 'Experiencias'],
     description:
-      'Desarrollo productos digitales con un enfoque en la simplicidad, el rendimiento y la atención al detalle.',
+      'Somos un estudio de diseño y desarrollo web. Creamos productos digitales con enfoque en la simplicidad, el rendimiento y la atención al detalle.',
     photoUrl: '',
     cvUrl: '',
     availability: {
@@ -19,12 +19,12 @@ export const DEFAULT_CONTENT: SiteContent = {
     },
   },
   about: {
-    title: 'Detrás de ODISEO',
+    title: 'El estudio',
     paragraphs: [
-      'Hola, soy Alexis.',
-      'Soy desarrollador web y el creador de ODISEO, una marca personal enfocada en el desarrollo de productos digitales modernos.',
-      'Me apasiona construir experiencias intuitivas, interfaces limpias y soluciones que combinen diseño, rendimiento y escalabilidad.',
-      'Actualmente continúo profundizando en el ecosistema moderno de desarrollo web y busco crear productos que las personas realmente disfruten utilizar.',
+      'ODISEO es un estudio de diseño y desarrollo web con base en Orizaba, Veracruz.',
+      'Creamos sitios y plataformas digitales para negocios que quieren destacar en línea: desde páginas corporativas hasta catálogos con pedidos y sistemas a la medida.',
+      'Nos apasiona construir experiencias intuitivas, interfaces limpias y soluciones que combinan diseño, rendimiento y escalabilidad.',
+      'Cada proyecto se trabaja de forma directa y cercana, con la calidad y el cuidado que tu marca merece.',
     ],
   },
   skills: {
@@ -39,7 +39,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     ],
   },
   services: {
-    title: 'Soluciones que ofrezco',
+    title: 'Nuestras soluciones',
     items: [
       {
         title: 'Diseño web a la medida',
@@ -51,16 +51,16 @@ export const DEFAULT_CONTENT: SiteContent = {
       },
       {
         title: 'Desarrollo full stack',
-        text: 'Del diseño visual al desarrollo funcional: paneles auto-administrables, bases de datos y plataformas a la medida con Next.js y Supabase, para que gestiones tu sitio sin depender de nadie.',
+        text: 'Del diseño visual al desarrollo funcional: paneles auto-administrables, bases de datos y plataformas a la medida con Next.js y Supabase, para que tu equipo gestione el sitio sin depender de nadie.',
       },
       {
         title: 'Mantenimiento y soporte',
-        text: 'No desaparezco después de la entrega. Actualizaciones de contenido, monitoreo, seguridad y soporte técnico para que tu sitio esté siempre al día y en línea.',
+        text: 'No desaparecemos después de la entrega. Actualizaciones de contenido, monitoreo, seguridad y soporte técnico para que tu sitio esté siempre al día y en línea.',
       },
     ],
   },
   process: {
-    title: 'Cómo trabajo',
+    title: 'Cómo trabajamos',
     steps: [
       {
         title: 'Descubrimiento',
@@ -76,7 +76,7 @@ export const DEFAULT_CONTENT: SiteContent = {
       },
       {
         title: 'Lanzamiento',
-        text: 'Despliego, mido y refino. Un producto no termina al publicarse: evoluciona con datos y retroalimentación real.',
+        text: 'Desplegamos, medimos y refinamos. Un producto no termina al publicarse: evoluciona con datos y retroalimentación real.',
       },
     ],
   },
@@ -88,7 +88,7 @@ export const DEFAULT_CONTENT: SiteContent = {
   },
   contact: {
     title: 'Trabajemos juntos.',
-    text: 'Si tienes una idea, una oportunidad o simplemente quieres conversar sobre tecnología, estaré encantado de hablar contigo.',
+    text: 'Si tienes una idea o un proyecto en mente, estaremos encantados de hablar contigo.',
     email: 'Developerlk23@gmail.com',
     whatsappUrl: 'https://wa.me/message/HSPNSWYWNGWBN1',
     location: 'Orizaba, Veracruz — México',
@@ -157,7 +157,7 @@ export const DEFAULT_CONTENT: SiteContent = {
       role: 'Puesto — Empresa',
       avatar_url: null,
       quote:
-        'Alexis entendió exactamente lo que necesitábamos y lo llevó más allá. El resultado fue un sitio rápido, cuidado y fácil de administrar. Volvería a trabajar con él sin dudarlo.',
+        'ODISEO entendió exactamente lo que necesitábamos y lo llevó más allá. El resultado fue un sitio rápido, cuidado y fácil de administrar. Volveríamos a trabajar con ellos sin dudarlo.',
       approved: true,
       sort_order: 1,
       created_at: '',

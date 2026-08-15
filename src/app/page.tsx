@@ -31,7 +31,7 @@ export default async function Home() {
     url: siteUrl,
     jobTitle: 'Web Developer & UI Designer',
     description: content.hero.description,
-    sameAs: [content.socials.github, content.socials.linkedin, content.socials.instagram].filter(
+    sameAs: [content.socials.linkedin, content.socials.instagram].filter(
       Boolean,
     ),
   };

@@ -65,7 +65,7 @@ export default function Hero({ data }: { data: HeroContent }) {
             {...fadeUp(0.1)}
             className="mb-6 font-mono text-[11px] uppercase tracking-[0.4em] text-fg/50"
           >
-            Desarrollador Web
+            Estudio de diseño y desarrollo web
           </motion.p>
 
           <motion.h1

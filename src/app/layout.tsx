@@ -11,12 +11,12 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'ODISEO — Developer · Designer · Creator',
+    default: 'ODISEO Studio — Diseño y desarrollo web',
     template: '%s — ODISEO',
   },
   description:
-    'Desarrollo productos digitales con un enfoque en la simplicidad, el rendimiento y la atención al detalle.',
-  keywords: ['ODISEO', 'desarrollador web', 'diseñador de interfaces', 'portafolio', 'Next.js'],
+    'Estudio de diseño y desarrollo web en Orizaba, Veracruz. Creamos sitios modernos, rápidos y auto-administrables para negocios que quieren destacar en línea.',
+  keywords: ['ODISEO', 'estudio de diseño y desarrollo web', 'diseñador de interfaces', 'portafolio', 'Next.js'],
   authors: [{ name: 'Alexis — ODISEO' }],
   alternates: { canonical: '/' },
   openGraph: {
@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     locale: 'es_MX',
     url: siteUrl,
     siteName: 'ODISEO',
-    title: 'ODISEO — Developer · Designer · Creator',
+    title: 'ODISEO Studio — Diseño y desarrollo web',
     description:
       'Desarrollo productos digitales con un enfoque en la simplicidad, el rendimiento y la atención al detalle.',
     images: [{ url: '/og.png', width: 1200, height: 630, alt: 'ODISEO' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ODISEO — Developer · Designer · Creator',
+    title: 'ODISEO Studio — Diseño y desarrollo web',
     description:
       'Desarrollo productos digitales con un enfoque en la simplicidad, el rendimiento y la atención al detalle.',
     images: ['/og.png'],

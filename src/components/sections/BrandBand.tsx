@@ -6,15 +6,15 @@ import { Reveal } from '@/components/ui/Reveal';
 const PILLARS = [
   {
     title: 'Lo que tu marca merece',
-    text: 'Sé lo importante que es tu marca para ti y para tus clientes. Por eso entrego sitios con la calidad que tu marca merece, cuidados hasta el último detalle.',
+    text: 'Sabemos lo importante que es tu marca para ti y para tus clientes. Por eso entregamos sitios con la calidad que tu marca merece, cuidados hasta el último detalle.',
   },
   {
-    title: 'Trato directo, sin intermediarios',
-    text: 'Trabajas directamente conmigo de principio a fin. Sin ejecutivos de cuenta ni mensajes perdidos: la persona que diseña tu sitio es la misma que te responde.',
+    title: 'Trato directo y cercano',
+    text: 'Trabajas directamente con el estudio de principio a fin. Sin ejecutivos de cuenta ni mensajes perdidos: quien diseña tu sitio es quien te responde.',
   },
   {
     title: 'Mucho más que un sitio web',
-    text: 'No creo sitios aburridos y tradicionales. Creo experiencias que conectan tu marca con tu audiencia y convierten visitas en clientes.',
+    text: 'No creamos sitios aburridos y tradicionales. Creamos experiencias que conectan tu marca con tu audiencia y convierten visitas en clientes.',
   },
 ];
 
