@@ -98,7 +98,7 @@ export default function Contact({ data }: { data: ContactContent }) {
         ))}
       </svg>
       <div className="wrap">
-        <SectionHeading eyebrow="Contacto" title={data.title} />
+        <h2 className="mb-14 text-center font-serif font-light leading-none tracking-tight text-fg text-glow sm:mb-20" style={{ fontSize: 'clamp(2.6rem, 8vw, 100px)' }}>{data.title}</h2>
 
         <div className="grid gap-14 md:grid-cols-2 md:gap-20">
           <Reveal delay={0.1}>

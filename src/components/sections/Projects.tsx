@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { Reveal } from '@/components/ui/Reveal';
-import SectionHeading from '@/components/ui/SectionHeading';
 import type { Project } from '@/lib/types';
 
 function MediaWrapper({ project, children }: { project: Project; children: React.ReactNode }) {
@@ -50,8 +49,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 export default function Projects({ projects }: { projects: Project[] }) {
   return (
     <section id="proyectos" className="wrap py-24 md:py-32">
-      <SectionHeading eyebrow="Proyectos" title="Trabajo seleccionado" />
-      <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <h2 className="mb-14 text-center font-serif font-light leading-none tracking-tight text-fg text-glow sm:mb-20" style={{ fontSize: 'clamp(2.6rem, 8vw, 100px)' }}>Trabajo seleccionado</h2>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {projects.slice(0, 5).map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} />
         ))}
