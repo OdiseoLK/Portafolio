@@ -30,7 +30,7 @@ export default function MissionVision() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '50px' }}
             transition={{ duration: 0.7, ease: EASE, delay: i * 0.12 }}
-            className="liquid-glass flex flex-col gap-4 rounded-xl border border-line p-7 md:p-8"
+            className="liquid-glass flex flex-col gap-4 rounded-xl border border-line p-7 transition-all duration-500 hover:-translate-y-1 hover:border-fg/40 hover:shadow-[0_0_44px_rgba(99,102,241,0.18)] md:p-8"
           >
             <span aria-hidden="true" className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted">0{i + 1}</span>
             <h3 className="font-serif text-3xl font-light tracking-tight text-fg">{b.title}</h3>

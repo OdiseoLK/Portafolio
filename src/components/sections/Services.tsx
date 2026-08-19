@@ -11,7 +11,7 @@ export default function Services({ data }: { data: ServicesContent }) {
   return (
     <section
       id="servicios"
-      className="relative -mt-10 rounded-t-[40px] border-t border-line bg-[#101013] px-5 py-20 sm:rounded-t-[50px] sm:px-8 sm:py-24 md:rounded-t-[60px] md:px-10 md:py-32"
+      className="relative px-5 py-20 sm:px-8 sm:py-24 md:px-10 md:py-28"
     >
       <div className="mx-auto w-full max-w-5xl">
         <motion.h2
@@ -19,7 +19,7 @@ export default function Services({ data }: { data: ServicesContent }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '50px' }}
           transition={{ duration: 0.7, ease: EASE }}
-          className="mb-16 w-full text-center font-serif font-light leading-none tracking-tight text-fg sm:mb-20 md:mb-28"
+          className="mb-16 w-full text-center font-serif font-light leading-none tracking-tight text-fg text-glow sm:mb-20 md:mb-28"
           style={{ fontSize: 'clamp(3rem, 10vw, 130px)' }}
         >
           {data.title}

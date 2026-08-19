@@ -14,7 +14,7 @@ export default function Process({ data }: { data: ProcessContent }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '50px' }}
           transition={{ duration: 0.7, ease: EASE }}
-          className="mb-14 text-center font-serif font-light leading-none tracking-tight text-fg sm:mb-20"
+          className="mb-14 text-center font-serif font-light leading-none tracking-tight text-fg text-glow sm:mb-20"
           style={{ fontSize: 'clamp(2.6rem, 8vw, 100px)' }}
         >
           {data.title}

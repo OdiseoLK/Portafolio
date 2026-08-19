@@ -41,7 +41,7 @@ export default function About({ data }: { data: AboutContent }) {
   const chars = text.split('');
 
   return (
-    <section id="sobre-mi" className="relative bg-[#101013] px-5 pb-24 pt-4 sm:px-8 md:px-10 md:pb-32">
+    <section id="sobre-mi" className="relative px-5 pb-24 pt-4 sm:px-8 md:px-10 md:pb-32">
       <div
         ref={ref}
         className="mx-auto flex min-h-[80vh] w-full max-w-4xl flex-col items-center justify-center gap-14 text-center sm:gap-16 md:gap-20"
