@@ -1,31 +1,64 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import SectionHeading from '@/components/ui/SectionHeading';
-import { Reveal } from '@/components/ui/Reveal';
 import type { ServicesContent } from '@/lib/types';
 
-/** Tipos de trabajo que ofrezco — inspirado en las "soluciones" de agencia. */
+const EASE = [0.25, 0.1, 0.25, 1] as const;
+
+/** Lista editorial de servicios: número gigante + nombre + descripción. */
 export default function Services({ data }: { data: ServicesContent }) {
-  if (!data.items.length) return null;
-
   return (
-    <section id="servicios" className="scroll-mt-24 pb-28 md:pb-36">
-      <div className="wrap">
-        <SectionHeading eyebrow="Servicios" title={data.title} />
+    <section
+      id="servicios"
+      className="relative -mt-10 rounded-t-[40px] border-t border-line bg-[#101013] px-5 py-20 sm:rounded-t-[50px] sm:px-8 sm:py-24 md:rounded-t-[60px] md:px-10 md:py-32"
+    >
+      <div className="mx-auto w-full max-w-5xl">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '50px' }}
+          transition={{ duration: 0.7, ease: EASE }}
+          className="mb-16 w-full text-center font-serif font-light leading-none tracking-tight text-fg sm:mb-20 md:mb-28"
+          style={{ fontSize: 'clamp(3rem, 10vw, 130px)' }}
+        >
+          {data.title}
+        </motion.h2>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="flex flex-col">
           {data.items.map((item, i) => (
-            <Reveal key={`${item.title}-${i}`} delay={0.06 * i}>
-              <article className="group h-full rounded-lg border border-line bg-card p-8 transition-all duration-500 hover:-translate-y-1 hover:border-fg/40 hover:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.8)] md:p-10">
-                <p className="font-mono text-xs tracking-[0.3em] text-muted transition-colors duration-300 group-hover:text-fg">
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '50px' }}
+              transition={{ duration: 0.7, ease: EASE, delay: i * 0.1 }}
+              className={i > 0 ? 'border-t border-fg/10' : ''}
+            >
+              <div className="flex w-full items-start gap-6 py-8 sm:gap-8 sm:py-10 md:gap-10 md:py-12">
+                <span
+                  aria-hidden="true"
+                  className="shrink-0 font-serif font-light leading-none text-fg/90"
+                  style={{ fontSize: 'clamp(3rem, 9vw, 120px)' }}
+                >
                   {String(i + 1).padStart(2, '0')}
-                </p>
-                <h3 className="mt-5 font-display text-2xl font-light tracking-tight text-fg">
-                  {item.title}
-                </h3>
-                <p className="mt-4 leading-relaxed text-muted">{item.text}</p>
-              </article>
-            </Reveal>
+                </span>
+                <div className="flex flex-col gap-2 pt-1 sm:gap-4 md:gap-5">
+                  <h3
+                    className="font-medium uppercase tracking-wide text-fg"
+                    style={{ fontSize: 'clamp(1rem, 2.2vw, 1.9rem)' }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p
+                    className="max-w-2xl font-light leading-relaxed text-fg/60"
+                    style={{ fontSize: 'clamp(0.85rem, 1.6vw, 1.2rem)' }}
+                  >
+                    {item.text}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
