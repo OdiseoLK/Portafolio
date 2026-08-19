@@ -7,6 +7,7 @@ import WhatsAppFloat from '@/components/ui/WhatsAppFloat';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import MissionVision from '@/components/sections/MissionVision';
+import InstagramBand from '@/components/sections/InstagramBand';
 import Process from '@/components/sections/Process';
 import Services from '@/components/sections/Services';
 import BrandBand from '@/components/sections/BrandBand';
@@ -55,12 +56,13 @@ export default async function Home() {
 
       <main>
         <Hero data={content.hero} />
-        <Projects projects={content.projects} />
-        <Services data={content.services} />
-        <BrandBand />
         <About data={content.about} />
         <MissionVision />
+        <Services data={content.services} />
         <Process data={content.process} />
+        <BrandBand />
+        <Projects projects={content.projects} />
+        <InstagramBand />
         <Contact data={content.contact} />
       </main>
 

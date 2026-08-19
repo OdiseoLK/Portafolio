@@ -8,9 +8,9 @@ import { Download, Menu, X } from 'lucide-react';
 
 const LINKS = [
   { label: 'Inicio', href: '#inicio' },
+  { label: 'El estudio', href: '#sobre-mi' },
+  { label: 'Soluciones', href: '#servicios' },
   { label: 'Proyectos', href: '#proyectos' },
-  { label: 'Servicios', href: '#servicios' },
-  { label: 'Nosotros', href: '#sobre-mi' },
   { label: 'Contacto', href: '#contacto' },
 ];
 
