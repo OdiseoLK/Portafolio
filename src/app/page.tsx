@@ -6,7 +6,7 @@ import Footer from '@/components/layout/Footer';
 import WhatsAppFloat from '@/components/ui/WhatsAppFloat';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
-import Skills from '@/components/sections/Skills';
+import MissionVision from '@/components/sections/MissionVision';
 import Process from '@/components/sections/Process';
 import Services from '@/components/sections/Services';
 import BrandBand from '@/components/sections/BrandBand';
@@ -59,7 +59,7 @@ export default async function Home() {
         <Services data={content.services} />
         <BrandBand />
         <About data={content.about} />
-        <Skills data={content.skills} />
+        <MissionVision />
         <Process data={content.process} />
         <Contact data={content.contact} />
       </main>

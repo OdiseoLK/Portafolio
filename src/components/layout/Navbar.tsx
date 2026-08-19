@@ -11,7 +11,6 @@ const LINKS = [
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Servicios', href: '#servicios' },
   { label: 'Nosotros', href: '#sobre-mi' },
-  { label: 'Skills', href: '#skills' },
   { label: 'Contacto', href: '#contacto' },
 ];
 
