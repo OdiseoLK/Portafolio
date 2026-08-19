@@ -21,7 +21,7 @@ export const DEFAULT_CONTENT: SiteContent = {
   about: {
     title: 'El estudio',
     paragraphs: [
-      'ODISEO es un estudio de diseño y desarrollo web con base en Orizaba, Veracruz.',
+      'ODISEO es un estudio de diseño y desarrollo web.',
       'Creamos sitios y plataformas digitales para negocios que quieren destacar en línea: desde páginas corporativas hasta catálogos con pedidos y sistemas a la medida.',
       'Nos apasiona construir experiencias intuitivas, interfaces limpias y soluciones que combinan diseño, rendimiento y escalabilidad.',
       'Cada proyecto se trabaja de forma directa y cercana, con la calidad y el cuidado que tu marca merece.',
@@ -83,7 +83,7 @@ export const DEFAULT_CONTENT: SiteContent = {
   socials: {
     github: 'https://github.com/OdiseoLK',
     linkedin: '',
-    instagram: '',
+    instagram: 'https://www.instagram.com/odiseo.dev/',
     email: 'Developerlk23@gmail.com',
   },
   contact: {
@@ -91,7 +91,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     text: 'Si tienes una idea o un proyecto en mente, estaremos encantados de hablar contigo.',
     email: 'Developerlk23@gmail.com',
     whatsappUrl: 'https://wa.me/message/HSPNSWYWNGWBN1',
-    location: 'Orizaba, Veracruz — México',
+    location: '',
   },
   footer: {
     tagline: 'Productos digitales construidos con simplicidad, rendimiento y atención al detalle.',

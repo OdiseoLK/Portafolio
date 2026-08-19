@@ -30,11 +30,12 @@ export function buildSocialLinks(socials: SocialsContent): SocialLink[] {
       icon: <Linkedin size={19} aria-hidden="true" />,
     });
   }
-  if (socials.instagram) {
+  const instagramUrl = socials.instagram || 'https://www.instagram.com/odiseo.dev/';
+  if (instagramUrl) {
     links.push({
       label: 'Instagram',
-      href: socials.instagram,
-      handle: prettyUrl(socials.instagram),
+      href: instagramUrl,
+      handle: prettyUrl(instagramUrl),
       icon: <Instagram size={19} aria-hidden="true" />,
     });
   }

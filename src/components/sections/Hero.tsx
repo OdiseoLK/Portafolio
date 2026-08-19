@@ -59,6 +59,11 @@ export default function Hero({ data }: { data: HeroContent }) {
 
 
       {/* Contenido principal — arriba izquierda como la referencia */}
+
+
+
+
+      {/* Contenido principal — arriba izquierda como la referencia */}
       <div className="relative z-10 flex flex-1 flex-col justify-center px-8 md:px-14 lg:pl-48 lg:pr-20">
         <div className="max-w-4xl">
           <motion.p
@@ -99,20 +104,6 @@ export default function Hero({ data }: { data: HeroContent }) {
         </div>
       </div>
 
-      {/* Indicador inferior izquierda — como "Experience with sound" de la referencia */}
-      <motion.div
-        initial={reduced ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-8 left-8 z-20 hidden items-center gap-3 lg:flex"
-      >
-        <span className="grid h-9 w-9 place-items-center rounded-full border border-fg/20">
-          <span className="h-3 w-px bg-fg/60" />
-        </span>
-        <span className="font-mono text-[10px] uppercase leading-tight tracking-[0.2em] text-fg/50">
-          Orizaba<br />México
-        </span>
-      </motion.div>
-    </section>
+      </section>
   );
 }

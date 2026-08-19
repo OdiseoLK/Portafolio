@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: '%s — ODISEO',
   },
   description:
-    'Estudio de diseño y desarrollo web en Orizaba, Veracruz. Creamos sitios modernos, rápidos y auto-administrables para negocios que quieren destacar en línea.',
+    'Estudio de diseño y desarrollo web. Creamos sitios modernos, rápidos y auto-administrables para negocios que quieren destacar en línea.',
   keywords: ['ODISEO', 'estudio de diseño y desarrollo web', 'diseñador de interfaces', 'portafolio', 'Next.js'],
   authors: [{ name: 'Alexis — ODISEO' }],
   alternates: { canonical: '/' },
