@@ -21,12 +21,9 @@ const PILLARS = [
 /** Banda de propuesta de valor: tu sitio web, para ti y tu marca. */
 export default function BrandBand() {
   return (
-    <section className="border-y border-line/60 /50 py-24 md:py-32">
+    <section className="border-y border-line/60 py-24 md:py-32">
       <div className="wrap">
         <Reveal>
-          <p className="eyebrow mb-8 !text-lima">
-            <span className="font-mono text-accent">{'//'}</span> Tu marca
-          </p>
           <h2 className="text-center font-serif font-light leading-[1.05] tracking-tight text-fg text-glow" style={{ fontSize: 'clamp(2.2rem, 6.5vw, 84px)' }}>
             Tu sitio web, para ti y para tu marca.
           </h2>

@@ -21,7 +21,7 @@ const BLOCKS = [
 
 export default function MissionVision() {
   return (
-    <section className="bg-[#101013] px-5 pb-24 sm:px-8 md:px-10 md:pb-32">
+    <section className="px-5 pb-24 sm:px-8 md:px-10 md:pb-32">
       <div className="mx-auto grid w-full max-w-5xl gap-4 md:grid-cols-3">
         {BLOCKS.map((b, i) => (
           <motion.article

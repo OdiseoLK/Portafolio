@@ -54,7 +54,7 @@ export default function About({ data }: { data: AboutContent }) {
           className="w-full font-serif font-light uppercase leading-none tracking-tight"
           style={{
             fontSize: 'clamp(3rem, 12vw, 150px)',
-            background: 'linear-gradient(180deg, #646973 0%, #E8EDF2 100%)',
+            background: 'linear-gradient(180deg, #F2F5F8 0%, #8A919C 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',

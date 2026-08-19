@@ -7,7 +7,7 @@ const EASE = [0.25, 0.1, 0.25, 1] as const;
 
 export default function Process({ data }: { data: ProcessContent }) {
   return (
-    <section id="proceso" className="bg-[#101013] px-5 py-20 sm:px-8 md:px-10 md:py-28">
+    <section id="proceso" className="px-5 py-20 sm:px-8 md:px-10 md:py-28">
       <div className="mx-auto w-full max-w-5xl">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}

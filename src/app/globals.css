@@ -143,3 +143,12 @@ html.custom-cursor select {
 @media (prefers-reduced-motion: reduce) {
   .aurora::before, .aurora::after { animation: none; }
 }
+
+/* === Vida y frescura === */
+html { scroll-behavior: smooth; }
+::selection { background: #6366f1; color: #fff; }
+@keyframes breathe { 0%,100% { text-shadow: 0 0 40px rgba(255,255,255,.35),0 0 80px rgba(255,255,255,.18);} 50% { text-shadow: 0 0 55px rgba(255,255,255,.5),0 0 110px rgba(140,150,255,.28);} }
+.text-glow { animation: breathe 5s ease-in-out infinite; }
+.button-glow { position: relative; overflow: hidden; }
+.button-glow::after { content:''; position:absolute; inset:0; background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.7) 50%,transparent 70%); transform:translateX(-120%); transition:transform .7s ease; }
+.button-glow:hover::after { transform:translateX(120%); }

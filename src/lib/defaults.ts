@@ -64,15 +64,15 @@ export const DEFAULT_CONTENT: SiteContent = {
     steps: [
       {
         title: 'Descubrimiento',
-        text: 'Entiendo el objetivo, el público y el contexto del proyecto antes de escribir una sola línea de código.',
+        text: 'Entendemos el objetivo, el público y el contexto del proyecto antes de escribir una sola línea de código.',
       },
       {
         title: 'Diseño',
-        text: 'Defino la estructura, la jerarquía visual y los detalles de interacción con un enfoque minimalista e intencional.',
+        text: 'Definimos la estructura, la jerarquía visual y los detalles de interacción con un enfoque minimalista e intencional.',
       },
       {
         title: 'Desarrollo',
-        text: 'Construyo con tecnologías modernas, priorizando el rendimiento, la accesibilidad y un código limpio y mantenible.',
+        text: 'Construimos con tecnologías modernas, priorizando el rendimiento, la accesibilidad y un código limpio y mantenible.',
       },
       {
         title: 'Lanzamiento',
