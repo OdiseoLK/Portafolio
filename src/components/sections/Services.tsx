@@ -2,11 +2,17 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import type { ServicesContent } from '@/lib/types';
+import { useLang } from '@/components/ui/LanguageContext';
+import { EN } from '@/lib/translations';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 /** Lista editorial numerada: número enorme a la izquierda, servicio a la derecha. */
 export default function Services({ data }: { data: ServicesContent }) {
+  const { lang } = useLang();
+  const en = lang === 'en';
+  const items = en ? EN.services.items : data.items;
+  const title = en ? EN.services.title : data.title;
   const reduced = useReducedMotion();
 
   return (
@@ -19,11 +25,11 @@ export default function Services({ data }: { data: ServicesContent }) {
           transition={{ duration: 0.9, ease: EASE }}
           className="hero-heading mb-16 text-center font-display text-[clamp(3rem,11vw,9rem)] font-bold uppercase leading-none tracking-tight md:mb-24"
         >
-          {data.title}
+          {title}
         </motion.h2>
 
         <div className="mx-auto max-w-5xl">
-          {data.items.map((item, i) => (
+          {items.map((item, i) => (
             <motion.article
               key={item.title}
               initial={reduced ? false : { opacity: 0, y: 30 }}

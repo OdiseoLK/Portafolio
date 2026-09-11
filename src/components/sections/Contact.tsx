@@ -7,12 +7,18 @@ import { Reveal } from '@/components/ui/Reveal';
 import { getSupabase } from '@/lib/supabase';
 import type { ContactContent } from '@/lib/types';
 
+import { DotsDivider } from '@/components/ui/Scramble';
+import { useLang } from '@/components/ui/LanguageContext';
+import { EN } from '@/lib/translations';
+
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 
 const inputClass =
   'w-full rounded-md border border-line bg-surface px-4 py-3 text-fg outline-none transition-colors duration-300 placeholder:text-muted/40 focus:border-accent';
 
 export default function Contact({ data }: { data: ContactContent }) {
+  const { lang } = useLang();
+  const en = lang === 'en';
   const [status, setStatus] = useState<Status>('idle');
   const [copied, setCopied] = useState(false);
 
@@ -98,15 +104,16 @@ export default function Contact({ data }: { data: ContactContent }) {
         ))}
       </svg>
       <div className="wrap">
-        <h2 className="hero-heading mb-14 text-center font-display font-bold uppercase leading-none tracking-tight sm:mb-20" style={{ fontSize: 'clamp(2.6rem, 9vw, 110px)' }}>{data.title}</h2>
+        <DotsDivider />
+        <h2 className="hero-heading mb-14 mt-10 text-center font-display font-bold uppercase leading-none tracking-tight sm:mb-20" style={{ fontSize: 'clamp(2.6rem, 9vw, 110px)' }}>{en ? EN.contact.title : data.title}</h2>
 
         <div className="grid gap-14 md:grid-cols-2 md:gap-20">
           <Reveal delay={0.1}>
-            <p className="max-w-md text-lg leading-relaxed text-muted">{data.text}</p>
+            <p className="max-w-md text-lg leading-relaxed text-muted">{en ? EN.contact.lede : data.text}</p>
             <div className="mt-10 space-y-5 border-t border-line/70 pt-8">
               {data.email && (
                 <div className="flex flex-wrap items-center gap-3">
-                  <p className="eyebrow w-28 shrink-0">Correo</p>
+                  <p className="eyebrow w-28 shrink-0">{en ? EN.contact.email : 'Correo'}</p>
                   <a
                     href={`mailto:${data.email}`}
                     className="font-mono text-sm text-fg transition-colors hover:text-hielo"
@@ -129,8 +136,8 @@ export default function Contact({ data }: { data: ContactContent }) {
               )}
               
               <div className="flex flex-wrap items-center gap-3">
-                <p className="eyebrow w-28 shrink-0">Respuesta</p>
-                <p className="font-mono text-sm text-muted">Normalmente en 24–48 h</p>
+                <p className="eyebrow w-28 shrink-0">{en ? EN.contact.response : 'Respuesta'}</p>
+                <p className="font-mono text-sm text-muted">{en ? EN.contact.responseTime : 'Normalmente en 24–48 h'}</p>
               </div>
             </div>
           </Reveal>
@@ -143,9 +150,9 @@ export default function Contact({ data }: { data: ContactContent }) {
             rel="noopener noreferrer"
             className="group mb-8 inline-flex items-center gap-2 text-sm text-muted transition-colors duration-300 hover:text-fg"
           >
-            ¿Prefieres WhatsApp? Es el camino rápido.
+            {en ? 'Prefer WhatsApp? It’s the fast lane.' : '¿Prefieres WhatsApp? Es el camino rápido.'}
             <span className="border-b border-hielo/50 pb-0.5 text-fg transition-colors duration-300 group-hover:border-[#25D366] group-hover:text-[#25D366]">
-              Escríbenos directo
+              {en ? 'Message us directly' : 'Escríbenos directo'}
             </span>
             <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
           </a>
@@ -164,7 +171,7 @@ export default function Contact({ data }: { data: ContactContent }) {
               </div>
               <div>
                 <label htmlFor="contact-name" className="eyebrow mb-2 block">
-                  Nombre
+                  {en ? EN.contact.name : 'Nombre'}
                 </label>
                 <input
                   id="contact-name"
@@ -173,13 +180,13 @@ export default function Contact({ data }: { data: ContactContent }) {
                   required
                   maxLength={100}
                   autoComplete="name"
-                  placeholder="Tu nombre"
+                  placeholder={en ? EN.contact.namePh : 'Tu nombre'}
                   className={inputClass}
                 />
               </div>
               <div>
                 <label htmlFor="contact-email" className="eyebrow mb-2 block">
-                  Correo electrónico
+                  {en ? 'Email address' : 'Correo electrónico'}
                 </label>
                 <input
                   id="contact-email"
@@ -188,13 +195,13 @@ export default function Contact({ data }: { data: ContactContent }) {
                   required
                   maxLength={150}
                   autoComplete="email"
-                  placeholder="tu@correo.com"
+                  placeholder={en ? EN.contact.emailPh : 'tu@correo.com'}
                   className={inputClass}
                 />
               </div>
               <div>
                 <label htmlFor="contact-message" className="eyebrow mb-2 block">
-                  Mensaje
+                  {en ? EN.contact.message : 'Mensaje'}
                 </label>
                 <textarea
                   id="contact-message"
@@ -202,7 +209,7 @@ export default function Contact({ data }: { data: ContactContent }) {
                   required
                   rows={5}
                   maxLength={2000}
-                  placeholder="Cuéntanos sobre tu idea…"
+                  placeholder={en ? EN.contact.messagePh : 'Cuéntanos sobre tu idea…'}
                   className={`${inputClass} resize-none`}
                 />
               </div>
@@ -213,7 +220,7 @@ export default function Contact({ data }: { data: ContactContent }) {
                   disabled={status === 'sending'}
                   className="button-glow group inline-flex items-center gap-2.5 rounded-full bg-fg px-8 py-3.5 text-sm font-medium tracking-wide text-bg transition-all duration-300 hover:bg-white/90 disabled:opacity-60"
                 >
-                  {status === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
+                  {status === 'sending' ? (en ? EN.contact.sending : 'Enviando…') : (en ? EN.contact.send : 'Enviar mensaje')}
                   <Send
                     size={14}
                     aria-hidden="true"
@@ -222,11 +229,11 @@ export default function Contact({ data }: { data: ContactContent }) {
                 </button>
                 <p aria-live="polite" className="text-sm">
                   {status === 'sent' && (
-                    <span className="text-fg">Mensaje enviado. Te respondemos pronto.</span>
+                    <span className="text-fg">{en ? EN.contact.sent : 'Mensaje enviado. Te respondemos pronto.'}</span>
                   )}
                   {status === 'error' && (
                     <span className="text-muted">
-                      No se pudo enviar el mensaje. Intenta de nuevo.
+                      {en ? EN.contact.error : 'No se pudo enviar el mensaje. Intenta de nuevo.'}
                     </span>
                   )}
                 </p>

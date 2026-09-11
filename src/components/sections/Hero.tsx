@@ -6,6 +6,9 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
 import type { HeroContent } from '@/lib/types';
+import Scramble from '@/components/ui/Scramble';
+import { useLang } from '@/components/ui/LanguageContext';
+import { EN } from '@/lib/translations';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -18,6 +21,8 @@ const EASE = [0.22, 1, 0.36, 1] as const;
  * - Con prefers-reduced-motion: sin rig, sin líquido, todo visible al primer paint.
  */
 export default function Hero({ data }: { data: HeroContent }) {
+  const { lang } = useLang();
+  const en = lang === 'en';
   const reduced = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const [liquid, setLiquid] = useState(false);
@@ -140,7 +145,7 @@ export default function Hero({ data }: { data: HeroContent }) {
         <div className="wrap">
           <motion.p {...fadeUp(0.1)} className="eyebrow mb-8 flex items-center gap-3">
             <span className="inline-block h-px w-10 bg-hielo/50" />
-            Estudio de diseño y desarrollo web
+            <Scramble text={en ? EN.hero.eyebrow : 'Estudio de diseño y desarrollo web'} trigger="load" />
           </motion.p>
 
           <div className="overflow-hidden">
@@ -165,7 +170,7 @@ export default function Hero({ data }: { data: HeroContent }) {
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-lima" />
               </span>
               <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-fg/70">
-                {data.availability.label}
+                {en ? EN.hero.availability : data.availability.label}
               </span>
             </motion.div>
           )}
@@ -181,17 +186,17 @@ export default function Hero({ data }: { data: HeroContent }) {
               {...fadeUp(0.55)}
               className="max-w-sm text-sm leading-relaxed text-muted md:text-[15px]"
             >
-              {data.description}
+              {en ? EN.hero.description : data.description}
             </motion.p>
             <motion.div {...fadeUp(0.65)} className="flex items-center gap-6">
               <span className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-fg/30 md:block">
-                Scroll ↓
+                <Scramble text="Scroll ↓" trigger="load" speed={45} />
               </span>
               <a
                 href="#casos"
                 className="group inline-flex items-center gap-2.5 rounded-full border border-fg/20 px-7 py-3 text-sm font-medium tracking-wide text-fg transition-colors duration-300 hover:border-hielo/60 hover:text-hielo"
               >
-                Ver casos de estudio
+                {en ? EN.hero.cta : 'Ver casos de estudio'}
                 <ArrowUpRight
                   size={15}
                   aria-hidden="true"

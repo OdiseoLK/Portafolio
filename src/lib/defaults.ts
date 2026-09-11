@@ -181,7 +181,7 @@ export const DEFAULT_CONTENT: SiteContent = {
       description:
         'Bistró y boulangerie en Orizaba: repostería, panadería artesanal y cocina de bistró. Sitio cálido con menú y pedidos directos, pensado para antojar desde el primer scroll.',
       tags: ['Bistró · Boulangerie', 'Menú digital', 'Pedidos'],
-      image_url: null,
+      image_url: '/casos/cielo-canela-caso.jpg',
       project_url: 'https://cielocanela.com',
       repo_url: null,
       published: true,

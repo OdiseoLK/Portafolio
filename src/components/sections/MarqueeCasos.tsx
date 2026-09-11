@@ -1,6 +1,9 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Scramble from '@/components/ui/Scramble';
+import { useLang } from '@/components/ui/LanguageContext';
+import { EN } from '@/lib/translations';
 
 /**
  * Marquee arrastrable con inercia (motor rAF).
@@ -42,7 +45,7 @@ const TILES: Tile[] = [
     img: '/casos/aborigen-carrusel.jpg', url: 'https://aborigenorizaba.com' },
   { name: 'Cielo Canela', giro: 'Bistró · Boulangerie', tag: 'En línea',
     ink: '#D9A05B', base: '#1A1210', panel: '#2E2118', layout: 'showroom',
-    url: 'https://cielocanela.com' },
+    img: '/casos/cielo-canela-carrusel.jpg', url: 'https://cielocanela.com' },
 ];
 
 /** Mini-mockup del sitio: barra de navegador + composición abstracta por giro. */
@@ -114,6 +117,8 @@ function SiteMock({ t }: { t: Tile }) {
 }
 
 export default function MarqueeCasos() {
+  const { lang } = useLang();
+  const en = lang === 'en';
   const trackRef = useRef<HTMLDivElement>(null);
   const movedRef = useRef(false);
 
@@ -179,7 +184,7 @@ export default function MarqueeCasos() {
 
   return (
     <section aria-label="Clientes del estudio" className="relative overflow-hidden border-y border-line/60 bg-surface/50 py-6">
-      <p className="wrap eyebrow mb-5">Trabajo real, negocios reales</p>
+      <p className="wrap eyebrow mb-5"><Scramble text={en ? EN.marquee.eyebrow : 'Trabajo real, negocios reales'} /></p>
       <div
         ref={trackRef}
         className="flex w-max cursor-grab select-none gap-4 py-2 pl-4"
@@ -208,13 +213,13 @@ export default function MarqueeCasos() {
             <div className="flex items-center justify-between gap-3 p-4">
               <div className="min-w-0">
                 <h3 className="truncate font-display text-lg font-bold tracking-tight text-fg">{t.name}</h3>
-                <p className="mt-0.5 truncate font-mono text-[9px] uppercase tracking-[0.2em] text-fg/45">{t.giro}</p>
+                <p className="mt-0.5 truncate font-mono text-[9px] uppercase tracking-[0.2em] text-fg/45">{en ? EN.marquee.giros[t.giro] ?? t.giro : t.giro}</p>
               </div>
               <span
                 className="flex-shrink-0 rounded-full border px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.15em]"
                 style={{ borderColor: `${t.ink}66`, color: t.ink }}
               >
-                {t.tag}
+                {en ? EN.marquee.live : t.tag}
               </span>
             </div>
           </a>

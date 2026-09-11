@@ -6,6 +6,9 @@ import { ArrowUp, Download, Mail } from 'lucide-react';
 import { buildSocialLinks } from '@/components/sections/Social';
 import type { FooterContent, SocialsContent } from '@/lib/types';
 
+import { useLang } from '@/components/ui/LanguageContext';
+import { EN } from '@/lib/translations';
+
 const QUICK_LINKS = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'El estudio', href: '#estudio' },
@@ -23,6 +26,8 @@ export default function Footer({
   footer: FooterContent;
   cvUrl: string;
 }) {
+  const { lang } = useLang();
+  const links = lang === 'en' ? [{ label: 'Home', href: '#inicio' }, ...EN.footer.links] : QUICK_LINKS;
   const socialLinks = buildSocialLinks(socials);
 
   const scrollToTop = () => {
@@ -55,7 +60,7 @@ export default function Footer({
           <nav aria-label="Enlaces rápidos">
             <p className="eyebrow mb-5">Navegación</p>
             <ul className="space-y-3">
-              {QUICK_LINKS.map((link) => (
+              {links.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
@@ -125,7 +130,7 @@ export default function Footer({
 
         <div className="mt-14 flex items-center justify-between border-t border-line/70 pt-8">
           <p className="text-xs text-muted">
-            © {new Date().getFullYear()} ODISEO. Todos los derechos reservados.
+            © {new Date().getFullYear()} ODISEO. {lang === 'en' ? EN.footer.rights : 'Todos los derechos reservados.'}
           </p>
           <button
             type="button"

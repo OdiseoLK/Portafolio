@@ -14,6 +14,7 @@ import CaseStudies from '@/components/sections/CaseStudies';
 import MarqueeCasos from '@/components/sections/MarqueeCasos';
 import Contact from '@/components/sections/Contact';
 import { getContent } from '@/lib/content';
+import { LangProvider } from '@/components/ui/LanguageContext';
 
 // ISR: el contenido editado desde /admin se refleja en máximo 60 segundos.
 export const revalidate = 60;
@@ -36,7 +37,7 @@ export default async function Home() {
   };
 
   return (
-    <>
+    <LangProvider>
       <GridBackground />
       <CustomCursor />
       <ScrollProgress />
@@ -69,6 +70,6 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </>
+    </LangProvider>
   );
 }

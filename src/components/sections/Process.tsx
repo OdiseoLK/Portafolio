@@ -2,11 +2,18 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import type { ProcessContent } from '@/lib/types';
+import Scramble from '@/components/ui/Scramble';
+import { useLang } from '@/components/ui/LanguageContext';
+import { EN } from '@/lib/translations';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 /** Proceso en 4 columnas editoriales conectadas por una regla continua. */
 export default function Process({ data }: { data: ProcessContent }) {
+  const { lang } = useLang();
+  const en = lang === 'en';
+  const steps = en ? EN.process.steps : data.steps;
+  const title = en ? EN.process.title : data.title;
   const reduced = useReducedMotion();
 
   return (
@@ -20,15 +27,15 @@ export default function Process({ data }: { data: ProcessContent }) {
             transition={{ duration: 0.9, ease: EASE }}
             className="font-display text-[clamp(2.2rem,6vw,4.5rem)] font-bold uppercase leading-none tracking-tight text-fg"
           >
-            {data.title}
+            {title}
           </motion.h2>
-          <p className="eyebrow">De la idea al lanzamiento</p>
+          <p className="eyebrow"><Scramble text={en ? EN.process.eyebrow : 'De la idea al lanzamiento'} /></p>
         </div>
 
         <div className="rule mb-10" />
 
         <ol className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {data.steps.map((step, i) => (
+          {steps.map((step, i) => (
             <motion.li
               key={step.title}
               initial={reduced ? false : { opacity: 0, y: 30 }}
@@ -37,7 +44,7 @@ export default function Process({ data }: { data: ProcessContent }) {
               transition={{ duration: 0.7, ease: EASE, delay: i * 0.12 }}
             >
               <p className="font-mono text-xs tracking-[0.3em] text-menta">
-                {String(i + 1).padStart(2, '0')} /
+                <Scramble text={`${String(i + 1).padStart(2, '0')} /`} speed={50} />
               </p>
               <h3 className="mt-4 font-display text-lg font-medium uppercase tracking-wide text-fg">
                 {step.title}

@@ -4,7 +4,10 @@ import Image from 'next/image';
 
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Download, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import Scramble from '@/components/ui/Scramble';
+import { LangToggle, useLang } from '@/components/ui/LanguageContext';
+import { EN } from '@/lib/translations';
 
 const LINKS = [
   { label: 'Inicio', href: '#inicio' },
@@ -15,6 +18,8 @@ const LINKS = [
 ];
 
 export default function Navbar({ cvUrl }: { cvUrl: string }) {
+  const { lang } = useLang();
+  const links = lang === 'en' ? EN.nav.links : LINKS;
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('#inicio');
@@ -77,18 +82,19 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
         {/* Enlaces desktop */}
         <div className="hidden items-center gap-8 md:flex">
           <ul className="flex items-center gap-7">
-            {LINKS.map((link) => {
+            {links.map((link) => {
               const isActive = active === link.href;
               return (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     aria-current={isActive ? 'true' : undefined}
+                    data-scramble-parent
                     className={`group relative text-sm transition-colors duration-300 hover:text-fg ${
                       isActive ? 'text-fg' : 'text-muted'
                     }`}
                   >
-                    {link.label}
+                    <Scramble text={link.label} trigger="hover" speed={26} />
                     <span
                       aria-hidden="true"
                       className={`absolute -bottom-1 left-0 h-px w-full origin-left bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100 ${
@@ -106,19 +112,22 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
               );
             })}
           </ul>
-          
+          <LangToggle />
         </div>
 
         {/* Toggle móvil */}
+        <div className="flex items-center gap-2 md:hidden">
+        <LangToggle />
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-md border border-line text-fg md:hidden"
+          className="grid h-10 w-10 place-items-center rounded-md border border-line text-fg"
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={open}
         >
           {open ? <X size={18} /> : <Menu size={18} />}
         </button>
+        </div>
       </nav>
 
       {/* Menú móvil */}
@@ -137,7 +146,7 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
               variants={{ visible: { transition: { staggerChildren: 0.06, delayChildren: 0.08 } } }}
               className="wrap flex flex-col gap-1 pt-10"
             >
-              {LINKS.map((link) => (
+              {links.map((link) => (
                 <motion.li
                   key={link.href}
                   variants={{
@@ -160,7 +169,7 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
                   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
                 }}
               >
-                
+                <LangToggle className="mt-6" />
               </motion.li>
             </motion.ul>
           </motion.div>

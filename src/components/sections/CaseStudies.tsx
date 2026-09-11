@@ -5,6 +5,9 @@ import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import type { Project } from '@/lib/types';
+import Scramble, { DotsDivider } from '@/components/ui/Scramble';
+import { useLang } from '@/components/ui/LanguageContext';
+import { EN, matchCase } from '@/lib/translations';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -32,18 +35,20 @@ function flavorFor(p: Project) {
 }
 
 function Card({
-  project, index, total, progress, reduced,
+  project, index, total, progress, reduced, en,
 }: {
   project: Project; index: number; total: number;
-  progress: MotionValue<number>; reduced: boolean;
+  progress: MotionValue<number>; reduced: boolean; en: boolean;
 }) {
+  const tr = en ? matchCase(project.title) : null;
   const targetScale = 1 - (total - 1 - index) * 0.03;
   const scale = useTransform(progress, [index / total, 1], [1, targetScale]);
   const flavor = flavorFor(project);
   const tags = project.tags ?? [];
   const upcoming = /próximamente/i.test(tags.join(' '));
-  const category = tags[0] ?? 'Caso de estudio';
-  const stack = tags.slice(1);
+  const category = tr?.cat ?? tags[0] ?? 'Caso de estudio';
+  const stack = tr?.tags ?? tags.slice(1);
+  const description = tr?.d ?? project.description;
 
   return (
     <div className="sticky top-24 md:top-28" style={{ paddingTop: index * 24 }}>
@@ -58,7 +63,7 @@ function Card({
           </span>
           <div className="min-w-0 flex-1">
             <p className="font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: flavor.ink }}>
-              {category}
+              <Scramble text={category} trigger="hover" speed={24} />
             </p>
             <h3 className="mt-1 truncate font-display text-xl font-bold tracking-tight text-fg md:text-3xl">
               {project.title}
@@ -75,7 +80,7 @@ function Card({
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-full border border-fg/25 px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-fg transition-colors hover:border-hielo/60 hover:text-hielo"
             >
-              Visitar sitio
+              {en ? EN.cases.visit : 'Visitar sitio'}
               <ArrowUpRight size={13} aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           ) : (
@@ -111,9 +116,9 @@ function Card({
             )}
           </div>
           <div className="flex flex-col justify-between gap-6">
-            <p className="text-sm leading-relaxed text-muted md:text-[15px]">{project.description}</p>
+            <p className="text-sm leading-relaxed text-muted md:text-[15px]">{description}</p>
             {stack.length > 0 && (
-              <ul className="flex flex-wrap gap-2" aria-label="Alcance y tecnología">
+              <ul className="flex flex-wrap gap-2" aria-label={en ? EN.cases.aria : 'Alcance y tecnología'}>
                 {stack.map((t) => (
                   <li key={t} className="rounded-full border border-line px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-fg/60">
                     {t}
@@ -129,6 +134,8 @@ function Card({
 }
 
 export default function CaseStudies({ projects }: { projects: Project[] }) {
+  const { lang } = useLang();
+  const en = lang === 'en';
   const reduced = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -148,24 +155,25 @@ export default function CaseStudies({ projects }: { projects: Project[] }) {
           transition={{ duration: 0.9, ease: EASE }}
           className="hero-heading mb-6 text-center font-display text-[clamp(3rem,11vw,9rem)] font-bold uppercase leading-none tracking-tight"
         >
-          Casos
+          {en ? EN.cases.title : 'Casos'}
         </motion.h2>
         <p className="mx-auto mb-16 max-w-md text-center text-sm leading-relaxed text-muted md:mb-20">
-          Sitios en producción para negocios reales: cada caso se diseñó desde el mundo del cliente, no desde una plantilla.
+          {en ? EN.cases.sub : 'Sitios en producción para negocios reales: cada caso se diseñó desde el mundo del cliente, no desde una plantilla.'}
         </p>
 
         <div ref={containerRef} className="flex flex-col gap-[12vh]">
           {list.map((p, i) => (
-            <Card key={p.id} project={p} index={i} total={list.length} progress={scrollYProgress} reduced={!!reduced} />
+            <Card key={p.id} project={p} index={i} total={list.length} progress={scrollYProgress} reduced={!!reduced} en={en} />
           ))}
         </div>
 
-        <div className="mt-20 text-center">
+        <DotsDivider />
+        <div className="mt-14 text-center">
           <a
             href="#contacto"
             className="group inline-flex items-center gap-2.5 rounded-full border border-fg/20 px-8 py-3.5 text-sm font-medium text-fg transition-colors duration-300 hover:border-hielo/60 hover:text-hielo"
           >
-            ¿Tu negocio es el siguiente caso?
+            {en ? EN.cases.cta : '¿Tu negocio es el siguiente caso?'}
             <ArrowUpRight size={15} aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>
