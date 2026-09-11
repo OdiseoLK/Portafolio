@@ -17,18 +17,32 @@ type Tile = {
   base: string;      // fondo del mockup
   panel: string;     // bloques del mockup
   img?: string;      // captura real (cuando exista)
+  url?: string;      // sitio en vivo
   layout: 'showroom' | 'institucional' | 'menu' | 'hospital';
 };
 
 const TILES: Tile[] = [
-  { name: 'Decora', giro: 'Interiorismo · Showroom', tag: 'En producción',
-    ink: '#D8B98A', base: '#171310', panel: '#2A2118', layout: 'showroom', img: '/casos/decora-carrusel.jpg' },
-  { name: 'Fundación Zurita', giro: 'Salud visual · Institucional', tag: 'En producción',
-    ink: '#5EEAD4', base: '#0A1B1E', panel: '#123036', layout: 'institucional', img: '/casos/zurita-carrusel.jpg' },
-  { name: 'Café Álvarez', giro: 'Cafetería · Pedidos en línea', tag: 'Entregado',
-    ink: '#C9A074', base: '#141110', panel: '#241C15', layout: 'menu', img: '/casos/cafe-alvarez-carrusel.jpg' },
-  { name: 'Puerta Grande', giro: 'Hospital · Fundación Zurita', tag: 'Próximamente',
-    ink: '#7CC7FF', base: '#0B1526', panel: '#142642', layout: 'hospital', img: '/casos/puerta-grande-carrusel.jpg' },
+  { name: 'Decora', giro: 'Interiorismo · Showroom', tag: 'En línea',
+    ink: '#D8B98A', base: '#171310', panel: '#2A2118', layout: 'showroom',
+    img: '/casos/decora-carrusel.jpg', url: 'https://decorashowroom.com' },
+  { name: 'Fundación Zurita', giro: 'Salud visual · Institucional', tag: 'En línea',
+    ink: '#5EEAD4', base: '#0A1B1E', panel: '#123036', layout: 'institucional',
+    img: '/casos/zurita-carrusel.jpg', url: 'https://fundacionzurita.com.mx' },
+  { name: 'Café Álvarez', giro: 'Cafetería · Pedidos en línea', tag: 'En línea',
+    ink: '#C9A074', base: '#141110', panel: '#241C15', layout: 'menu',
+    img: '/casos/cafe-alvarez-carrusel.jpg', url: 'https://alvarez.cafe' },
+  { name: 'Puerta Grande', giro: 'Hospital · Urgencias 24h', tag: 'En línea',
+    ink: '#7CC7FF', base: '#0B1526', panel: '#142642', layout: 'hospital',
+    img: '/casos/puerta-grande-carrusel.jpg', url: 'https://hospitalpuertagrande.com.mx' },
+  { name: 'A&F Abogados', giro: 'Despacho jurídico', tag: 'En línea',
+    ink: '#D4B26A', base: '#0B1428', panel: '#152244', layout: 'institucional',
+    img: '/casos/ayf-carrusel.jpg', url: 'https://ayfabogados.com.mx' },
+  { name: 'Aborigen', giro: 'Cocina de brasa', tag: 'En línea',
+    ink: '#E07B39', base: '#150D08', panel: '#2A1810', layout: 'menu',
+    img: '/casos/aborigen-carrusel.jpg', url: 'https://aborigenorizaba.com' },
+  { name: 'Cielo Canela', giro: 'Bistró · Boulangerie', tag: 'En línea',
+    ink: '#D9A05B', base: '#1A1210', panel: '#2E2118', layout: 'showroom',
+    url: 'https://cielocanela.com' },
 ];
 
 /** Mini-mockup del sitio: barra de navegador + composición abstracta por giro. */
@@ -101,6 +115,7 @@ function SiteMock({ t }: { t: Tile }) {
 
 export default function MarqueeCasos() {
   const trackRef = useRef<HTMLDivElement>(null);
+  const movedRef = useRef(false);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -125,6 +140,7 @@ export default function MarqueeCasos() {
 
     const down = (e: PointerEvent) => {
       dragging = true; velocity = 0;
+      movedRef.current = false;
       track.setPointerCapture(e.pointerId);
       dragStartX = e.clientX; dragStartOffset = offset;
       lastX = e.clientX; lastT = performance.now();
@@ -137,6 +153,7 @@ export default function MarqueeCasos() {
       velocity = ((e.clientX - lastX) / dt) * 16;
       lastX = e.clientX; lastT = now;
       offset = dragStartOffset + (e.clientX - dragStartX);
+      if (Math.abs(e.clientX - dragStartX) > 8) movedRef.current = true;
     };
     const up = (e: PointerEvent) => {
       dragging = false;
@@ -169,10 +186,16 @@ export default function MarqueeCasos() {
         style={{ willChange: 'transform', touchAction: 'pan-y' }}
       >
         {tiles.map((t, i) => (
-          <article
+          <a
             key={`${t.name}-${i}`}
+            href={t.url}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-hidden={i >= TILES.length}
-            className="w-72 flex-shrink-0 overflow-hidden rounded-2xl border border-fg/10 bg-card sm:w-80"
+            tabIndex={i >= TILES.length ? -1 : 0}
+            draggable={false}
+            onClick={(e) => { if (movedRef.current) e.preventDefault(); }}
+            className="block w-72 flex-shrink-0 overflow-hidden rounded-2xl border border-fg/10 bg-card transition-colors duration-300 hover:border-hielo/50 sm:w-80"
           >
             <div className="aspect-[16/9]">
               {t.img ? (
@@ -194,7 +217,7 @@ export default function MarqueeCasos() {
                 {t.tag}
               </span>
             </div>
-          </article>
+          </a>
         ))}
       </div>
     </section>

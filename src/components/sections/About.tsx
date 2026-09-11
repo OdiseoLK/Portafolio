@@ -84,9 +84,9 @@ export default function About({ data }: { data: AboutContent }) {
 
         <div className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 md:mt-24">
           {[
-            { n: '03', l: 'Sitios en producción', c: 'text-hielo' },
-            { n: '04', l: 'Negocios acompañados', c: 'text-aurora' },
-            { n: '01', l: 'Lanzamiento en camino', c: 'text-menta' },
+            { n: '07', l: 'Sitios en línea', c: 'text-hielo' },
+            { n: '07', l: 'Negocios acompañados', c: 'text-aurora' },
+            { n: '100%', l: 'Hechos a la medida', c: 'text-menta' },
           ].map((s, i) => (
             <motion.div
               key={s.l}
