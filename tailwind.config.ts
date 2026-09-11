@@ -5,14 +5,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: '#090909',
-        surface: '#111111',
-        card: '#171717',
-        line: '#252525',
-        fg: '#F5F5F5',
-        muted: '#A3A3A3',
-        accent: '#8B5CF6',
-        lima: '#22C55E',
+        bg: '#0B1020',
+        surface: '#111A30',
+        card: '#152039',
+        line: '#26304D',
+        fg: '#F2F5FA',
+        muted: '#93A0B8',
+        accent: '#7CC7FF',
+        hielo: '#7CC7FF',
+        aurora: '#A78BFA',
+        menta: '#5EEAD4',
+        lima: '#34D399',
       },
       keyframes: {
         caret: {

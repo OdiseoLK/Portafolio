@@ -8,10 +8,9 @@ import type { FooterContent, SocialsContent } from '@/lib/types';
 
 const QUICK_LINKS = [
   { label: 'Inicio', href: '#inicio' },
-  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'El estudio', href: '#estudio' },
   { label: 'Servicios', href: '#servicios' },
-  { label: 'Sobre mí', href: '#sobre-mi' },
-  { label: 'Skills', href: '#skills' },
+  { label: 'Casos', href: '#casos' },
   { label: 'Contacto', href: '#contacto' },
 ];
 
@@ -46,7 +45,7 @@ export default function Footer({
                 className="rounded-lg border border-line"
               />
               <p className="font-display text-sm font-medium tracking-[0.28em] text-fg">
-                ODIS<span className="text-lima">E</span><span className="text-accent">O</span>
+                ODISEO<span className="font-serif italic tracking-normal text-hielo/80">&nbsp;studio</span>
               </p>
             </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">{footer.tagline}</p>

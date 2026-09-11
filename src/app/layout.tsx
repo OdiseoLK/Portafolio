@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#090909',
+  themeColor: '#0B1020',
   width: 'device-width',
   initialScale: 1,
 };
@@ -48,7 +48,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="bg-bg font-sans text-fg antialiased">{children}</body>
+      <body className="grain bg-bg font-sans text-fg antialiased">{children}</body>
     </html>
   );
 }

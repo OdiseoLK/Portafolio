@@ -1,64 +1,49 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import SectionHeading from '@/components/ui/SectionHeading';
+import { motion, useReducedMotion } from 'framer-motion';
 import type { ServicesContent } from '@/lib/types';
 
-const EASE = [0.25, 0.1, 0.25, 1] as const;
+const EASE = [0.22, 1, 0.36, 1] as const;
 
-/** Lista editorial de servicios: número gigante + nombre + descripción. */
+/** Lista editorial numerada: número enorme a la izquierda, servicio a la derecha. */
 export default function Services({ data }: { data: ServicesContent }) {
+  const reduced = useReducedMotion();
+
   return (
-    <section
-      id="servicios"
-      className="relative px-5 py-20 sm:px-8 sm:py-24 md:px-10 md:py-28"
-    >
-      <div className="mx-auto w-full max-w-5xl">
+    <section id="servicios" className="scroll-mt-24 py-24 md:py-32">
+      <div className="wrap">
         <motion.h2
-          initial={{ opacity: 0, y: 40 }}
+          initial={reduced ? false : { opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '50px' }}
-          transition={{ duration: 0.7, ease: EASE }}
-          className="mb-16 w-full text-center font-serif font-light leading-none tracking-tight text-fg text-glow sm:mb-20 md:mb-28"
-          style={{ fontSize: 'clamp(3rem, 10vw, 130px)' }}
+          transition={{ duration: 0.9, ease: EASE }}
+          className="hero-heading mb-16 text-center font-display text-[clamp(3rem,11vw,9rem)] font-bold uppercase leading-none tracking-tight md:mb-24"
         >
           {data.title}
         </motion.h2>
 
-        <div className="flex flex-col">
+        <div className="mx-auto max-w-5xl">
           {data.items.map((item, i) => (
-            <motion.div
+            <motion.article
               key={item.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={reduced ? false : { opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '50px' }}
               transition={{ duration: 0.7, ease: EASE, delay: i * 0.1 }}
-              className={i > 0 ? 'border-t border-fg/10' : ''}
+              className="group flex flex-col gap-4 border-b border-fg/[0.09] py-10 first:border-t sm:flex-row sm:items-start sm:gap-10 md:py-12"
             >
-              <div className="flex w-full items-start gap-6 py-8 sm:gap-8 sm:py-10 md:gap-10 md:py-12">
-                <span
-                  aria-hidden="true"
-                  className="shrink-0 font-serif font-light leading-none text-fg/90"
-                  style={{ fontSize: 'clamp(3rem, 9vw, 120px)' }}
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <div className="flex flex-col gap-2 pt-1 sm:gap-4 md:gap-5">
-                  <h3
-                    className="font-medium uppercase tracking-wide text-fg"
-                    style={{ fontSize: 'clamp(1rem, 2.2vw, 1.9rem)' }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p
-                    className="max-w-2xl font-light leading-relaxed text-fg/60"
-                    style={{ fontSize: 'clamp(0.85rem, 1.6vw, 1.2rem)' }}
-                  >
-                    {item.text}
-                  </p>
-                </div>
+              <span className="font-display text-[clamp(3rem,9vw,7.5rem)] font-bold leading-none text-fg/[0.13] transition-colors duration-500 group-hover:text-aurora/50">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div className="sm:pt-2">
+                <h3 className="font-display text-[clamp(1.15rem,2.2vw,1.8rem)] font-medium uppercase tracking-wide text-fg transition-colors duration-300 group-hover:text-hielo">
+                  {item.title}
+                </h3>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted md:text-[15px]">
+                  {item.text}
+                </p>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

@@ -98,7 +98,7 @@ export default function Contact({ data }: { data: ContactContent }) {
         ))}
       </svg>
       <div className="wrap">
-        <h2 className="mb-14 text-center font-serif font-light leading-none tracking-tight text-fg text-glow sm:mb-20" style={{ fontSize: 'clamp(2.6rem, 8vw, 100px)' }}>{data.title}</h2>
+        <h2 className="hero-heading mb-14 text-center font-display font-bold uppercase leading-none tracking-tight sm:mb-20" style={{ fontSize: 'clamp(2.6rem, 9vw, 110px)' }}>{data.title}</h2>
 
         <div className="grid gap-14 md:grid-cols-2 md:gap-20">
           <Reveal delay={0.1}>
@@ -109,7 +109,7 @@ export default function Contact({ data }: { data: ContactContent }) {
                   <p className="eyebrow w-28 shrink-0">Correo</p>
                   <a
                     href={`mailto:${data.email}`}
-                    className="font-mono text-sm text-fg transition-colors hover:text-accent"
+                    className="font-mono text-sm text-fg transition-colors hover:text-hielo"
                   >
                     {data.email}
                   </a>
@@ -127,12 +127,7 @@ export default function Contact({ data }: { data: ContactContent }) {
                   </button>
                 </div>
               )}
-              {data.location && (
-                <div className="flex flex-wrap items-center gap-3">
-                  <p className="eyebrow w-28 shrink-0">Ubicación</p>
-                  <p className="font-mono text-sm text-muted">{data.location}</p>
-                </div>
-              )}
+              
               <div className="flex flex-wrap items-center gap-3">
                 <p className="eyebrow w-28 shrink-0">Respuesta</p>
                 <p className="font-mono text-sm text-muted">Normalmente en 24–48 h</p>
@@ -148,9 +143,9 @@ export default function Contact({ data }: { data: ContactContent }) {
             rel="noopener noreferrer"
             className="group mb-8 inline-flex items-center gap-2 text-sm text-muted transition-colors duration-300 hover:text-fg"
           >
-            ¿Prefieres WhatsApp?
-            <span className="border-b border-lima/50 pb-0.5 text-fg transition-colors duration-300 group-hover:border-[#25D366] group-hover:text-[#25D366]">
-              Escríbeme directo
+            ¿Prefieres WhatsApp? Es el camino rápido.
+            <span className="border-b border-hielo/50 pb-0.5 text-fg transition-colors duration-300 group-hover:border-[#25D366] group-hover:text-[#25D366]">
+              Escríbenos directo
             </span>
             <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
           </a>
@@ -207,7 +202,7 @@ export default function Contact({ data }: { data: ContactContent }) {
                   required
                   rows={5}
                   maxLength={2000}
-                  placeholder="Cuéntame sobre tu idea…"
+                  placeholder="Cuéntanos sobre tu idea…"
                   className={`${inputClass} resize-none`}
                 />
               </div>
@@ -227,7 +222,7 @@ export default function Contact({ data }: { data: ContactContent }) {
                 </button>
                 <p aria-live="polite" className="text-sm">
                   {status === 'sent' && (
-                    <span className="text-fg">Mensaje enviado. Te responderé pronto.</span>
+                    <span className="text-fg">Mensaje enviado. Te respondemos pronto.</span>
                   )}
                   {status === 'error' && (
                     <span className="text-muted">

@@ -1,87 +1,106 @@
 'use client';
 
+import Image from 'next/image';
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import type { AboutContent } from '@/lib/types';
 
-const EASE = [0.25, 0.1, 0.25, 1] as const;
+const EASE = [0.22, 1, 0.36, 1] as const;
 
-/** Un carácter que se ilumina según el avance del scroll. */
-function Char({
-  char,
-  index,
-  total,
-  progress,
-}: {
-  char: string;
-  index: number;
-  total: number;
-  progress: ReturnType<typeof useScroll>['scrollYProgress'];
-}) {
-  const p = index / total;
-  const start = Math.max(0, p - 0.1);
-  const end = Math.min(1, p + 0.05);
-  const opacity = useTransform(progress, [start, end], [0.18, 1]);
+/** Reveal carácter por carácter dirigido por el scroll del propio párrafo. */
+function AnimatedText({ text }: { text: string }) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start 0.85', 'end 0.35'],
+  });
+
+  const chars = Array.from(text);
   return (
-    <motion.span style={{ opacity }} className="inline-block">
-      {char === ' ' ? '\u00A0' : char}
-    </motion.span>
+    <p
+      ref={ref}
+      className="mx-auto max-w-3xl text-center font-serif text-[clamp(1.35rem,3.2vw,2.3rem)] font-light leading-[1.45] text-fg"
+    >
+      {chars.map((c, i) => (
+        <Char key={i} char={c} index={i} total={chars.length} progress={scrollYProgress} reduced={!!reduced} />
+      ))}
+    </p>
   );
 }
 
-/** "El estudio": título gigante en degradado + texto que se revela al hacer scroll. */
-export default function About({ data }: { data: AboutContent }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start 0.8', 'end 0.2'],
-  });
+function Char({
+  char, index, total, progress, reduced,
+}: {
+  char: string; index: number; total: number;
+  progress: ReturnType<typeof useScroll>['scrollYProgress']; reduced: boolean;
+}) {
+  const start = index / total;
+  const end = start + 1 / total;
+  const opacity = useTransform(progress, [start, end], [0.18, 1]);
+  if (reduced) return <span>{char}</span>;
+  return <motion.span style={{ opacity }}>{char}</motion.span>;
+}
 
-  const text = data.paragraphs.join(' ');
-  const chars = text.split('');
+const fadeSide = (delay: number, x: number) => ({
+  initial: { opacity: 0, x },
+  whileInView: { opacity: 1, x: 0 },
+  viewport: { once: true, margin: '50px' },
+  transition: { duration: 0.9, ease: EASE, delay },
+});
+
+export default function About({ data }: { data: AboutContent }) {
+  const reduced = useReducedMotion();
+  const joined = data.paragraphs.slice(0, 3).join(' ');
 
   return (
-    <section id="sobre-mi" className="relative px-5 pb-24 pt-4 sm:px-8 md:px-10 md:pb-32">
-      <div
-        ref={ref}
-        className="mx-auto flex min-h-[80vh] w-full max-w-4xl flex-col items-center justify-center gap-14 text-center sm:gap-16 md:gap-20"
-      >
+    <section id="estudio" className="relative scroll-mt-24 overflow-hidden py-28 md:py-40">
+      {/* Ornamentos de esquina: fragmentos del laboratorio */}
+      <motion.div aria-hidden="true" {...(reduced ? {} : fadeSide(0.1, -80))} className="pointer-events-none absolute left-[2%] top-[6%] hidden md:block">
+        <div className="h-28 w-28 rounded-full border border-aurora/25" />
+      </motion.div>
+      <motion.div aria-hidden="true" {...(reduced ? {} : fadeSide(0.25, -80))} className="pointer-events-none absolute bottom-[10%] left-[6%] hidden font-mono text-[10px] uppercase tracking-[0.3em] text-fg/20 md:block">
+        lat. estudio vivo
+      </motion.div>
+      <motion.div aria-hidden="true" {...(reduced ? {} : fadeSide(0.15, 80))} className="pointer-events-none absolute right-[3%] top-[8%] hidden md:block">
+        <Image src="/logo-head.png" alt="" width={110} height={110} className="rounded-2xl border border-line opacity-60" />
+      </motion.div>
+      <motion.div aria-hidden="true" {...(reduced ? {} : fadeSide(0.3, 80))} className="pointer-events-none absolute bottom-[12%] right-[7%] hidden md:block">
+        <div className="h-16 w-16 rotate-45 border border-fg/10" />
+      </motion.div>
+
+      <div className="wrap">
         <motion.h2
-          initial={{ opacity: 0, y: 40 }}
+          initial={reduced ? false : { opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '50px' }}
-          transition={{ duration: 0.7, ease: EASE }}
-          className="w-full font-serif font-light uppercase leading-none tracking-tight"
-          style={{
-            fontSize: 'clamp(3rem, 12vw, 150px)',
-            background: 'linear-gradient(180deg, #F2F5F8 0%, #8A919C 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          }}
+          transition={{ duration: 0.9, ease: EASE }}
+          className="hero-heading mb-14 text-center font-display text-[clamp(3rem,11vw,9rem)] font-bold uppercase leading-none tracking-tight md:mb-20"
         >
-          {data.title}
+          El estudio
         </motion.h2>
 
-        <p
-          className="max-w-[620px] text-center font-light leading-relaxed text-fg"
-          style={{ fontSize: 'clamp(1rem, 2vw, 1.3rem)' }}
-        >
-          {chars.map((c, i) => (
-            <Char key={i} char={c} index={i} total={chars.length} progress={scrollYProgress} />
-          ))}
-        </p>
+        <AnimatedText text={joined} />
 
-        <motion.a
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '50px' }}
-          transition={{ duration: 0.7, ease: EASE, delay: 0.3 }}
-          href="#contacto"
-          className="button-glow rounded-full bg-white px-10 py-3.5 text-xs font-medium uppercase tracking-widest text-black transition-opacity duration-200 hover:opacity-90 active:opacity-75 sm:px-12 sm:py-4 sm:text-sm"
-        >
-          Contáctanos
-        </motion.a>
+        <div className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 md:mt-24">
+          {[
+            { n: '03', l: 'Sitios en producción', c: 'text-hielo' },
+            { n: '04', l: 'Negocios acompañados', c: 'text-aurora' },
+            { n: '01', l: 'Lanzamiento en camino', c: 'text-menta' },
+          ].map((s, i) => (
+            <motion.div
+              key={s.l}
+              initial={reduced ? false : { opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '50px' }}
+              transition={{ duration: 0.8, ease: EASE, delay: i * 0.1 }}
+              className="border-t border-line pt-4 text-center"
+            >
+              <p className={`font-display text-4xl font-bold md:text-5xl ${s.c}`}>{s.n}</p>
+              <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">{s.l}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -8,9 +8,9 @@ import { Download, Menu, X } from 'lucide-react';
 
 const LINKS = [
   { label: 'Inicio', href: '#inicio' },
-  { label: 'El estudio', href: '#sobre-mi' },
-  { label: 'Soluciones', href: '#servicios' },
-  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'El estudio', href: '#estudio' },
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Casos', href: '#casos' },
   { label: 'Contacto', href: '#contacto' },
 ];
 
@@ -71,7 +71,7 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
             priority
             className="h-[30px] w-[30px] object-contain"
           />
-          ODIS<span className="text-lima">E</span><span className="text-accent">O</span>
+          ODISEO<span className="font-serif italic tracking-normal text-hielo/80">&nbsp;studio</span>
         </a>
 
         {/* Enlaces desktop */}
@@ -97,7 +97,7 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
                     />
                     <span
                       aria-hidden="true"
-                      className={`absolute -bottom-[13px] left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-lima shadow-[0_0_8px_rgba(163,163,163,0.9)] transition-opacity duration-300 ${
+                      className={`absolute -bottom-[13px] left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-hielo shadow-[0_0_8px_rgba(124,199,255,0.9)] transition-opacity duration-300 ${
                         isActive ? 'opacity-100' : 'opacity-0'
                       }`}
                     />

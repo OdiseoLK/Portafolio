@@ -1,46 +1,51 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import type { ProcessContent } from '@/lib/types';
 
-const EASE = [0.25, 0.1, 0.25, 1] as const;
+const EASE = [0.22, 1, 0.36, 1] as const;
 
+/** Proceso en 4 columnas editoriales conectadas por una regla continua. */
 export default function Process({ data }: { data: ProcessContent }) {
+  const reduced = useReducedMotion();
+
   return (
-    <section id="proceso" className="px-5 py-20 sm:px-8 md:px-10 md:py-28">
-      <div className="mx-auto w-full max-w-5xl">
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '50px' }}
-          transition={{ duration: 0.7, ease: EASE }}
-          className="mb-14 text-center font-serif font-light leading-none tracking-tight text-fg text-glow sm:mb-20"
-          style={{ fontSize: 'clamp(2.6rem, 8vw, 100px)' }}
-        >
-          {data.title}
-        </motion.h2>
-        <div className="flex flex-col">
+    <section id="proceso" className="scroll-mt-24 border-y border-line/60 bg-gradient-to-b from-surface/70 to-surface/30 py-24 md:py-32">
+      <div className="wrap">
+        <div className="mb-14 flex flex-col gap-4 md:mb-20 md:flex-row md:items-end md:justify-between">
+          <motion.h2
+            initial={reduced ? false : { opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '50px' }}
+            transition={{ duration: 0.9, ease: EASE }}
+            className="font-display text-[clamp(2.2rem,6vw,4.5rem)] font-bold uppercase leading-none tracking-tight text-fg"
+          >
+            {data.title}
+          </motion.h2>
+          <p className="eyebrow">De la idea al lanzamiento</p>
+        </div>
+
+        <div className="rule mb-10" />
+
+        <ol className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {data.steps.map((step, i) => (
-            <motion.div
+            <motion.li
               key={step.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={reduced ? false : { opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '50px' }}
-              transition={{ duration: 0.7, ease: EASE, delay: i * 0.1 }}
-              className={i > 0 ? 'border-t border-fg/10' : ''}
+              transition={{ duration: 0.7, ease: EASE, delay: i * 0.12 }}
             >
-              <div className="flex w-full items-start gap-6 py-7 sm:gap-10 sm:py-9">
-                <span aria-hidden="true" className="shrink-0 font-serif font-light leading-none text-fg/80" style={{ fontSize: 'clamp(2.4rem, 7vw, 88px)' }}>
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <div className="flex flex-col gap-2 pt-1 sm:gap-3">
-                  <h3 className="font-medium uppercase tracking-wide text-fg" style={{ fontSize: 'clamp(0.95rem, 2vw, 1.6rem)' }}>{step.title}</h3>
-                  <p className="max-w-2xl font-light leading-relaxed text-fg/60" style={{ fontSize: 'clamp(0.85rem, 1.5vw, 1.1rem)' }}>{step.text}</p>
-                </div>
-              </div>
-            </motion.div>
+              <p className="font-mono text-xs tracking-[0.3em] text-menta">
+                {String(i + 1).padStart(2, '0')} /
+              </p>
+              <h3 className="mt-4 font-display text-lg font-medium uppercase tracking-wide text-fg">
+                {step.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted">{step.text}</p>
+            </motion.li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );
