@@ -1,259 +1,134 @@
 'use client';
 
-import { useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Check, ChevronLeft, ChevronRight, Quote, Send } from 'lucide-react';
-import SectionHeading from '@/components/ui/SectionHeading';
-import { Reveal } from '@/components/ui/Reveal';
-import { getSupabase } from '@/lib/supabase';
+import { motion, useReducedMotion } from 'framer-motion';
 import type { Testimonial } from '@/lib/types';
+import Scramble, { DotsDivider } from '@/components/ui/Scramble';
+import { useLang } from '@/components/ui/LanguageContext';
+import { EN } from '@/lib/translations';
 
-const inputClass =
-  'w-full rounded-md border border-line bg-surface px-4 py-3 text-fg outline-none transition-colors duration-300 placeholder:text-muted/40 focus:border-accent';
+const EASE = [0.22, 1, 0.36, 1] as const;
 
-type Status = 'idle' | 'sending' | 'sent' | 'error';
-
-function initials(name: string) {
-  return name
-    .split(' ')
-    .map((w) => w[0])
-    .filter(Boolean)
-    .slice(0, 2)
-    .join('')
-    .toUpperCase();
-}
-
-function Avatar({ t }: { t: Testimonial }) {
-  if (t.avatar_url) {
-    // eslint-disable-next-line @next/next/no-img-element
-    return (
-      <img
-        src={t.avatar_url}
-        alt={t.name}
-        className="h-12 w-12 rounded-full border border-line object-cover"
-      />
-    );
-  }
-  return (
-    <span className="grid h-12 w-12 place-items-center rounded-full border border-line bg-card font-mono text-sm text-accent">
-      {initials(t.name)}
-    </span>
-  );
-}
-
+/**
+ * Opiniones sobre negro profundo (#04060C) para máximo contraste.
+ * Cada testimonio vive en un panel con marco de visor (esquinas en L),
+ * retícula de puntos, auroras hielo/violeta y coordenadas mono.
+ */
 export default function Testimonials({ items }: { items: Testimonial[] }) {
+  const { lang } = useLang();
+  const en = lang === 'en';
   const reduced = useReducedMotion();
-  const [index, setIndex] = useState(0);
-  const [open, setOpen] = useState(false);
-  const [status, setStatus] = useState<Status>('idle');
-
-  const hasItems = items.length > 0;
-  const go = (dir: -1 | 1) => setIndex((i) => (i + dir + items.length) % items.length);
-  const active = hasItems ? items[index] : null;
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const fd = new FormData(form);
-    const name = String(fd.get('t-name') ?? '').trim();
-    const role = String(fd.get('t-role') ?? '').trim();
-    const quote = String(fd.get('t-quote') ?? '').trim();
-    const trap = String(fd.get('t-website') ?? '').trim();
-
-    if (trap) {
-      setStatus('sent');
-      form.reset();
-      return;
-    }
-    if (!name || !quote) return;
-    if (name.length > 100 || role.length > 120 || quote.length > 600) {
-      setStatus('error');
-      return;
-    }
-
-    const supabase = getSupabase();
-    if (!supabase) {
-      setStatus('error');
-      return;
-    }
-
-    setStatus('sending');
-    const { error } = await supabase
-      .from('testimonials')
-      .insert({ name, role: role || null, quote, approved: false });
-    if (error) {
-      setStatus('error');
-      return;
-    }
-    form.reset();
-    setStatus('sent');
-  };
+  const list = items.filter((t) => t.approved);
+  if (list.length === 0) return null;
 
   return (
-    <section id="testimonios" className="scroll-mt-24 py-28 md:py-36">
-      <div className="wrap">
-        <SectionHeading eyebrow="Testimonios" title="Lo que dicen mis clientes" />
+    <section
+      id="opiniones"
+      className="relative scroll-mt-24 overflow-hidden border-y border-line/60 py-24 md:py-36"
+      style={{ background: '#04060C' }}
+    >
+      {/* Retícula de puntos de fondo */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.35]"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(124,199,255,0.14) 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
+          maskImage: 'radial-gradient(ellipse 80% 70% at 50% 45%, black 30%, transparent 75%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 50% 45%, black 30%, transparent 75%)',
+        }}
+      />
+      {/* Auroras */}
+      <div aria-hidden="true" className="pointer-events-none absolute -left-[10%] top-[15%] h-[50vmin] w-[60vmin] rounded-full opacity-40 blur-[100px]" style={{ background: 'radial-gradient(circle, rgba(124,199,255,0.22), transparent 65%)' }} />
+      <div aria-hidden="true" className="pointer-events-none absolute -right-[8%] bottom-[10%] h-[45vmin] w-[55vmin] rounded-full opacity-40 blur-[100px]" style={{ background: 'radial-gradient(circle, rgba(167,139,250,0.20), transparent 65%)' }} />
 
-        {hasItems && active && (
-          <Reveal>
-            <div className="relative mx-auto max-w-3xl">
-              <Quote
-                aria-hidden="true"
-                size={48}
-                className="mx-auto mb-8 text-accent/30"
-              />
+      {/* Comilla fantasma gigante */}
+      <span aria-hidden="true" className="pointer-events-none absolute -top-16 left-1/2 -translate-x-1/2 select-none font-serif text-[24rem] italic leading-none text-fg/[0.04] md:text-[36rem]">
+        “
+      </span>
 
-              <div className="min-h-[180px]">
-                <AnimatePresence mode="wait">
-                  <motion.figure
-                    key={active.id}
-                    initial={reduced ? false : { opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={reduced ? undefined : { opacity: 0, y: -12 }}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="text-center"
-                  >
-                    <blockquote className="font-display text-xl leading-relaxed text-fg/90 md:text-2xl">
-                      &ldquo;{active.quote}&rdquo;
-                    </blockquote>
-                    <figcaption className="mt-8 flex flex-col items-center gap-3">
-                      <Avatar t={active} />
-                      <div>
-                        <p className="font-medium text-fg">{active.name}</p>
-                        {active.role && (
-                          <p className="font-mono text-xs tracking-wide text-muted">
-                            {active.role}
-                          </p>
-                        )}
-                      </div>
-                    </figcaption>
-                  </motion.figure>
-                </AnimatePresence>
-              </div>
+      {/* Ornamentos de esquina de la sección */}
+      <span aria-hidden="true" className="pointer-events-none absolute left-6 top-8 hidden font-mono text-[10px] uppercase tracking-[0.3em] text-fg/25 md:block">
+        <Scramble text="reg. opiniones" />
+      </span>
+      <span aria-hidden="true" className="pointer-events-none absolute right-6 top-8 hidden font-serif text-2xl italic text-hielo/40 md:block">*</span>
+      <span aria-hidden="true" className="pointer-events-none absolute bottom-8 left-6 hidden text-fg/20 md:block">+</span>
+      <span aria-hidden="true" className="pointer-events-none absolute bottom-8 right-6 hidden font-mono text-[10px] tracking-[0.3em] text-fg/25 md:block">/ 26</span>
 
-              {items.length > 1 && (
-                <div className="mt-10 flex items-center justify-center gap-4">
-                  <button
-                    type="button"
-                    onClick={() => go(-1)}
-                    aria-label="Testimonio anterior"
-                    className="grid h-10 w-10 place-items-center rounded-full border border-line text-muted transition-colors duration-300 hover:border-accent hover:text-fg"
-                  >
-                    <ChevronLeft size={16} aria-hidden="true" />
-                  </button>
-                  <div className="flex gap-2">
-                    {items.map((t, i) => (
-                      <button
-                        key={t.id}
-                        type="button"
-                        onClick={() => setIndex(i)}
-                        aria-label={`Ir al testimonio ${i + 1}`}
-                        className={`h-1.5 rounded-full transition-all duration-300 ${
-                          i === index ? 'w-6 bg-accent' : 'w-1.5 bg-line hover:bg-muted'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => go(1)}
-                    aria-label="Testimonio siguiente"
-                    className="grid h-10 w-10 place-items-center rounded-full border border-line text-muted transition-colors duration-300 hover:border-accent hover:text-fg"
-                  >
-                    <ChevronRight size={16} aria-hidden="true" />
-                  </button>
-                </div>
-              )}
-            </div>
-          </Reveal>
-        )}
+      <div className="wrap relative">
+        <div className="mb-6 flex flex-col items-center gap-3 text-center">
+          <p className="eyebrow">
+            <Scramble text={en ? EN.testimonials.eyebrow : 'Clientes reales, palabras reales'} />
+          </p>
+          <motion.h2
+            initial={reduced ? false : { opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '50px' }}
+            transition={{ duration: 0.9, ease: EASE }}
+            className="hero-heading font-display text-[clamp(2.6rem,8vw,6.5rem)] font-bold uppercase leading-none tracking-tight"
+          >
+            {en ? EN.testimonials.title : 'Lo que dicen'}
+          </motion.h2>
+        </div>
 
-        {/* Enviar testimonio */}
-        <Reveal delay={0.1}>
-          <div className="mx-auto mt-16 max-w-xl text-center">
-            {!open ? (
-              <button
-                type="button"
-                onClick={() => setOpen(true)}
-                className="text-sm text-muted underline decoration-line underline-offset-4 transition-colors duration-300 hover:text-fg hover:decoration-accent"
+        <DotsDivider />
+
+        <div className="mt-10 flex flex-col gap-16 md:mt-14 md:gap-24">
+          {list.map((t, i) => {
+            const tr = en ? EN.testimonials.byId[t.id] : null;
+            const num = String(i + 1).padStart(2, '0');
+            return (
+              <motion.figure
+                key={t.id}
+                initial={reduced ? false : { opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '80px' }}
+                transition={{ duration: 0.9, ease: EASE, delay: i * 0.1 }}
+                data-scramble-parent
+                className="group relative mx-auto w-full max-w-4xl px-6 py-10 md:px-14 md:py-14"
               >
-                ¿Trabajamos juntos? Deja tu testimonio
-              </button>
-            ) : status === 'sent' ? (
-              <p className="inline-flex items-center gap-2 rounded-md border border-lima/40 bg-lima/5 px-5 py-3 text-sm text-fg">
-                <Check size={15} aria-hidden="true" className="text-lima" />
-                ¡Gracias! Tu testimonio se revisará antes de publicarse.
-              </p>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 text-left">
-                {/* Honeypot */}
-                <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
-                  <label htmlFor="t-website">No llenar</label>
-                  <input id="t-website" name="t-website" type="text" tabIndex={-1} autoComplete="off" />
-                </div>
+                {/* Marco de visor: esquinas en L */}
+                <span aria-hidden="true" className="absolute left-0 top-0 h-6 w-6 border-l border-t border-hielo/50 transition-colors duration-500 group-hover:border-hielo" />
+                <span aria-hidden="true" className="absolute right-0 top-0 h-6 w-6 border-r border-t border-hielo/50 transition-colors duration-500 group-hover:border-hielo" />
+                <span aria-hidden="true" className="absolute bottom-0 left-0 h-6 w-6 border-b border-l border-hielo/50 transition-colors duration-500 group-hover:border-hielo" />
+                <span aria-hidden="true" className="absolute bottom-0 right-0 h-6 w-6 border-b border-r border-hielo/50 transition-colors duration-500 group-hover:border-hielo" />
 
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <input
-                    name="t-name"
-                    type="text"
-                    required
-                    maxLength={100}
-                    placeholder="Tu nombre"
-                    aria-label="Tu nombre"
-                    className={inputClass}
-                  />
-                  <input
-                    name="t-role"
-                    type="text"
-                    maxLength={120}
-                    placeholder="Puesto — Empresa (opcional)"
-                    aria-label="Puesto y empresa"
-                    className={inputClass}
-                  />
-                </div>
-                <textarea
-                  name="t-quote"
-                  required
-                  rows={3}
-                  maxLength={600}
-                  placeholder="Comparte tu experiencia trabajando conmigo…"
-                  aria-label="Tu testimonio"
-                  className={`${inputClass} resize-none`}
-                />
-                {status === 'error' && (
-                  <p className="text-sm text-red-300">
-                    No se pudo enviar. Revisa los campos e inténtalo de nuevo.
-                  </p>
-                )}
-                <div className="flex items-center gap-4">
-                  <button
-                    type="submit"
-                    disabled={status === 'sending'}
-                    className="grad-bg group inline-flex items-center gap-2.5 rounded-md px-6 py-3 text-sm font-semibold text-bg transition-all duration-300 hover:shadow-[0_0_28px_rgba(255,255,255,0.4)] hover:brightness-110 disabled:opacity-60"
-                  >
-                    {status === 'sending' ? 'Enviando…' : 'Enviar testimonio'}
-                    <Send size={14} aria-hidden="true" className="transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setOpen(false)}
-                    className="text-sm text-muted transition-colors duration-300 hover:text-fg"
-                  >
-                    Cancelar
-                  </button>
-                </div>
-                <p className="font-mono text-[11px] text-muted/60">
-                  Tu testimonio no se publica automáticamente: primero lo reviso. Al enviar
-                  aceptas el{' '}
-                  <a href="/privacidad" className="underline decoration-line underline-offset-2 transition-colors hover:text-fg hover:decoration-accent">
-                    Aviso de Privacidad
-                  </a>
-                  .
-                </p>
-              </form>
-            )}
-          </div>
-        </Reveal>
+                {/* Etiquetas del marco */}
+                <span aria-hidden="true" className="absolute -top-2.5 left-10 bg-[#04060C] px-3 font-mono text-[10px] uppercase tracking-[0.3em] text-hielo/70">
+                  <Scramble text={`${en ? 'Review' : 'Testimonio'} ${num}`} trigger="hover" speed={26} />
+                </span>
+                <span aria-hidden="true" className="absolute -bottom-2.5 right-10 bg-[#04060C] px-3 font-serif text-xl italic leading-none text-aurora/70">
+                  *
+                </span>
+
+                {/* Glow interior sutil */}
+                <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 40%, rgba(124,199,255,0.06), transparent 70%)' }} />
+
+                <span aria-hidden="true" className="absolute -top-6 left-4 font-serif text-[5.5rem] italic leading-none text-hielo/30 md:-left-4 md:text-[7rem]">
+                  “
+                </span>
+
+                <blockquote className="relative font-serif text-[clamp(1.2rem,2.6vw,1.75rem)] font-light leading-[1.6] text-fg/95">
+                  {tr?.quote ?? t.quote}
+                </blockquote>
+
+                <figcaption className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <span className="h-px w-12 bg-gradient-to-r from-hielo to-aurora" />
+                  <div>
+                    <p className="font-display text-sm font-bold uppercase tracking-wide text-fg">{t.name}</p>
+                    {t.role && (
+                      <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                        {tr?.role ?? t.role}
+                      </p>
+                    )}
+                  </div>
+                  <span aria-hidden="true" className="ml-auto hidden font-mono text-[10px] tracking-[0.3em] text-fg/25 sm:block">
+                    {num} / {String(list.length).padStart(2, '0')}
+                  </span>
+                </figcaption>
+              </motion.figure>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

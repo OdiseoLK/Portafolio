@@ -191,37 +191,16 @@ export const DEFAULT_CONTENT: SiteContent = {
   ],
   testimonials: [
     {
-      id: 'seed-t1',
-      name: 'Nombre del cliente',
-      role: 'Puesto — Empresa',
+      id: 'seed-fdhz',
+      name: 'Fundación Doctor Hernández Zurita',
+      role: 'Equipo de Comunicación y Marketing',
       avatar_url: null,
       quote:
-        'ODISEO entendió exactamente lo que necesitábamos y lo llevó más allá. El resultado fue un sitio rápido, cuidado y fácil de administrar. Volveríamos a trabajar con ellos sin dudarlo.',
+        'Trabajar con Alexis en el diseño web del Hospital Puerta Grande y de la Fundación Doctor Hernández Zurita ha sido una muy buena experiencia. Destaco su disposición para escuchar nuestras ideas, aportar propuestas y encontrar soluciones que reflejen la identidad de cada institución. La comunicación es cercana y siempre hay apertura para revisar detalles y realizar ajustes. Como parte del equipo de Comunicación y Marketing, valoro mucho contar con alguien que se involucra en los proyectos y nos ayuda a darles forma. Sin duda, recomiendo su trabajo por su profesionalismo, creatividad y compromiso.',
       approved: true,
       sort_order: 1,
       created_at: '',
     },
-    {
-      id: 'seed-t2',
-      name: 'Nombre del cliente',
-      role: 'Puesto — Empresa',
-      avatar_url: null,
-      quote:
-        'Profesional, puntual y con muy buen ojo para el detalle. Nos explicó cada decisión y el acompañamiento después de la entrega marcó la diferencia.',
-      approved: true,
-      sort_order: 2,
-      created_at: '',
-    },
-    {
-      id: 'seed-t3',
-      name: 'Nombre del cliente',
-      role: 'Puesto — Empresa',
-      avatar_url: null,
-      quote:
-        'Transformó por completo nuestra presencia en línea. La calidad del trabajo habla por sí sola y el proceso fue claro de principio a fin.',
-      approved: true,
-      sort_order: 3,
-      created_at: '',
-    },
   ],
+
 };

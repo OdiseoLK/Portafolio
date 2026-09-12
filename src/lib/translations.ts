@@ -121,6 +121,17 @@ export const EN = {
       },
     } as Record<string, { cat: string; d: string; tags: string[] }>,
   },
+  testimonials: {
+    title: 'What clients say',
+    eyebrow: 'Real clients, real words',
+    byId: {
+      'seed-fdhz': {
+        role: 'Communication & Marketing Team',
+        quote:
+          "Working with Alexis on the web design for Hospital Puerta Grande and the Doctor Hernández Zurita Foundation has been a great experience. I'd highlight his willingness to listen to our ideas, contribute proposals and find solutions that reflect each institution's identity. Communication is close and there's always openness to review details and make adjustments. As part of the Communication and Marketing team, I really value having someone who gets involved in the projects and helps us shape them. I definitely recommend his work for his professionalism, creativity and commitment.",
+      },
+    } as Record<string, { role: string; quote: string }>,
+  },
   contact: {
     title: "Let's work together.",
     lede: "If you have an idea or a project in mind, we'd love to hear from you.",
@@ -143,6 +154,7 @@ export const EN = {
       { label: 'The studio', href: '#estudio' },
       { label: 'Services', href: '#servicios' },
       { label: 'Work', href: '#casos' },
+      { label: 'Reviews', href: '#opiniones' },
       { label: 'Contact', href: '#contacto' },
     ],
     rights: 'All rights reserved.',

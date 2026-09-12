@@ -195,3 +195,9 @@ html { scroll-behavior: smooth; }
   .plx { transform: none; }
   .is-liquid { filter: none; }
 }
+
+/* Display imponente: Archivo variable estirada y pesada */
+.font-display {
+  font-stretch: 120%;
+  font-variation-settings: 'wdth' 120;
+}

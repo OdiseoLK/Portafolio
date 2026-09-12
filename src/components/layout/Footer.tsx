@@ -14,6 +14,7 @@ const QUICK_LINKS = [
   { label: 'El estudio', href: '#estudio' },
   { label: 'Servicios', href: '#servicios' },
   { label: 'Casos', href: '#casos' },
+  { label: 'Opiniones', href: '#opiniones' },
   { label: 'Contacto', href: '#contacto' },
 ];
 

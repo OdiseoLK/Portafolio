@@ -29,7 +29,7 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-geist-mono)', 'ui-monospace', 'monospace'],
-        display: ['"Space Grotesk Variable"', 'var(--font-geist-sans)', 'sans-serif'],
+        display: ['"Archivo Variable"', '"Space Grotesk Variable"', 'var(--font-geist-sans)', 'sans-serif'],
       },
       transitionTimingFunction: {
         out: 'cubic-bezier(0.22, 1, 0.36, 1)',

@@ -13,6 +13,7 @@ import SocialRail from '@/components/layout/SocialRail';
 import CaseStudies from '@/components/sections/CaseStudies';
 import MarqueeCasos from '@/components/sections/MarqueeCasos';
 import Contact from '@/components/sections/Contact';
+import Testimonials from '@/components/sections/Testimonials';
 import { getContent } from '@/lib/content';
 import { LangProvider } from '@/components/ui/LanguageContext';
 
@@ -60,6 +61,7 @@ export default async function Home() {
         <Services data={content.services} />
         <Process data={content.process} />
         <CaseStudies projects={content.projects} />
+        <Testimonials items={content.testimonials} />
         <Contact data={content.contact} />
       </main>
 
