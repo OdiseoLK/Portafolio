@@ -105,11 +105,11 @@ export default function Contact({ data }: { data: ContactContent }) {
       </svg>
       <div className="wrap">
         <DotsDivider />
-        <h2 className="hero-heading mb-14 mt-10 text-center font-display font-bold uppercase leading-none tracking-tight sm:mb-20" style={{ fontSize: 'clamp(2.6rem, 9vw, 110px)' }}>{en ? EN.contact.title : data.title}</h2>
+        <h2 className="hero-heading mb-14 mt-10 text-center font-display font-bold uppercase leading-none tracking-tight sm:mb-20" style={{ fontSize: 'clamp(2.6rem, 9vw, 110px)' }}>{en ? EN.contact.title : '¿A dónde quieres llegar?'}</h2>
 
         <div className="grid gap-14 md:grid-cols-2 md:gap-20">
           <Reveal delay={0.1}>
-            <p className="max-w-md text-lg leading-relaxed text-muted">{en ? EN.contact.lede : data.text}</p>
+            <p className="max-w-md text-lg leading-relaxed text-muted">{en ? EN.contact.lede : 'Cuéntanos el punto de partida de tu negocio y te decimos cómo llegamos.'}</p>
             <div className="mt-10 space-y-5 border-t border-line/70 pt-8">
               {data.email && (
                 <div className="flex flex-wrap items-center gap-3">
@@ -150,7 +150,7 @@ export default function Contact({ data }: { data: ContactContent }) {
             rel="noopener noreferrer"
             className="group mb-8 inline-flex items-center gap-2 text-sm text-muted transition-colors duration-300 hover:text-fg"
           >
-            {en ? 'Prefer WhatsApp? It’s the fast lane.' : '¿Prefieres WhatsApp? Es el camino rápido.'}
+            {en ? 'Direct radio to the guide.' : 'Radio directa con el guía.'}
             <span className="border-b border-hielo/50 pb-0.5 text-fg transition-colors duration-300 group-hover:border-[#25D366] group-hover:text-[#25D366]">
               {en ? 'Message us directly' : 'Escríbenos directo'}
             </span>
@@ -249,6 +249,38 @@ export default function Contact({ data }: { data: ContactContent }) {
           </Reveal>
         </div>
       </div>
+
+      {/* El destino a la vista: horizonte de montañas fundido con la noche */}
+      <div aria-hidden="true" className="pointer-events-none relative left-1/2 mt-20 h-44 w-screen -translate-x-1/2 md:mt-28 md:h-72">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/deco/montanas.jpg"
+          alt=""
+          className="hidden h-full w-full object-cover object-center grayscale contrast-110 sm:block"
+          style={{
+            maskImage: 'linear-gradient(180deg, transparent 0%, black 45%)',
+            WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, black 45%)',
+          }}
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/deco/montanas-movil.jpg"
+          alt=""
+          className="h-full w-full object-cover object-top grayscale contrast-110 sm:hidden"
+          style={{
+            maskImage: 'linear-gradient(180deg, transparent 0%, black 45%)',
+            WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, black 45%)',
+          }}
+        />
+        {/* Velo azul para casar la imagen con la paleta del sitio */}
+        <div className="absolute inset-0 bg-gradient-to-b from-bg via-bg/30 to-bg/60 mix-blend-multiply" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(11,11,13,0.92) 0%, rgba(11,11,13,0) 55%, rgba(11,11,13,0.6) 100%)' }} />
+        {/* La estrella del destino sobre el pico */}
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 26 26" className="twinkle absolute left-1/2 top-[18%] -translate-x-1/2 drop-shadow-[0_0_10px_rgba(124,199,255,0.9)]">
+          <path d="M13 0 L15 11 L26 13 L15 15 L13 26 L11 15 L0 13 L11 11 Z" fill="#DCEFFF" />
+        </svg>
+      </div>
+
     </section>
   );
 }

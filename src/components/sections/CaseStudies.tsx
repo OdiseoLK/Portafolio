@@ -1,15 +1,21 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import type { Project } from '@/lib/types';
 import Scramble, { DotsDivider } from '@/components/ui/Scramble';
+import BeforeAfter from '@/components/ui/BeforeAfter';
 import { useLang } from '@/components/ui/LanguageContext';
 import { EN, matchCase } from '@/lib/translations';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+
+/** Capturas del sitio anterior del cliente, para comparador antes/después. */
+const ANTES: Record<string, string> = {
+  'caso-puerta-grande': '/casos/puerta-grande-antes.jpg',
+};
 
 /** Paleta tipográfica por cliente para las portadas sin captura. */
 const FLAVORS: Record<string, { tone: string; ink: string; mono: string }> = {
@@ -41,6 +47,8 @@ function Card({
   progress: MotionValue<number>; reduced: boolean; en: boolean;
 }) {
   const tr = en ? matchCase(project.title) : null;
+  const antesSrc = ANTES[project.id];
+  const [antesFail, setAntesFail] = useState(false);
   const targetScale = 1 - (total - 1 - index) * 0.03;
   const scale = useTransform(progress, [index / total, 1], [1, targetScale]);
   const flavor = flavorFor(project);
@@ -58,8 +66,13 @@ function Card({
       >
         {/* Fila superior editorial */}
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-fg/[0.08] p-6 md:p-8">
-          <span className="font-display text-5xl font-bold leading-none text-fg/[0.15] md:text-7xl">
-            {String(index + 1).padStart(2, '0')}
+          <span className="flex flex-col items-start">
+            <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-fg/40">
+              {en ? EN.cases.exp : 'Exp.'}
+            </span>
+            <span className="font-display text-5xl font-bold leading-none text-fg/[0.15] md:text-7xl">
+              {String(index + 1).padStart(3, '0')}
+            </span>
           </span>
           <div className="min-w-0 flex-1">
             <p className="font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: flavor.ink }}>
@@ -80,7 +93,7 @@ function Card({
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-full border border-fg/25 px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-fg transition-colors hover:border-hielo/60 hover:text-hielo"
             >
-              {en ? EN.cases.visit : 'Visitar sitio'}
+              {en ? EN.cases.visit : 'Visitar el destino'}
               <ArrowUpRight size={13} aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           ) : (
@@ -96,7 +109,25 @@ function Card({
             className="relative flex aspect-[16/10] items-end overflow-hidden rounded-3xl border border-fg/[0.06] p-6"
             style={{ background: flavor.tone }}
           >
-            {project.image_url ? (
+            <span
+              aria-hidden="true"
+              className="absolute right-4 top-4 z-10 -rotate-6 rounded border-2 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.25em] backdrop-blur-[2px]"
+              style={{ borderColor: flavor.ink, color: flavor.ink, background: 'rgba(4,6,12,0.45)' }}
+            >
+              {en ? EN.cases.stamp : 'Destino alcanzado'}
+            </span>
+            {project.image_url && antesSrc && !antesFail ? (
+              <div className="absolute inset-0">
+                <BeforeAfter
+                  before={antesSrc}
+                  after={project.image_url}
+                  beforeLabel={en ? 'Before' : 'Antes'}
+                  afterLabel={en ? 'After' : 'Después'}
+                  alt={`Sitio web de ${project.title}`}
+                  onBeforeError={() => setAntesFail(true)}
+                />
+              </div>
+            ) : project.image_url ? (
               <Image
                 src={project.image_url}
                 alt={`Sitio web de ${project.title}`}
@@ -155,10 +186,10 @@ export default function CaseStudies({ projects }: { projects: Project[] }) {
           transition={{ duration: 0.9, ease: EASE }}
           className="hero-heading mb-6 text-center font-display text-[clamp(3rem,11vw,9rem)] font-bold uppercase leading-none tracking-tight"
         >
-          {en ? EN.cases.title : 'Casos'}
+          {en ? EN.cases.title : 'Bitácora'}
         </motion.h2>
         <p className="mx-auto mb-16 max-w-md text-center text-sm leading-relaxed text-muted md:mb-20">
-          {en ? EN.cases.sub : 'Sitios en producción para negocios reales: cada caso se diseñó desde el mundo del cliente, no desde una plantilla.'}
+          {en ? EN.cases.sub : 'Cada caso es una expedición completada: negocios reales que llevamos de la idea a su destino en línea.'}
         </p>
 
         <div ref={containerRef} className="flex flex-col gap-[12vh]">
@@ -173,7 +204,7 @@ export default function CaseStudies({ projects }: { projects: Project[] }) {
             href="#contacto"
             className="group inline-flex items-center gap-2.5 rounded-full border border-fg/20 px-8 py-3.5 text-sm font-medium text-fg transition-colors duration-300 hover:border-hielo/60 hover:text-hielo"
           >
-            {en ? EN.cases.cta : '¿Tu negocio es el siguiente caso?'}
+            {en ? EN.cases.cta : '¿Tu negocio es la siguiente expedición?'}
             <ArrowUpRight size={15} aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>

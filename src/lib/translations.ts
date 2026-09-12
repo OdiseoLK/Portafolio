@@ -17,14 +17,14 @@ export const EN = {
   hero: {
     eyebrow: 'Web design & development studio',
     description:
-      'We are a web design and development studio. We build digital products with a focus on simplicity, performance and attention to detail.',
-    availability: 'Available for new projects',
-    cta: 'View case studies',
+      'Every business is an expedition. We know the route: we design and build the site that takes it from idea to destination.',
+    availability: 'Available for new expeditions',
+    cta: 'View the logbook',
     scroll: 'Scroll ↓',
   },
   marquee: {
-    eyebrow: 'Real work, real businesses',
-    live: 'Live',
+    eyebrow: 'Completed expeditions',
+    live: 'Destination reached',
     giros: {
       'Interiorismo · Showroom': 'Interior design · Showroom',
       'Salud visual · Institucional': 'Eye care · Institutional',
@@ -38,13 +38,13 @@ export const EN = {
   about: {
     title: 'The studio',
     paragraph:
-      'ODISEO is a web design and development studio. We build websites and digital platforms for businesses that want to stand out online: from corporate pages to catalogs with online ordering and custom systems. We are passionate about intuitive experiences, clean interfaces and solutions that combine design, performance and scalability.',
+      "We don't make web pages: we guide expeditions. We take your business at its starting point and lead it to its digital destination — a fast, custom-built site of your own, working for you around the clock. Design, development and a guide who stays: we don't let go of your hand after arrival.",
     stats: [
-      { n: '07', l: 'Sites live' },
-      { n: '07', l: 'Businesses served' },
-      { n: '100%', l: 'Custom built' },
+      { n: '07', l: 'Expeditions completed' },
+      { n: '07', l: 'Destinations live' },
+      { n: '00', l: 'Shipwrecks' },
     ],
-    ornament: 'lat. living studio',
+    ornament: 'logbook · exp. 001–007',
   },
   services: {
     title: 'Our solutions',
@@ -68,8 +68,8 @@ export const EN = {
     ],
   },
   process: {
-    title: 'How we work',
-    eyebrow: 'From idea to launch',
+    title: 'The journey',
+    eyebrow: 'From basecamp to destination',
     steps: [
       { title: 'Discovery', text: 'We understand the goal, the audience and the context of the project before writing a single line of code.' },
       { title: 'Design', text: 'We define structure, visual hierarchy and interaction details with a minimal, intentional approach.' },
@@ -77,11 +77,14 @@ export const EN = {
       { title: 'Launch', text: "We deploy, measure and refine. A product doesn't end at launch: it evolves with data and real feedback." },
     ],
   },
+  serviceTags: ['cartography', 'provisions', 'route engineering', 'the guide stays'],
   cases: {
-    title: 'Work',
-    sub: "Sites in production for real businesses: every project was designed from the client's world, not from a template.",
-    visit: 'Visit site',
-    cta: 'Is your business the next case study?',
+    title: 'Logbook',
+    sub: 'Every case is a completed expedition: real businesses we guided from idea to their destination online.',
+    visit: 'Visit destination',
+    stamp: 'Destination reached',
+    exp: 'Exp.',
+    cta: 'Is your business the next expedition?',
     aria: 'Scope & technology',
     byTitle: {
       decora: {
@@ -123,7 +126,9 @@ export const EN = {
   },
   testimonials: {
     title: 'What clients say',
-    eyebrow: 'Real clients, real words',
+    eyebrow: 'Signals from the field',
+    signal: 'Signal',
+    corner: 'radio · signals',
     byId: {
       'seed-fdhz': {
         role: 'Communication & Marketing Team',
@@ -133,12 +138,12 @@ export const EN = {
     } as Record<string, { role: string; quote: string }>,
   },
   contact: {
-    title: "Let's work together.",
-    lede: "If you have an idea or a project in mind, we'd love to hear from you.",
+    title: 'Where do you want to go?',
+    lede: "Tell us your business's starting point and we'll tell you how we get there.",
     email: 'Email',
     response: 'Response',
     responseTime: 'Usually within 24–48 h',
-    whatsapp: 'Prefer WhatsApp? It’s the fast lane. → Message us directly',
+    whatsapp: 'Direct radio to the guide. → Message us directly',
     name: 'Name',
     namePh: 'Your name',
     emailPh: 'you@email.com',
@@ -157,7 +162,7 @@ export const EN = {
       { label: 'Reviews', href: '#opiniones' },
       { label: 'Contact', href: '#contacto' },
     ],
-    rights: 'All rights reserved.',
+    rights: 'End of logbook · All rights reserved.',
   },
 };
 

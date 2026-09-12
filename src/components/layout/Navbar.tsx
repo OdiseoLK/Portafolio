@@ -76,7 +76,7 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
             priority
             className="h-[30px] w-[30px] object-contain"
           />
-          ODISEO<span className="font-serif italic tracking-normal text-hielo/80">&nbsp;studio</span>
+          ODISEO<span className="font-serif italic tracking-normal text-muted">&nbsp;studio</span>
         </a>
 
         {/* Enlaces desktop */}
@@ -103,7 +103,7 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
                     />
                     <span
                       aria-hidden="true"
-                      className={`absolute -bottom-[13px] left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-hielo shadow-[0_0_8px_rgba(124,199,255,0.9)] transition-opacity duration-300 ${
+                      className={`absolute -bottom-[13px] left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-fg shadow-[0_0_8px_rgba(244,244,245,0.9)] transition-opacity duration-300 ${
                         isActive ? 'opacity-100' : 'opacity-0'
                       }`}
                     />

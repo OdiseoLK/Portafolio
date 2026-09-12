@@ -39,11 +39,11 @@ export function LangToggle({ className = '' }: { className?: string }) {
       type="button"
       onClick={toggle}
       aria-label={lang === 'es' ? 'Switch to English' : 'Cambiar a español'}
-      className={`inline-flex items-center gap-1 rounded-full border border-line px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors duration-300 hover:border-hielo/60 hover:text-fg ${className}`}
+      className={`inline-flex items-center gap-1 rounded-full border border-line px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors duration-300 hover:border-fg/50 hover:text-fg ${className}`}
     >
-      <span className={lang === 'es' ? 'text-hielo' : ''}>ES</span>
+      <span className={lang === 'es' ? 'text-fg' : ''}>ES</span>
       <span className="text-fg/25">/</span>
-      <span className={lang === 'en' ? 'text-hielo' : ''}>EN</span>
+      <span className={lang === 'en' ? 'text-fg' : ''}>EN</span>
     </button>
   );
 }

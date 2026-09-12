@@ -7,6 +7,8 @@ import { EN } from '@/lib/translations';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
+const TAGS_ES = ['cartografía', 'provisiones', 'ingeniería de ruta', 'el guía se queda'];
+
 /** Lista editorial numerada: número enorme a la izquierda, servicio a la derecha. */
 export default function Services({ data }: { data: ServicesContent }) {
   const { lang } = useLang();
@@ -42,6 +44,11 @@ export default function Services({ data }: { data: ServicesContent }) {
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div className="sm:pt-2">
+                {(en ? EN.serviceTags : TAGS_ES)[i] && (
+                  <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.3em] text-menta/80">
+                    — {(en ? EN.serviceTags : TAGS_ES)[i]}
+                  </p>
+                )}
                 <h3 className="font-display text-[clamp(1.15rem,2.2vw,1.8rem)] font-medium uppercase tracking-wide text-fg transition-colors duration-300 group-hover:text-hielo">
                   {item.title}
                 </h3>

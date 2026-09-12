@@ -169,12 +169,12 @@ html { scroll-behavior: smooth; }
 /* Hairline editorial */
 .rule {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(242, 245, 250, 0.18) 12%, rgba(242, 245, 250, 0.18) 88%, transparent);
+  background: linear-gradient(90deg, transparent, rgba(244, 244, 245, 0.16) 12%, rgba(244, 244, 245, 0.16) 88%, transparent);
 }
 
 /* Heading con gradiente frío (hielo → blanco) */
 .hero-heading {
-  background: linear-gradient(115deg, #eaf4ff 0%, #7cc7ff 45%, #a78bfa 80%, #c4b5fd 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #e7e7ea 55%, #9a9aa3 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -200,4 +200,31 @@ html { scroll-behavior: smooth; }
 .font-display {
   font-stretch: 120%;
   font-variation-settings: 'wdth' 120;
+}
+
+/* Titileo de estrella (constelaciones / estrella polar) */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.82); }
+}
+.twinkle { animation: twinkle 2.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .twinkle { animation: none; } }
+
+/* Estrellas emocionadas (cuando saludas al guía) */
+@keyframes twinkle-fast {
+  0%, 100% { opacity: 1; transform: scale(1.35); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.twinkle-fast { animation: twinkle-fast 0.55s ease-in-out infinite; }
+
+/* Ondas del wof */
+@keyframes wof-ring {
+  from { transform: scale(0.35); opacity: 0.85; }
+  to { transform: scale(2.7); opacity: 0; }
+}
+.wof-ring { animation: wof-ring 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .twinkle-fast { animation: none; }
+  .wof-ring { animation: none; opacity: 0; }
 }

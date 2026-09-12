@@ -56,7 +56,9 @@ export default function About({ data }: { data: AboutContent }) {
   const { lang } = useLang();
   const en = lang === 'en';
   const reduced = useReducedMotion();
-  const joined = en ? EN.about.paragraph : data.paragraphs.slice(0, 3).join(' ');
+  const MANIFIESTO =
+    'No hacemos páginas: guiamos expediciones. Tomamos a tu negocio en su punto de partida y lo llevamos a su destino digital — un sitio propio, rápido y hecho a la medida, que trabaja por ti las 24 horas. Diseño, desarrollo y acompañamiento de guía: no te soltamos la mano después de llegar.';
+  const joined = en ? EN.about.paragraph : MANIFIESTO;
 
   return (
     <section id="estudio" className="relative scroll-mt-24 overflow-hidden py-28 md:py-40">
@@ -65,7 +67,7 @@ export default function About({ data }: { data: AboutContent }) {
         <div className="h-28 w-28 rounded-full border border-aurora/25" />
       </motion.div>
       <motion.div aria-hidden="true" {...(reduced ? {} : fadeSide(0.25, -80))} className="pointer-events-none absolute bottom-[10%] left-[6%] hidden font-mono text-[10px] uppercase tracking-[0.3em] text-fg/20 md:block">
-        <Scramble text={en ? EN.about.ornament : 'lat. estudio vivo'} />
+        <Scramble text={en ? EN.about.ornament : 'bitácora · exp. 001–007'} />
       </motion.div>
       <motion.div aria-hidden="true" {...(reduced ? {} : fadeSide(0.15, 80))} className="pointer-events-none absolute right-[3%] top-[8%] hidden md:block">
         <Image src="/logo-head.png" alt="" width={110} height={110} className="rounded-2xl border border-line opacity-60" />
@@ -90,14 +92,14 @@ export default function About({ data }: { data: AboutContent }) {
         <div className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 md:mt-24">
           {(en
             ? [
-                { n: EN.about.stats[0].n, l: EN.about.stats[0].l, c: 'text-hielo' },
-                { n: EN.about.stats[1].n, l: EN.about.stats[1].l, c: 'text-aurora' },
-                { n: EN.about.stats[2].n, l: EN.about.stats[2].l, c: 'text-menta' },
+                { n: EN.about.stats[0].n, l: EN.about.stats[0].l, c: 'text-fg' },
+                { n: EN.about.stats[1].n, l: EN.about.stats[1].l, c: 'text-fg' },
+                { n: EN.about.stats[2].n, l: EN.about.stats[2].l, c: 'text-fg' },
               ]
             : [
-                { n: '07', l: 'Sitios en línea', c: 'text-hielo' },
-                { n: '07', l: 'Negocios acompañados', c: 'text-aurora' },
-                { n: '100%', l: 'Hechos a la medida', c: 'text-menta' },
+                { n: '07', l: 'Expediciones completadas', c: 'text-fg' },
+                { n: '07', l: 'Destinos en línea', c: 'text-fg' },
+                { n: '00', l: 'Naufragios', c: 'text-fg' },
               ]
           ).map((s, i) => (
             <motion.div

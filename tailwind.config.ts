@@ -5,17 +5,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: '#0B1020',
-        surface: '#111A30',
-        card: '#152039',
-        line: '#26304D',
-        fg: '#F2F5FA',
-        muted: '#93A0B8',
+        bg: '#0B0B0D',
+        surface: '#131316',
+        card: '#17171B',
+        line: '#26262B',
+        fg: '#F4F4F5',
+        muted: '#8E8E96',
         accent: '#7CC7FF',
         hielo: '#7CC7FF',
-        aurora: '#A78BFA',
-        menta: '#5EEAD4',
-        lima: '#34D399',
+        aurora: '#A8A8B0',
+        menta: '#8E8E96',
+        lima: '#F4F4F5',
       },
       keyframes: {
         caret: {
@@ -29,6 +29,7 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-geist-mono)', 'ui-monospace', 'monospace'],
+        hand: ['"Caveat Variable"', 'cursive'],
         display: ['"Archivo Variable"', '"Space Grotesk Variable"', 'var(--font-geist-sans)', 'sans-serif'],
       },
       transitionTimingFunction: {

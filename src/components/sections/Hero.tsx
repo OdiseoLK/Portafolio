@@ -26,6 +26,28 @@ export default function Hero({ data }: { data: HeroContent }) {
   const reduced = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const [liquid, setLiquid] = useState(false);
+  const [blink, setBlink] = useState(false);
+  const [wofAt, setWofAt] = useState<number | null>(null);
+
+  // El guía parpadea cada tanto
+  useEffect(() => {
+    if (reduced) return;
+    let t1: ReturnType<typeof setTimeout>, t2: ReturnType<typeof setTimeout>;
+    const schedule = () => {
+      t1 = setTimeout(() => {
+        setBlink(true);
+        t2 = setTimeout(() => { setBlink(false); schedule(); }, 160);
+      }, 3500 + Math.random() * 3500);
+    };
+    schedule();
+    return () => { clearTimeout(t1); clearTimeout(t2); };
+  }, [reduced]);
+
+  // Saludo: ondas + estrellas emocionadas por un momento
+  const wof = () => {
+    setWofAt(Date.now());
+    setTimeout(() => setWofAt(null), 1100);
+  };
 
   // Entrada líquida: se activa al montar y se apaga sola.
   useEffect(() => {
@@ -98,53 +120,141 @@ export default function Hero({ data }: { data: HeroContent }) {
         style={{
           ['--depth' as string]: '-0.6',
           background:
-            'radial-gradient(ellipse at 38% 45%, rgba(124,199,255,0.22) 0%, transparent 55%), radial-gradient(ellipse at 68% 55%, rgba(167,139,250,0.18) 0%, transparent 55%)',
+            'radial-gradient(ellipse at 45% 45%, rgba(244,244,245,0.06) 0%, transparent 60%)',
         }}
       />
 
-      {/* CAPA -1 · anillos hairline */}
-      <div
-        aria-hidden="true"
-        className="plx pointer-events-none absolute right-[4%] top-1/2 hidden h-[72vmin] w-[72vmin] -translate-y-1/2 lg:block"
-        style={{ ['--depth' as string]: '-0.35' }}
-      >
-        <div className="h-full w-full rounded-full border border-fg/[0.08]" />
-        <div className="absolute inset-[9%] rounded-full border border-hielo/[0.10]" />
-      </div>
 
-      {/* CAPA 0 · husky con tilt 3D */}
-      <div
+      {/* CAPA -1.5 · constelaciones de la noche polar */}
+      <svg
         aria-hidden="true"
-        className="pointer-events-none absolute right-[6%] top-1/2 hidden -translate-y-1/2 lg:block"
-        style={{ perspective: '900px' }}
+        className="plx pointer-events-none absolute inset-0 h-full w-full opacity-60"
+        style={{ ['--depth' as string]: '-0.8' }}
+        viewBox="0 0 1200 800"
+        preserveAspectRatio="xMidYMid slice"
+      >
+        <g stroke="rgba(244,244,245,0.10)" strokeWidth="1">
+          <path d="M120 140 L210 190 L300 150 L380 220" fill="none" />
+          <path d="M880 560 L950 500 L1040 540" fill="none" />
+        </g>
+        {[
+          [120, 140, 2.2], [210, 190, 1.6], [300, 150, 2.6], [380, 220, 1.8],
+          [560, 90, 1.5], [720, 160, 2.0], [880, 560, 2.2], [950, 500, 1.6],
+          [1040, 540, 2.4], [180, 620, 1.5], [420, 700, 1.9], [1100, 220, 1.6],
+        ].map(([x, y, r], i) => (
+          <circle key={i} cx={x} cy={y} r={r} fill="rgba(244,244,245,0.55)"
+            className={wofAt ? 'twinkle-fast' : 'twinkle'} style={{ animationDelay: wofAt ? `${(i * 0.05) % 0.5}s` : `${(i * 0.4) % 2.6}s` }} />
+        ))}
+      </svg>
+
+      {/* Estrella polar: el norte — clic para volver al inicio */}
+      <a
+        href="#inicio"
+        aria-label="Estrella polar — volver al inicio"
+        className="group absolute right-[8%] top-[12%] z-20 hidden lg:block"
+      >
+        <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"
+          className="twinkle drop-shadow-[0_0_10px_rgba(124,199,255,0.8)] transition-transform duration-500 group-hover:scale-125">
+          <path d="M13 0 L15 11 L26 13 L15 15 L13 26 L11 15 L0 13 L11 11 Z" fill="#CFE8FF" />
+        </svg>
+        <span className="absolute left-1/2 top-8 hidden -translate-x-1/2 whitespace-nowrap font-mono text-[9px] uppercase tracking-[0.3em] text-fg/40 group-hover:block">
+          norte
+        </span>
+      </a>
+
+      {/* CAPA 0 · el guía monumental — fundido con la noche, tras la tipografía */}
+      <div
+        className="pointer-events-none absolute inset-y-0 right-[-18%] flex w-[120vw] items-center justify-end sm:right-[-10%] sm:w-[92vw] lg:right-[-3%] lg:w-[62vw] lg:max-w-[1100px]"
+        style={{ perspective: '1200px' }}
       >
         <motion.div
-          initial={reduced ? false : { opacity: 0, scale: 0.96 }}
+          role="button"
+          tabIndex={0}
+          aria-label="Saludar al guía"
+          onClick={wof}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); wof(); } }}
+          initial={reduced ? false : { opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.4, ease: EASE, delay: 0.45 }}
-          className={liquid ? 'is-liquid' : undefined}
+          transition={{ duration: 1.6, ease: EASE, delay: 0.35 }}
+          className={`pointer-events-auto relative w-full cursor-pointer outline-offset-8 ${liquid ? 'is-liquid' : ''}`}
           style={{
-            transform: 'rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))',
+            transform: 'rotateX(calc(var(--rx, 0deg) * 0.6)) rotateY(calc(var(--ry, 0deg) * 0.6))',
             transformStyle: 'preserve-3d',
           }}
         >
-          <div className="absolute inset-0 scale-110 rounded-full blur-[110px]" style={{ background: "conic-gradient(from 180deg, rgba(124,199,255,0.16), rgba(167,139,250,0.14), rgba(94,234,212,0.10), rgba(124,199,255,0.16))" }} />
+          <div
+            className="absolute inset-[6%] rounded-full blur-[130px]"
+            style={{ background: 'radial-gradient(circle, rgba(244,244,245,0.09), transparent 70%)' }}
+          />
           <Image
             src="/logo-mark.png"
             alt=""
-            width={540}
-            height={499}
+            width={1060}
+            height={980}
             priority
-            className="relative opacity-90 drop-shadow-[0_0_60px_rgba(124,199,255,0.14)]"
+            className="relative h-auto w-full opacity-[0.20] sm:opacity-[0.26] lg:opacity-[0.34]"
           />
+          {/* Los ojos del guía: reflejos del lente que siguen al cursor (se apagan al parpadear) */}
+          <span
+            className="absolute rounded-full bg-hielo blur-[1px] transition-opacity duration-100"
+            style={{
+              left: '60.5%', top: '43%', width: '1.7%', paddingBottom: '1.7%', opacity: blink ? 0 : 1,
+              transform: 'translate3d(calc(var(--mx, 0) * 0.32px), calc(var(--my, 0) * 0.32px), 0)',
+            }}
+          />
+          <span
+            className="absolute rounded-full bg-white/60 transition-opacity duration-100"
+            style={{
+              left: '63.2%', top: '46.2%', width: '0.9%', paddingBottom: '0.9%', opacity: blink ? 0 : 1,
+              transform: 'translate3d(calc(var(--mx, 0) * 0.32px), calc(var(--my, 0) * 0.32px), 0)',
+            }}
+          />
+          {/* Párpado del parpadeo */}
+          <span
+            aria-hidden="true"
+            className="absolute rounded-full transition-opacity duration-100"
+            style={{
+              left: '57.6%', top: '44.2%', width: '7.4%', height: '0.55%',
+              background: '#26262B', transform: 'rotate(7deg)', opacity: blink ? 1 : 0,
+            }}
+          />
+          {/* Ondas del saludo */}
+          {wofAt && [0, 1, 2].map((r) => (
+            <span
+              key={`${wofAt}-${r}`}
+              aria-hidden="true"
+              className="wof-ring absolute rounded-full border-2 border-hielo/70"
+              style={{ left: '54%', top: '36%', width: '14%', paddingBottom: '14%', animationDelay: `${r * 0.12}s` }}
+            />
+          ))}
+          {wofAt && (
+            <span
+              aria-hidden="true"
+              className="absolute select-none font-hand text-3xl text-[#D8E7FF]/90"
+              style={{ left: '70%', top: '30%', transform: 'rotate(-10deg)' }}
+            >
+              wof*
+            </span>
+          )}
         </motion.div>
+      </div>
+
+      {/* Nota manuscrita al margen de la bitácora */}
+      <div aria-hidden="true" className="pointer-events-none absolute right-[5%] top-[17%] z-10 hidden -rotate-6 md:block">
+        <p className="font-hand text-[26px] leading-none text-fg/60">
+          {en ? 'the guide knows the route' : 'el guía conoce la ruta'}
+        </p>
+        <svg width="120" height="70" viewBox="0 0 120 70" className="-ml-1 mt-1">
+          <path d="M100 6 C 80 34, 46 50, 14 58" stroke="rgba(244,244,245,0.40)" strokeWidth="1.5" fill="none" strokeDasharray="1 5" strokeLinecap="round" />
+          <path d="M14 58 l14 -8 M14 58 l16 2" stroke="rgba(244,244,245,0.40)" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+        </svg>
       </div>
 
       {/* ESQUELETO EDITORIAL · contenido */}
       <div className="relative z-10 flex flex-1 flex-col justify-center">
         <div className="wrap">
           <motion.p {...fadeUp(0.1)} className="eyebrow mb-8 flex items-center gap-3">
-            <span className="inline-block h-px w-10 bg-hielo/50" />
+            <span className="inline-block h-px w-10 bg-fg/30" />
             <Scramble text={en ? EN.hero.eyebrow : 'Estudio de diseño y desarrollo web'} trigger="load" />
           </motion.p>
 
@@ -170,7 +280,7 @@ export default function Hero({ data }: { data: HeroContent }) {
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-lima" />
               </span>
               <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-fg/70">
-                {en ? EN.hero.availability : data.availability.label}
+                {en ? EN.hero.availability : 'Disponible para nuevas expediciones'}
               </span>
             </motion.div>
           )}
@@ -186,7 +296,7 @@ export default function Hero({ data }: { data: HeroContent }) {
               {...fadeUp(0.55)}
               className="max-w-sm text-sm leading-relaxed text-muted md:text-[15px]"
             >
-              {en ? EN.hero.description : data.description}
+              {en ? EN.hero.description : 'Cada negocio es una expedición. Nosotros conocemos la ruta: diseñamos y desarrollamos el sitio que lo lleva de idea a destino.'}
             </motion.p>
             <motion.div {...fadeUp(0.65)} className="flex items-center gap-6">
               <span className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-fg/30 md:block">
@@ -196,7 +306,7 @@ export default function Hero({ data }: { data: HeroContent }) {
                 href="#casos"
                 className="group inline-flex items-center gap-2.5 rounded-full border border-fg/20 px-7 py-3 text-sm font-medium tracking-wide text-fg transition-colors duration-300 hover:border-hielo/60 hover:text-hielo"
               >
-                {en ? EN.hero.cta : 'Ver casos de estudio'}
+                {en ? EN.hero.cta : 'Ver la bitácora'}
                 <ArrowUpRight
                   size={15}
                   aria-hidden="true"

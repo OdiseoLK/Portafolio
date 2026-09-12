@@ -184,7 +184,7 @@ export default function MarqueeCasos() {
 
   return (
     <section aria-label="Clientes del estudio" className="relative overflow-hidden border-y border-line/60 bg-surface/50 py-6">
-      <p className="wrap eyebrow mb-5"><Scramble text={en ? EN.marquee.eyebrow : 'Trabajo real, negocios reales'} /></p>
+      <p className="wrap eyebrow mb-5"><Scramble text={en ? EN.marquee.eyebrow : 'Expediciones completadas'} /></p>
       <div
         ref={trackRef}
         className="flex w-max cursor-grab select-none gap-4 py-2 pl-4"
@@ -200,7 +200,7 @@ export default function MarqueeCasos() {
             tabIndex={i >= TILES.length ? -1 : 0}
             draggable={false}
             onClick={(e) => { if (movedRef.current) e.preventDefault(); }}
-            className="block w-72 flex-shrink-0 overflow-hidden rounded-2xl border border-fg/10 bg-card transition-colors duration-300 hover:border-hielo/50 sm:w-80"
+            className="block w-72 flex-shrink-0 overflow-hidden rounded-2xl border border-fg/10 bg-card transition-colors duration-300 hover:border-fg/40 sm:w-80"
           >
             <div className="aspect-[16/9]">
               {t.img ? (
@@ -219,7 +219,7 @@ export default function MarqueeCasos() {
                 className="flex-shrink-0 rounded-full border px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.15em]"
                 style={{ borderColor: `${t.ink}66`, color: t.ink }}
               >
-                {en ? EN.marquee.live : t.tag}
+                {en ? EN.marquee.live : 'Destino alcanzado'}
               </span>
             </div>
           </a>

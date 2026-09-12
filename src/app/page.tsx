@@ -1,6 +1,7 @@
 import GridBackground from '@/components/ui/GridBackground';
 import CustomCursor from '@/components/ui/CustomCursor';
 import ScrollProgress from '@/components/ui/ScrollProgress';
+import TabGuardian from '@/components/ui/TabGuardian';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppFloat from '@/components/ui/WhatsAppFloat';
@@ -42,6 +43,7 @@ export default async function Home() {
       <GridBackground />
       <CustomCursor />
       <ScrollProgress />
+      <TabGuardian />
 
       <a
         href="#inicio"

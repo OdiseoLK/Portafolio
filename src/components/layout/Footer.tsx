@@ -51,7 +51,7 @@ export default function Footer({
                 className="rounded-lg border border-line"
               />
               <p className="font-display text-sm font-medium tracking-[0.28em] text-fg">
-                ODISEO<span className="font-serif italic tracking-normal text-hielo/80">&nbsp;studio</span>
+                ODISEO<span className="font-serif italic tracking-normal text-muted">&nbsp;studio</span>
               </p>
             </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">{footer.tagline}</p>
@@ -131,7 +131,7 @@ export default function Footer({
 
         <div className="mt-14 flex items-center justify-between border-t border-line/70 pt-8">
           <p className="text-xs text-muted">
-            © {new Date().getFullYear()} ODISEO. {lang === 'en' ? EN.footer.rights : 'Todos los derechos reservados.'}
+            © {new Date().getFullYear()} ODISEO. {lang === 'en' ? EN.footer.rights : 'Fin de la bitácora · Todos los derechos reservados.'}
           </p>
           <button
             type="button"
