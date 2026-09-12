@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import type { AboutContent } from '@/lib/types';
 import Scramble from '@/components/ui/Scramble';
+import { Cap, Topo } from '@/components/ui/Expedicion';
 import { useLang } from '@/components/ui/LanguageContext';
 import { EN } from '@/lib/translations';
 
@@ -76,7 +77,9 @@ export default function About({ data }: { data: AboutContent }) {
         <div className="h-16 w-16 rotate-45 border border-fg/10" />
       </motion.div>
 
+      <Topo className="left-1/2 top-1/2 hidden w-[640px] -translate-x-1/2 -translate-y-1/2 md:block" />
       <div className="wrap">
+        <Cap n="01" es="El estudio" en="The studio" />
         <motion.h2
           initial={reduced ? false : { opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

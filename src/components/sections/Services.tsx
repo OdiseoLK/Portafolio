@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import type { ServicesContent } from '@/lib/types';
+import { Cap, Esquinas } from '@/components/ui/Expedicion';
 import { useLang } from '@/components/ui/LanguageContext';
 import { EN } from '@/lib/translations';
 
@@ -20,6 +21,7 @@ export default function Services({ data }: { data: ServicesContent }) {
   return (
     <section id="servicios" className="scroll-mt-24 py-24 md:py-32">
       <div className="wrap">
+        <Cap n="02" es="Servicios" en="Services" />
         <motion.h2
           initial={reduced ? false : { opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,7 +32,7 @@ export default function Services({ data }: { data: ServicesContent }) {
           {title}
         </motion.h2>
 
-        <div className="mx-auto max-w-5xl">
+        <div className="relative mx-auto max-w-5xl px-5 py-2 sm:px-8"><Esquinas />
           {items.map((item, i) => (
             <motion.article
               key={item.title}

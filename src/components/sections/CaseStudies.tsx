@@ -7,6 +7,7 @@ import { ArrowUpRight } from 'lucide-react';
 import type { Project } from '@/lib/types';
 import Scramble, { DotsDivider } from '@/components/ui/Scramble';
 import BeforeAfter from '@/components/ui/BeforeAfter';
+import { Cap } from '@/components/ui/Expedicion';
 import { useLang } from '@/components/ui/LanguageContext';
 import { EN, matchCase } from '@/lib/translations';
 
@@ -179,6 +180,7 @@ export default function CaseStudies({ projects }: { projects: Project[] }) {
   return (
     <section id="casos" className="scroll-mt-24 py-24 md:py-32">
       <div className="wrap">
+        <Cap n="04" es="Bitácora" en="Logbook" />
         <motion.h2
           initial={reduced ? false : { opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

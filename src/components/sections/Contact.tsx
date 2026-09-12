@@ -7,7 +7,7 @@ import { Reveal } from '@/components/ui/Reveal';
 import { getSupabase } from '@/lib/supabase';
 import type { ContactContent } from '@/lib/types';
 
-import { DotsDivider } from '@/components/ui/Scramble';
+import { Cap, Esquinas } from '@/components/ui/Expedicion';
 import { useLang } from '@/components/ui/LanguageContext';
 import { EN } from '@/lib/translations';
 
@@ -104,9 +104,11 @@ export default function Contact({ data }: { data: ContactContent }) {
         ))}
       </svg>
       <div className="wrap">
-        <DotsDivider />
-        <h2 className="hero-heading mb-14 mt-10 text-center font-display font-bold uppercase leading-none tracking-tight sm:mb-20" style={{ fontSize: 'clamp(2.6rem, 9vw, 110px)' }}>{en ? EN.contact.title : '¿A dónde quieres llegar?'}</h2>
+        <Cap n="06" es="Contacto" en="Contact" />
+        <h2 className="hero-heading mb-14 text-center font-display font-bold uppercase leading-none tracking-tight sm:mb-20" style={{ fontSize: 'clamp(2.6rem, 9vw, 110px)' }}>{en ? EN.contact.title : '¿A dónde quieres llegar?'}</h2>
 
+        <div className="relative px-5 py-8 sm:px-8">
+          <Esquinas />
         <div className="grid gap-14 md:grid-cols-2 md:gap-20">
           <Reveal delay={0.1}>
             <p className="max-w-md text-lg leading-relaxed text-muted">{en ? EN.contact.lede : 'Cuéntanos el punto de partida de tu negocio y te decimos cómo llegamos.'}</p>
@@ -247,6 +249,7 @@ export default function Contact({ data }: { data: ContactContent }) {
               </p>
             </form>
           </Reveal>
+        </div>
         </div>
       </div>
 

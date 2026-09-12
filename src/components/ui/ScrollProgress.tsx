@@ -47,7 +47,7 @@ export default function ScrollProgress() {
       <div
         className="absolute left-0 right-0 top-[5px] h-[3px]"
         style={{
-          backgroundImage: 'repeating-linear-gradient(90deg, rgba(242,245,250,0.13) 0 3px, transparent 3px 10px)',
+          backgroundImage: 'repeating-linear-gradient(90deg, rgb(var(--fg) / 0.15) 0 3px, transparent 3px 10px)',
         }}
       />
       {/* Ruta recorrida */}
@@ -55,7 +55,7 @@ export default function ScrollProgress() {
         className="absolute left-0 top-[5px] h-[3px]"
         style={{
           width: 'calc(var(--sp, 0) * 100%)',
-          background: 'linear-gradient(90deg, #F4F4F5, #B9B9C2)',
+          background: 'linear-gradient(90deg, rgb(var(--fg)), rgb(var(--fg) / 0.55))',
           maskImage: 'repeating-linear-gradient(90deg, black 0 3px, transparent 3px 10px)',
           WebkitMaskImage: 'repeating-linear-gradient(90deg, black 0 3px, transparent 3px 10px)',
         }}
@@ -71,8 +71,8 @@ export default function ScrollProgress() {
           </svg>
         ) : (
           <svg width="16" height="20" viewBox="0 0 16 20">
-            <line x1="2" y1="2" x2="2" y2="19" stroke="#E7E7EA" strokeWidth="2" strokeLinecap="round" />
-            <path d="M2 2 L14 6 L2 10 Z" fill="#8E8E96" />
+            <line x1="2" y1="2" x2="2" y2="19" stroke="rgb(var(--fg) / 0.9)" strokeWidth="2" strokeLinecap="round" />
+            <path d="M2 2 L14 6 L2 10 Z" fill="rgb(var(--fg) / 0.5)" />
           </svg>
         )}
       </div>

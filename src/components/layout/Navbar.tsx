@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Scramble from '@/components/ui/Scramble';
 import { LangToggle, useLang } from '@/components/ui/LanguageContext';
+import TimeToggle from '@/components/ui/TimeToggle';
 import { EN } from '@/lib/translations';
 
 const LINKS = [
@@ -112,11 +113,15 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
               );
             })}
           </ul>
-          <LangToggle />
+          <div className="flex items-center gap-2">
+            <TimeToggle />
+            <LangToggle />
+          </div>
         </div>
 
         {/* Toggle móvil */}
         <div className="flex items-center gap-2 md:hidden">
+        <TimeToggle />
         <LangToggle />
         <button
           type="button"

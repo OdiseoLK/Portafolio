@@ -45,32 +45,41 @@ export default function Footer({
     <footer className="relative overflow-hidden pt-44 md:pt-72">
       {/* Horizonte: las montañas emergen del fondo y sostienen todo el footer */}
       <div aria-hidden="true" className="absolute inset-0">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/deco/montanas.jpg"
-          alt=""
-          className="hidden h-full w-full object-cover object-[center_28%] grayscale contrast-110 sm:block"
-          style={{
-            maskImage: 'linear-gradient(180deg, transparent 0%, black 38%)',
-            WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, black 38%)',
-          }}
-        />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/deco/montanas-movil.jpg"
-          alt=""
-          className="h-full w-full object-cover object-top grayscale contrast-110 sm:hidden"
-          style={{
-            maskImage: 'linear-gradient(180deg, transparent 0%, black 38%)',
-            WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, black 38%)',
-          }}
-        />
+        {/* Un par de fotos por cielo (desktop panorámica / móvil vertical), con fundido */}
+        {[
+          { modo: 'm-noche', d: '/deco/montanas.jpg', m: '/deco/montanas-movil.jpg', extra: 'grayscale contrast-110' },
+          { modo: 'm-tarde', d: '/deco/montanas-tarde.jpg', m: '/deco/montanas-tarde-movil.jpg', extra: '' },
+          { modo: 'm-dia', d: '/deco/montanas-dia.jpg', m: '/deco/montanas-dia-movil.jpg', extra: '' },
+        ].map((s) => (
+          <div key={s.modo} className={`${s.modo} absolute inset-0 transition-opacity duration-700`}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={s.d}
+              alt=""
+              className={`hidden h-full w-full object-cover object-[center_28%] sm:block ${s.extra}`}
+              style={{
+                maskImage: 'linear-gradient(180deg, transparent 0%, black 38%)',
+                WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, black 38%)',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={s.m}
+              alt=""
+              className={`h-full w-full object-cover object-top sm:hidden ${s.extra}`}
+              style={{
+                maskImage: 'linear-gradient(180deg, transparent 0%, black 38%)',
+                WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, black 38%)',
+              }}
+            />
+          </div>
+        ))}
         {/* Velo de legibilidad: se oscurece hacia el contenido */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(11,11,13,0.92) 0%, rgba(11,11,13,0.15) 34%, rgba(11,11,13,0.55) 58%, rgba(11,11,13,0.92) 82%, #0B0B0D 100%)',
+              'linear-gradient(180deg, rgba(5,5,6,0.92) 0%, rgba(5,5,6,0.12) 34%, rgba(5,5,6,0.55) 58%, rgba(5,5,6,0.92) 82%, #050506 100%)',
           }}
         />
       </div>
@@ -81,7 +90,7 @@ export default function Footer({
         width="22"
         height="22"
         viewBox="0 0 26 26"
-        className="twinkle absolute left-1/2 top-[9%] -translate-x-1/2 drop-shadow-[0_0_10px_rgba(124,199,255,0.9)] md:top-[12%]"
+        className="cielo twinkle absolute left-1/2 top-[9%] -translate-x-1/2 drop-shadow-[0_0_10px_rgba(124,199,255,0.9)] md:top-[12%]"
       >
         <path d="M13 0 L15 11 L26 13 L15 15 L13 26 L11 15 L0 13 L11 11 Z" fill="#DCEFFF" />
       </svg>

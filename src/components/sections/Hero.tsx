@@ -116,11 +116,11 @@ export default function Hero({ data }: { data: HeroContent }) {
       {/* CAPA -2 · aurora de hielo que deriva con el puntero */}
       <div
         aria-hidden="true"
-        className="plx pointer-events-none absolute left-1/2 top-[38%] h-[70vmin] w-[110vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-50"
+        className="cielo plx pointer-events-none absolute left-1/2 top-[38%] h-[70vmin] w-[110vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-50"
         style={{
           ['--depth' as string]: '-0.6',
           background:
-            'radial-gradient(ellipse at 45% 45%, rgba(244,244,245,0.06) 0%, transparent 60%)',
+            'radial-gradient(ellipse at 45% 45%, rgb(var(--fg) / 0.05) 0%, transparent 60%)',
         }}
       />
 
@@ -128,7 +128,7 @@ export default function Hero({ data }: { data: HeroContent }) {
       {/* CAPA -1.5 · constelaciones de la noche polar */}
       <svg
         aria-hidden="true"
-        className="plx pointer-events-none absolute inset-0 h-full w-full opacity-60"
+        className="cielo plx pointer-events-none absolute inset-0 h-full w-full opacity-60"
         style={{ ['--depth' as string]: '-0.8' }}
         viewBox="0 0 1200 800"
         preserveAspectRatio="xMidYMid slice"
@@ -151,7 +151,7 @@ export default function Hero({ data }: { data: HeroContent }) {
       <a
         href="#inicio"
         aria-label="Estrella polar — volver al inicio"
-        className="group absolute right-[8%] top-[12%] z-20 hidden lg:block"
+        className="cielo group absolute right-[8%] top-[12%] z-20 hidden lg:block"
       >
         <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"
           className="twinkle drop-shadow-[0_0_10px_rgba(124,199,255,0.8)] transition-transform duration-500 group-hover:scale-125">
@@ -184,7 +184,7 @@ export default function Hero({ data }: { data: HeroContent }) {
         >
           <div
             className="absolute inset-[6%] rounded-full blur-[130px]"
-            style={{ background: 'radial-gradient(circle, rgba(244,244,245,0.09), transparent 70%)' }}
+            style={{ background: 'var(--guia-glow)' }}
           />
           <Image
             src="/logo-mark.png"
@@ -192,12 +192,13 @@ export default function Hero({ data }: { data: HeroContent }) {
             width={1060}
             height={980}
             priority
-            className="relative h-auto w-full opacity-[0.20] sm:opacity-[0.26] lg:opacity-[0.34]"
+            className="guia-img relative h-auto w-full opacity-[0.20] sm:opacity-[0.26] lg:opacity-[0.34]"
           />
           {/* Los ojos del guía: reflejos del lente que siguen al cursor (se apagan al parpadear) */}
           <span
-            className="absolute rounded-full bg-hielo blur-[1px] transition-opacity duration-100"
+            className="absolute rounded-full blur-[1px] transition-opacity duration-100"
             style={{
+              background: 'var(--ojo)',
               left: '60.5%', top: '43%', width: '1.7%', paddingBottom: '1.7%', opacity: blink ? 0 : 1,
               transform: 'translate3d(calc(var(--mx, 0) * 0.32px), calc(var(--my, 0) * 0.32px), 0)',
             }}
@@ -223,8 +224,9 @@ export default function Hero({ data }: { data: HeroContent }) {
             <span
               key={`${wofAt}-${r}`}
               aria-hidden="true"
-              className="wof-ring absolute rounded-full border-2 border-hielo/70"
-              style={{ left: '54%', top: '36%', width: '14%', paddingBottom: '14%', animationDelay: `${r * 0.12}s` }}
+              className="wof-ring absolute rounded-full border-2"
+              style={{
+                borderColor: 'var(--ojo)', left: '54%', top: '36%', width: '14%', paddingBottom: '14%', animationDelay: `${r * 0.12}s` }}
             />
           ))}
           {wofAt && (
