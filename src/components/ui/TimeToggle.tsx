@@ -16,10 +16,12 @@ const MODES: { id: Momento; Icon: typeof Sun; es: string; en: string }[] = [
 export default function TimeToggle({ className = '' }: { className?: string }) {
   const { lang } = useLang();
   const [momento, setMomento] = useState<Momento>('noche');
+  const [listo, setListo] = useState(false);
 
   useEffect(() => {
     const saved = window.localStorage.getItem('odiseo-cielo') as Momento | null;
     if (saved === 'dia' || saved === 'tarde' || saved === 'noche') setMomento(saved);
+    setListo(true);
   }, []);
 
   useEffect(() => {
@@ -42,7 +44,7 @@ export default function TimeToggle({ className = '' }: { className?: string }) {
           aria-label={lang === 'en' ? en : es}
           title={lang === 'en' ? en : es}
           className={`grid h-7 w-7 place-items-center rounded-full transition-colors duration-300 ${
-            momento === id ? 'bg-fg text-bg' : 'text-muted hover:text-fg'
+            listo && momento === id ? 'bg-fg text-bg' : 'text-muted hover:text-fg'
           }`}
         >
           <Icon size={13} aria-hidden="true" />
