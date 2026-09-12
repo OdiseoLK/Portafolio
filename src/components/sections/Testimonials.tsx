@@ -11,7 +11,7 @@ import { DEFAULT_CONTENT } from '@/lib/defaults';
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Opiniones sobre negro profundo (#030304) para máximo contraste.
+ * Opiniones sobre el panel "deep" del cielo activo (vidrio).
  * Cada testimonio vive en un panel con marco de visor (esquinas en L),
  * retícula de puntos, auroras hielo/violeta y coordenadas mono.
  */
@@ -29,7 +29,7 @@ export default function Testimonials({ items }: { items: Testimonial[] }) {
     <section
       id="opiniones"
       className="relative scroll-mt-24 overflow-hidden border-y border-line/60 py-24 backdrop-blur-md md:py-36"
-      style={{ background: '#030304' }}
+      style={{ background: 'var(--deep)' }}
     >
       {/* Retícula de puntos de fondo */}
       <div
@@ -99,10 +99,10 @@ export default function Testimonials({ items }: { items: Testimonial[] }) {
                 <span aria-hidden="true" className="absolute bottom-0 right-0 h-6 w-6 border-b border-r border-fg/35 transition-colors duration-500 group-hover:border-fg/80" />
 
                 {/* Etiquetas del marco */}
-                <span aria-hidden="true" className="absolute -top-2.5 left-10 bg-[#030304] px-3 font-mono text-[10px] uppercase tracking-[0.3em] text-fg/60">
+                <span aria-hidden="true" className="absolute -top-2.5 left-10 bg-[color:var(--deep)] px-3 font-mono text-[10px] uppercase tracking-[0.3em] text-fg/60">
                   <Scramble text={`${en ? EN.testimonials.signal : 'Señal'} ${num}`} trigger="hover" speed={26} />
                 </span>
-                <span aria-hidden="true" className="absolute -bottom-2.5 right-10 bg-[#030304] px-3 font-serif text-xl italic leading-none text-muted">
+                <span aria-hidden="true" className="absolute -bottom-2.5 right-10 bg-[color:var(--deep)] px-3 font-serif text-xl italic leading-none text-muted">
                   *
                 </span>
 

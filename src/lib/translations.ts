@@ -78,6 +78,15 @@ export const EN = {
     ],
   },
   serviceTags: ['cartography', 'provisions', 'route engineering', 'the guide stays'],
+  serviceIncludes: [
+    ['Custom UX/UI design, no templates', 'Responsive: mobile, tablet & desktop', 'Base SEO and optimized speed'],
+    ['Cart and orders via WhatsApp', 'Panel to update prices', 'Ticket with order ID per branch'],
+    ['Next.js + Supabase', 'Your own admin panel', 'Database and forms'],
+    ['Content updates', 'Monitoring and security', 'Support via WhatsApp'],
+  ],
+  servicesIntro: 'Four ways to take your business to its digital destination. Everything custom, everything with a guide.',
+  includes: 'Includes',
+  quote: 'Get a quote',
   cases: {
     title: 'Logbook',
     sub: 'Every case is a completed expedition: real businesses we guided from idea to their destination online.',

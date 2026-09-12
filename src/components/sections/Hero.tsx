@@ -247,8 +247,8 @@ export default function Hero({ data }: { data: HeroContent }) {
           {en ? 'the guide knows the route' : 'el guía conoce la ruta'}
         </p>
         <svg width="120" height="70" viewBox="0 0 120 70" className="-ml-1 mt-1">
-          <path d="M100 6 C 80 34, 46 50, 14 58" stroke="rgba(244,244,245,0.40)" strokeWidth="1.5" fill="none" strokeDasharray="1 5" strokeLinecap="round" />
-          <path d="M14 58 l14 -8 M14 58 l16 2" stroke="rgba(244,244,245,0.40)" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+          <path d="M100 6 C 80 34, 46 50, 14 58" stroke="rgb(var(--fg) / 0.45)" strokeWidth="1.5" fill="none" strokeDasharray="1 5" strokeLinecap="round" />
+          <path d="M14 58 l14 -8 M14 58 l16 2" stroke="rgb(var(--fg) / 0.45)" strokeWidth="1.5" fill="none" strokeLinecap="round" />
         </svg>
       </div>
 

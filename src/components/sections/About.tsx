@@ -24,7 +24,7 @@ function AnimatedText({ text }: { text: string }) {
   return (
     <p
       ref={ref}
-      className="mx-auto max-w-3xl text-center font-serif text-[clamp(1.35rem,3.2vw,2.3rem)] font-light leading-[1.45] text-fg"
+      className="mx-auto max-w-2xl text-center text-[clamp(1.1rem,2.1vw,1.55rem)] font-light leading-[1.5] text-fg"
     >
       {chars.map((c, i) => (
         <Char key={i} char={c} index={i} total={chars.length} progress={scrollYProgress} reduced={!!reduced} />
@@ -62,7 +62,7 @@ export default function About({ data }: { data: AboutContent }) {
   const joined = en ? EN.about.paragraph : MANIFIESTO;
 
   return (
-    <section id="estudio" className="relative scroll-mt-24 overflow-hidden py-28 md:py-40">
+    <section id="estudio" className="relative scroll-mt-24 overflow-hidden py-20 md:py-28">
       {/* Ornamentos de esquina: fragmentos del laboratorio */}
       <motion.div aria-hidden="true" {...(reduced ? {} : fadeSide(0.1, -80))} className="pointer-events-none absolute left-[2%] top-[6%] hidden md:block">
         <div className="h-28 w-28 rounded-full border border-aurora/25" />
@@ -85,14 +85,14 @@ export default function About({ data }: { data: AboutContent }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '50px' }}
           transition={{ duration: 0.9, ease: EASE }}
-          className="hero-heading mb-14 text-center font-display text-[clamp(3rem,11vw,9rem)] font-bold uppercase leading-none tracking-tight md:mb-20"
+          className="hero-heading mb-10 text-center font-display text-[clamp(2.4rem,6.5vw,5rem)] font-bold uppercase leading-none tracking-tight md:mb-12"
         >
           {en ? EN.about.title : 'El estudio'}
         </motion.h2>
 
         <AnimatedText key={lang} text={joined} />
 
-        <div className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 md:mt-24">
+        <div className="mx-auto mt-10 grid max-w-2xl grid-cols-3 gap-4 md:mt-14">
           {(en
             ? [
                 { n: EN.about.stats[0].n, l: EN.about.stats[0].l, c: 'text-fg' },
@@ -113,7 +113,7 @@ export default function About({ data }: { data: AboutContent }) {
               transition={{ duration: 0.8, ease: EASE, delay: i * 0.1 }}
               className="border-t border-line pt-4 text-center"
             >
-              <p className={`font-display text-4xl font-bold md:text-5xl ${s.c}`}><Scramble text={s.n} speed={55} /></p>
+              <p className={`font-display text-3xl font-bold md:text-4xl ${s.c}`}><Scramble text={s.n} speed={55} /></p>
               <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted"><Scramble text={s.l} /></p>
             </motion.div>
           ))}
