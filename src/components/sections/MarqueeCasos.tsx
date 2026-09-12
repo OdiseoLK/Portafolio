@@ -183,7 +183,7 @@ export default function MarqueeCasos() {
   const tiles = [...TILES, ...TILES];
 
   return (
-    <section aria-label="Clientes del estudio" className="relative overflow-hidden border-y border-line/60 bg-surface/50 py-6">
+    <section aria-label="Clientes del estudio" className="relative overflow-hidden border-y border-line/60 bg-surface/50 py-6 backdrop-blur-md">
       <p className="wrap eyebrow mb-5"><Scramble text={en ? EN.marquee.eyebrow : 'Expediciones completadas'} /></p>
       <div
         ref={trackRef}

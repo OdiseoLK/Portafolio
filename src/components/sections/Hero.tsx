@@ -103,7 +103,7 @@ export default function Hero({ data }: { data: HeroContent }) {
     <section
       id="inicio"
       ref={sectionRef}
-      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-bg"
+      className="relative flex min-h-[100svh] flex-col overflow-hidden"
     >
       {/* Filtro de distorsión líquida (off-screen, valores fijos) */}
       <svg width="0" height="0" aria-hidden="true" className="absolute">

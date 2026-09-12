@@ -54,7 +54,7 @@ export default function Process({ data: _data }: { data: ProcessContent }) {
     <section
       id="proceso"
       ref={sectionRef}
-      className="scroll-mt-24 border-y border-line/60 bg-gradient-to-b from-surface/70 to-surface/30 py-24 md:py-32"
+      className="scroll-mt-24 border-y border-line/60 bg-gradient-to-b from-surface/70 to-surface/30 py-24 backdrop-blur-md md:py-32"
     >
       <div className="wrap">
         <Cap n="03" es="La travesía" en="The journey" />
@@ -80,7 +80,7 @@ export default function Process({ data: _data }: { data: ProcessContent }) {
             <path
               d="M40 88 C 140 20, 260 20, 353 40 S 560 120, 646 92 S 880 10, 960 34"
               fill="none"
-              stroke="rgba(242,245,250,0.10)"
+              stroke="rgb(var(--fg) / 0.12)"
               strokeWidth="1.5"
               strokeDasharray="2 8"
               strokeLinecap="round"
@@ -97,18 +97,18 @@ export default function Process({ data: _data }: { data: ProcessContent }) {
             />
             <defs>
               <linearGradient id="ruta-grad" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stopColor="#F4F4F5" />
-                <stop offset="0.55" stopColor="#B9B9C2" />
-                <stop offset="1" stopColor="#F4F4F5" />
+                <stop offset="0" style={{ stopColor: 'rgb(var(--fg))' }} />
+                <stop offset="0.55" style={{ stopColor: 'rgb(var(--fg) / 0.6)' }} />
+                <stop offset="1" style={{ stopColor: 'rgb(var(--fg))' }} />
               </linearGradient>
             </defs>
             {/* Campamentos: banderines; el destino es estrella */}
             {stops.map((p, i) =>
               i < stops.length - 1 ? (
                 <g key={i} transform={`translate(${p.x} ${p.y})`}>
-                  <circle r="4" fill="#0B1020" stroke="#C9C9CF" strokeWidth="1.5" />
-                  <line x1="0" y1="-4" x2="0" y2="-20" stroke="#C9C9CF" strokeWidth="1.5" />
-                  <path d="M0 -20 L14 -15.5 L0 -11 Z" fill="#E7E7EA" />
+                  <circle r="4" fill="rgb(var(--bg))" stroke="rgb(var(--fg) / 0.75)" strokeWidth="1.5" />
+                  <line x1="0" y1="-4" x2="0" y2="-20" stroke="rgb(var(--fg) / 0.75)" strokeWidth="1.5" />
+                  <path d="M0 -20 L14 -15.5 L0 -11 Z" fill="rgb(var(--fg) / 0.85)" />
                 </g>
               ) : (
                 <g key={i} transform={`translate(${p.x} ${p.y})`}>

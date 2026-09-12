@@ -169,7 +169,7 @@ html { scroll-behavior: smooth; }
 /* Hairline editorial */
 .rule {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(244, 244, 245, 0.16) 12%, rgba(244, 244, 245, 0.16) 88%, transparent);
+  background: linear-gradient(90deg, transparent, rgb(var(--fg) / 0.18) 12%, rgb(var(--fg) / 0.18) 88%, transparent);
 }
 
 /* Heading con gradiente frío (hielo → blanco) */
@@ -232,38 +232,41 @@ html { scroll-behavior: smooth; }
 /* ===== Los tres momentos del cielo ===== */
 :root,
 html[data-time='noche'] {
+  --sky: radial-gradient(ellipse 120% 80% at 50% 35%, #0b0b0e 0%, #060607 60%);
   --bg: 6 6 7;
   --surface: 14 14 16;
   --card: 18 18 20;
   --line: 34 34 38;
   --fg: 244 244 245;
   --muted: 142 142 150;
-  --deep: #050506;
+  --deep: #050506f0;
   --h1: #ffffff; --h2: #e7e7ea; --h3: #9a9aa3;
   --guia-glow: radial-gradient(circle, rgba(244, 244, 245, 0.09), transparent 70%);
   color-scheme: dark;
 }
 html[data-time='tarde'] {
-  --bg: 16 12 10;
+  --sky: linear-gradient(180deg, #1a0f1e 0%, #542020 42%, #b34d1e 72%, #f2913a 100%);
+  --bg: 26 16 12;
   --surface: 25 19 15;
   --card: 31 24 19;
   --line: 54 43 36;
   --fg: 247 241 234;
   --muted: 163 148 136;
-  --deep: #0d0a08;
+  --deep: #140a06e0;
   --h1: #fff6ec; --h2: #ffd9ae; --h3: #b08860;
   --guia-glow: radial-gradient(circle, rgba(255, 174, 92, 0.16), transparent 70%);
   color-scheme: dark;
 }
 html[data-time='dia'] {
-  --bg: 242 242 244;
-  --surface: 250 250 251;
+  --sky: linear-gradient(180deg, #5fa8e8 0%, #9ccbf2 52%, #e3f1fc 100%);
+  --bg: 227 240 252;
+  --surface: 240 248 255;
   --card: 255 255 255;
-  --line: 214 214 220;
-  --fg: 19 19 22;
-  --muted: 104 104 112;
-  --deep: #e7e7eb;
-  --h1: #131316; --h2: #3a3a40; --h3: #8e8e96;
+  --line: 172 200 228;
+  --fg: 14 34 56;
+  --muted: 62 95 130;
+  --deep: #eef5fce6;
+  --h1: #0e2238; --h2: #1c4468; --h3: #3f6f9e;
   --guia-glow: radial-gradient(circle, rgba(19, 19, 22, 0.07), transparent 70%);
   color-scheme: light;
 }
@@ -271,8 +274,9 @@ html[data-time='dia'] {
 /* De día no hay estrellas: el cielo nocturno se apaga */
 html[data-time='dia'] .cielo { opacity: 0 !important; pointer-events: none; }
 
-/* El guía de día: silueta oscura sobre la nieve */
-html[data-time='dia'] .guia-img { filter: invert(1); opacity: 0.42 !important; }
+/* El guía por cielo */
+html[data-time='dia'] .guia-img { filter: none; opacity: 0.88 !important; }
+html[data-time='tarde'] .guia-img { opacity: 0.72 !important; }
 
 /* Un par de montañas por cielo: solo el activo es visible */
 .m-tarde, .m-dia { opacity: 0; }
@@ -309,3 +313,18 @@ html[data-time='dia'] .fx-sol {
 :root, html[data-time='noche'] { --ojo: #7CC7FF; }
 html[data-time='tarde'] { --ojo: #FFAE5C; }
 html[data-time='dia'] { --ojo: #7CC7FF; }
+
+/* ===== Escena del cielo por modo ===== */
+.sky-el { opacity: 0; transition: opacity 0.9s ease; }
+html[data-time='tarde'] .el-tarde { opacity: 1; }
+html[data-time='dia'] .el-dia { opacity: 1; }
+
+@keyframes sol-late { 0%, 100% { transform: scale(1); opacity: 0.95; } 50% { transform: scale(1.06); opacity: 1; } }
+@keyframes rayos-gira { to { transform: rotate(360deg); } }
+@keyframes nube-a { from { transform: translateX(-30%); } to { transform: translateX(130vw); } }
+@keyframes nube-b { from { transform: translateX(-40%); } to { transform: translateX(135vw); } }
+@keyframes bruma-t { from { transform: translateX(-25%); } to { transform: translateX(125vw); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .sky-el * { animation: none !important; }
+}

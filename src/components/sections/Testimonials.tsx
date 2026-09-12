@@ -28,7 +28,7 @@ export default function Testimonials({ items }: { items: Testimonial[] }) {
   return (
     <section
       id="opiniones"
-      className="relative scroll-mt-24 overflow-hidden border-y border-line/60 py-24 md:py-36"
+      className="relative scroll-mt-24 overflow-hidden border-y border-line/60 py-24 backdrop-blur-md md:py-36"
       style={{ background: '#030304' }}
     >
       {/* Retícula de puntos de fondo */}
