@@ -250,37 +250,6 @@ export default function Contact({ data }: { data: ContactContent }) {
         </div>
       </div>
 
-      {/* El destino a la vista: horizonte de montañas fundido con la noche */}
-      <div aria-hidden="true" className="pointer-events-none relative left-1/2 mt-20 h-44 w-screen -translate-x-1/2 md:mt-28 md:h-72">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/deco/montanas.jpg"
-          alt=""
-          className="hidden h-full w-full object-cover object-center grayscale contrast-110 sm:block"
-          style={{
-            maskImage: 'linear-gradient(180deg, transparent 0%, black 45%)',
-            WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, black 45%)',
-          }}
-        />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/deco/montanas-movil.jpg"
-          alt=""
-          className="h-full w-full object-cover object-top grayscale contrast-110 sm:hidden"
-          style={{
-            maskImage: 'linear-gradient(180deg, transparent 0%, black 45%)',
-            WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, black 45%)',
-          }}
-        />
-        {/* Velo azul para casar la imagen con la paleta del sitio */}
-        <div className="absolute inset-0 bg-gradient-to-b from-bg via-bg/30 to-bg/60 mix-blend-multiply" />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(11,11,13,0.92) 0%, rgba(11,11,13,0) 55%, rgba(11,11,13,0.6) 100%)' }} />
-        {/* La estrella del destino sobre el pico */}
-        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 26 26" className="twinkle absolute left-1/2 top-[18%] -translate-x-1/2 drop-shadow-[0_0_10px_rgba(124,199,255,0.9)]">
-          <path d="M13 0 L15 11 L26 13 L15 15 L13 26 L11 15 L0 13 L11 11 Z" fill="#DCEFFF" />
-        </svg>
-      </div>
-
     </section>
   );
 }
