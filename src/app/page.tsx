@@ -1,27 +1,44 @@
 import GridBackground from '@/components/ui/GridBackground';
-import CustomCursor from '@/components/ui/CustomCursor';
+
 import ScrollProgress from '@/components/ui/ScrollProgress';
 import TabGuardian from '@/components/ui/TabGuardian';
-import CieloFX from '@/components/ui/CieloFX';
-import RutaRail from '@/components/ui/RutaRail';
+
+
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppFloat from '@/components/ui/WhatsAppFloat';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
-import Process from '@/components/sections/Process';
+
 import Services from '@/components/sections/Services';
-import Respaldo from '@/components/sections/Respaldo';
-import ConsoleSignature from '@/components/ui/ConsoleSignature';
+
+
 import SocialRail from '@/components/layout/SocialRail';
-import CaseStudies from '@/components/sections/CaseStudies';
-import ClientLogos from '@/components/sections/ClientLogos';
-import FAQ from '@/components/sections/FAQ';
+
+
+
 import MarqueeCasos from '@/components/sections/MarqueeCasos';
-import Contact from '@/components/sections/Contact';
-import Testimonials from '@/components/sections/Testimonials';
+
+
 import { getContent } from '@/lib/content';
 import { LangProvider } from '@/components/ui/LanguageContext';
+import dynamic from 'next/dynamic';
+
+// Efectos decorativos: sin SSR y cargados después, no retrasan el contenido.
+const CustomCursor = dynamic(() => import('@/components/ui/CustomCursor'), { ssr: false });
+const CieloFX = dynamic(() => import('@/components/ui/CieloFX'), { ssr: false });
+const RutaRail = dynamic(() => import('@/components/ui/RutaRail'), { ssr: false });
+const ConsoleSignature = dynamic(() => import('@/components/ui/ConsoleSignature'), { ssr: false });
+
+// Secciones bajo el pliegue: se cargan cuando el visitante se acerca,
+// así la primera pantalla arranca con el mínimo JavaScript.
+const Process = dynamic(() => import('@/components/sections/Process'));
+const Respaldo = dynamic(() => import('@/components/sections/Respaldo'));
+const CaseStudies = dynamic(() => import('@/components/sections/CaseStudies'));
+const ClientLogos = dynamic(() => import('@/components/sections/ClientLogos'));
+const Testimonials = dynamic(() => import('@/components/sections/Testimonials'));
+const FAQ = dynamic(() => import('@/components/sections/FAQ'));
+const Contact = dynamic(() => import('@/components/sections/Contact'));
 
 // ISR: el contenido editado desde /admin se refleja en máximo 60 segundos.
 export const revalidate = 60;

@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowUpRight, Mail } from 'lucide-react';
-import { siWhatsapp } from 'simple-icons';
+import { WHATSAPP_PATH } from '@/lib/icons';
 import { motion, useReducedMotion } from 'framer-motion';
 import type { ContactContent } from '@/lib/types';
 import { Cap } from '@/components/ui/Expedicion';
@@ -55,7 +55,7 @@ export default function Contact({ data }: { data: ContactContent }) {
                 className="group inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-8 py-3.5 text-[15px] font-semibold text-[#04120a] transition-transform duration-300 hover:-translate-y-0.5"
               >
                 <svg viewBox="0 0 24 24" role="img" aria-hidden="true" className="h-5 w-5 fill-current">
-                  <path d={siWhatsapp.path} />
+                  <path d={WHATSAPP_PATH} />
                 </svg>
                 {en ? 'Chat on WhatsApp' : 'Escríbenos por WhatsApp'}
               </a>

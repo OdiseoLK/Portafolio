@@ -19,6 +19,14 @@ export default function CieloFX() {
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // No competir con la carga inicial: arrancar cuando el navegador esté libre.
+    let cancel: (() => void) | undefined;
+    const ric = (window as unknown as { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
+    const start = () => { cancel = init(); };
+    const handle = ric ? ric(start, { timeout: 2500 }) : window.setTimeout(start, 1200);
+    return () => { if (!ric) window.clearTimeout(handle); cancel?.(); };
+
+    function init() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -130,6 +138,7 @@ export default function CieloFX() {
       document.removeEventListener('visibilitychange', onVis);
       mo.disconnect();
     };
+    }
   }, []);
 
   return (

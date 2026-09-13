@@ -1,6 +1,6 @@
 'use client';
 
-import { siWhatsapp } from 'simple-icons';
+import { WHATSAPP_PATH } from '@/lib/icons';
 
 /**
  * Botón flotante de WhatsApp — vidrio esmerilado monocromático que
@@ -24,7 +24,7 @@ export default function WhatsAppFloat({ url }: { url: string }) {
         aria-hidden="true"
         className="h-8 w-8 shrink-0 fill-fg/85 transition-colors duration-300 group-hover:fill-[#25D366]"
       >
-        <path d={siWhatsapp.path} />
+        <path d={WHATSAPP_PATH} />
       </svg>
       <span className="max-w-0 overflow-hidden whitespace-nowrap text-base font-medium text-fg opacity-0 transition-all duration-500 ease-out group-hover:ml-2.5 group-hover:max-w-[130px] group-hover:opacity-100">
         Escríbenos

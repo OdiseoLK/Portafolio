@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { ArrowUp } from 'lucide-react';
 import { buildSocialLinks } from '@/components/sections/Social';
@@ -22,6 +23,18 @@ const QUICK_LINKS = [
  * Las montañas emergen del fondo (máscara superior), el contenido vive sobre
  * ellas con un velo de legibilidad, y la estrella del destino corona el pico.
  */
+function useCielo() {
+  const [cielo, setCielo] = useState<string>('noche');
+  useEffect(() => {
+    const read = () => setCielo(document.documentElement.dataset.time || 'noche');
+    read();
+    const mo = new MutationObserver(read);
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-time'] });
+    return () => mo.disconnect();
+  }, []);
+  return cielo;
+}
+
 export default function Footer({
   socials,
   footer,
@@ -33,6 +46,7 @@ export default function Footer({
 }) {
   const { lang } = useLang();
   const en = lang === 'en';
+  const cielo = useCielo();
   const links = en ? [{ label: 'Home', href: '#inicio' }, ...EN.footer.links] : QUICK_LINKS;
   const socialLinks = buildSocialLinks(socials);
 
@@ -50,7 +64,9 @@ export default function Footer({
           { modo: 'm-noche', d: '/deco/montanas.webp', m: '/deco/montanas-movil.webp', extra: 'grayscale contrast-110' },
           { modo: 'm-tarde', d: '/deco/montanas-tarde.webp', m: '/deco/montanas-tarde-movil.webp', extra: '' },
           { modo: 'm-dia', d: '/deco/montanas-dia.webp', m: '/deco/montanas-dia-movil.webp', extra: '' },
-        ].map((s) => (
+        ]
+          .filter((s) => s.modo === `m-${cielo}`)
+          .map((s) => (
           <div key={s.modo} className={`${s.modo} absolute inset-0 transition-opacity duration-700`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
