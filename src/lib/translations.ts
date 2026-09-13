@@ -11,6 +11,7 @@ export const EN = {
       { label: 'The studio', href: '#estudio' },
       { label: 'Services', href: '#servicios' },
       { label: 'Work', href: '#casos' },
+      { label: 'FAQ', href: '#faq' },
       { label: 'Contact', href: '#contacto' },
     ],
   },
@@ -133,6 +134,18 @@ export const EN = {
       },
     } as Record<string, { cat: string; d: string; tags: string[] }>,
   },
+  faq: {
+    eyebrow: 'Frequent questions',
+    title: 'Everything clear before we start',
+    items: [
+      { q: 'How much does a website cost?', a: 'Each project is quoted to fit. We define scope with you and give you a clear price before starting — no surprises. Write to us on WhatsApp and we\'ll quote it.' },
+      { q: 'How long does it take?', a: 'It depends on the type of site. A one-page site takes a couple of weeks; a store with orders or a custom panel, a bit more. We set a real timeline from day one.' },
+      { q: 'Do I have to know anything technical?', a: 'Not at all. We hand it over ready and, when it applies, with an admin panel so you update prices and content on your own. And the guide stays after launch.' },
+      { q: 'Do you include domain and hosting?', a: 'Yes, we help you set up your own domain (.com, .mx) and hosting. Your site, your name, your control.' },
+      { q: 'Can you redesign my current site?', a: 'Of course. We take your existing site and lift it to its destination — like we did with Puerta Grande. You keep what works and gain what was missing.' },
+      { q: 'How do I start?', a: 'One message on WhatsApp. We listen to your idea, quote it and start the expedition. No commitment.' },
+    ],
+  },
   testimonials: {
     title: 'What clients say',
     eyebrow: 'Signals from the field',
@@ -146,6 +159,7 @@ export const EN = {
       },
     } as Record<string, { role: string; quote: string }>,
   },
+  emphasis: { services: 'Services', faq: 'FAQ' },
   contact: {
     title: 'Where do you want to go?',
     lede: "Tell us your business's starting point and we'll tell you how we get there.",

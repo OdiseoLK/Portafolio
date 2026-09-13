@@ -28,7 +28,7 @@ export default function Testimonials({ items }: { items: Testimonial[] }) {
   return (
     <section
       id="opiniones"
-      className="relative scroll-mt-24 overflow-hidden border-y border-line/60 py-24 backdrop-blur-md md:py-36"
+      className="relative scroll-mt-24 overflow-hidden border-y border-line/60 py-20 backdrop-blur-md md:py-28"
       style={{ background: 'var(--deep)' }}
     >
       {/* Retícula de puntos de fondo */}
@@ -78,64 +78,47 @@ export default function Testimonials({ items }: { items: Testimonial[] }) {
 
         <DotsDivider />
 
-        <div className="mt-10 flex flex-col gap-16 md:mt-14 md:gap-24">
+        <div className="mt-10 grid gap-4 md:mt-14 md:grid-cols-2 xl:grid-cols-3">
           {list.map((t, i) => {
             const tr = en ? EN.testimonials.byId[t.id] : null;
             const num = String(i + 1).padStart(2, '0');
             return (
               <motion.figure
                 key={t.id}
-                initial={reduced ? false : { opacity: 0, y: 40 }}
+                initial={reduced ? false : { opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '80px' }}
-                transition={{ duration: 0.9, ease: EASE, delay: i * 0.1 }}
+                viewport={{ once: true, margin: '40px' }}
+                transition={{ duration: 0.6, ease: EASE, delay: (i % 3) * 0.08 }}
                 data-scramble-parent
-                className="group relative mx-auto w-full max-w-4xl px-6 py-10 md:px-14 md:py-14"
+                className="group relative flex flex-col rounded-2xl border border-line bg-card/80 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-fg/40"
               >
-                {/* Marco de visor: esquinas en L */}
-                <span aria-hidden="true" className="absolute left-0 top-0 h-6 w-6 border-l border-t border-fg/35 transition-colors duration-500 group-hover:border-fg/80" />
-                <span aria-hidden="true" className="absolute right-0 top-0 h-6 w-6 border-r border-t border-fg/35 transition-colors duration-500 group-hover:border-fg/80" />
-                <span aria-hidden="true" className="absolute bottom-0 left-0 h-6 w-6 border-b border-l border-fg/35 transition-colors duration-500 group-hover:border-fg/80" />
-                <span aria-hidden="true" className="absolute bottom-0 right-0 h-6 w-6 border-b border-r border-fg/35 transition-colors duration-500 group-hover:border-fg/80" />
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="text-[10px] uppercase tracking-[0.25em]" style={{ color: 'var(--marca)' }}>
+                    <Scramble text={`${en ? EN.testimonials.signal : 'Señal'} ${num}`} trigger="hover" speed={26} />
+                  </span>
+                  <span aria-hidden="true" className="text-3xl italic leading-none text-fg/15">“</span>
+                </div>
 
-                {/* Etiquetas del marco */}
-                <span aria-hidden="true" className="absolute -top-2.5 left-10 bg-[color:var(--deep)] px-3 font-mono text-[10px] uppercase tracking-[0.3em] text-fg/60">
-                  <Scramble text={`${en ? EN.testimonials.signal : 'Señal'} ${num}`} trigger="hover" speed={26} />
-                </span>
-                <span aria-hidden="true" className="absolute -bottom-2.5 right-10 bg-[color:var(--deep)] px-3 font-serif text-xl italic leading-none text-muted">
-                  *
-                </span>
-
-                {/* Glow interior sutil */}
-                <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 40%, rgb(var(--fg) / 0.05), transparent 70%)' }} />
-
-                <span aria-hidden="true" className="absolute -top-6 left-4 font-serif text-[5.5rem] italic leading-none text-fg/20 md:-left-4 md:text-[7rem]">
-                  “
-                </span>
-
-                <blockquote className="relative font-serif text-[clamp(1.2rem,2.6vw,1.75rem)] font-light leading-[1.6] text-fg/95">
+                <blockquote className="flex-1 text-[15px] font-light leading-relaxed text-fg/90">
                   {tr?.quote ?? t.quote}
                 </blockquote>
 
-                <figcaption className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2">
-                  <span className="h-px w-12 bg-gradient-to-r from-fg/60 to-fg/20" />
-                  <div>
-                    <p className="font-display text-sm font-bold uppercase tracking-wide text-fg">{t.name}</p>
+                <figcaption className="mt-5 flex items-center gap-3 border-t border-line pt-4">
+                  <span className="h-px w-8 shrink-0" style={{ background: 'var(--marca)' }} />
+                  <div className="min-w-0">
+                    <p className="truncate font-display text-[13px] font-bold uppercase tracking-wide text-fg">{t.name}</p>
                     {t.role && (
-                      <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                      <p className="mt-0.5 truncate text-[10px] uppercase tracking-[0.2em] text-muted">
                         {tr?.role ?? t.role}
                       </p>
                     )}
                   </div>
-                  <span aria-hidden="true" className="ml-auto hidden font-mono text-[10px] tracking-[0.3em] text-fg/25 sm:block">
-                    {num} / {String(list.length).padStart(2, '0')}
-                  </span>
                 </figcaption>
               </motion.figure>
             );
           })}
         </div>
-      </div>
+            </div>
     </section>
   );
 }

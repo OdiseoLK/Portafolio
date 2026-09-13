@@ -167,12 +167,15 @@ export default function Footer({
                 {en ? EN.footer.rights : 'Fin de la bitácora · Todos los derechos reservados.'} © {new Date().getFullYear()}
               </small>
               <div className="flex items-center gap-5">
-                <Link href="/privacidad" className="text-xs text-fg/45 transition-colors duration-300 hover:text-fg">
+                <a href="https://www.webzi.mx/tos/privacy" target="_blank" rel="noopener noreferrer" className="text-xs text-fg/45 transition-colors duration-300 hover:text-fg">
                   {en ? 'Privacy' : 'Privacidad'}
-                </Link>
-                <Link href="/terminos" className="text-xs text-fg/45 transition-colors duration-300 hover:text-fg">
-                  {en ? 'Terms' : 'Términos'}
-                </Link>
+                </a>
+                <a href="https://www.webzi.mx/tos/cookies" target="_blank" rel="noopener noreferrer" className="text-xs text-fg/45 transition-colors duration-300 hover:text-fg">
+                  Cookies
+                </a>
+                <a href="https://www.webzi.mx/tos" target="_blank" rel="noopener noreferrer" className="text-xs text-fg/45 transition-colors duration-300 hover:text-fg">
+                  Legal
+                </a>
               </div>
             </div>
           </div>

@@ -15,6 +15,7 @@ const LINKS = [
   { label: 'El estudio', href: '#estudio' },
   { label: 'Servicios', href: '#servicios' },
   { label: 'Casos', href: '#casos' },
+  { label: 'FAQ', href: '#faq' },
   { label: 'Contacto', href: '#contacto' },
 ];
 

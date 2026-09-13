@@ -14,6 +14,8 @@ import Services from '@/components/sections/Services';
 import ConsoleSignature from '@/components/ui/ConsoleSignature';
 import SocialRail from '@/components/layout/SocialRail';
 import CaseStudies from '@/components/sections/CaseStudies';
+import ClientLogos from '@/components/sections/ClientLogos';
+import FAQ from '@/components/sections/FAQ';
 import MarqueeCasos from '@/components/sections/MarqueeCasos';
 import Contact from '@/components/sections/Contact';
 import Testimonials from '@/components/sections/Testimonials';
@@ -67,7 +69,9 @@ export default async function Home() {
         <Services data={content.services} />
         <Process data={content.process} />
         <CaseStudies projects={content.projects} />
+        <ClientLogos />
         <Testimonials items={content.testimonials} />
+        <FAQ />
         <Contact data={content.contact} />
       </main>
 

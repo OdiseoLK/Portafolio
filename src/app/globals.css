@@ -231,6 +231,7 @@ html { scroll-behavior: smooth; }
 /* ===== Los tres momentos del cielo ===== */
 :root,
 html[data-time='noche'] {
+  --marca: #7CC7FF;
   --sky: radial-gradient(ellipse 120% 80% at 50% 35%, #0b0b0e 0%, #060607 60%);
   --bg: 6 6 7;
   --surface: 14 14 16;
@@ -244,6 +245,7 @@ html[data-time='noche'] {
   color-scheme: dark;
 }
 html[data-time='tarde'] {
+  --marca: #FF9A55;
   --sky: linear-gradient(180deg, #1a0f1e 0%, #542020 42%, #b34d1e 72%, #f2913a 100%);
   --bg: 26 16 12;
   --surface: 25 19 15;
@@ -257,6 +259,7 @@ html[data-time='tarde'] {
   color-scheme: dark;
 }
 html[data-time='dia'] {
+  --marca: #1D6FD0;
   --sky: linear-gradient(180deg, #5fa8e8 0%, #9ccbf2 52%, #e3f1fc 100%);
   --bg: 227 240 252;
   --surface: 240 248 255;
@@ -336,3 +339,18 @@ html[data-time='dia'] .el-dia { opacity: 1; }
 }
 .liquid-glass { animation: wa-pulse 7s ease-out infinite; }
 @media (prefers-reduced-motion: reduce) { .liquid-glass { animation: none; } }
+
+/* Texto remarcado con el color de marca del cielo activo */
+.marca { color: var(--marca); font-weight: 600; }
+
+/* Cinta de logos de clientes */
+@keyframes logos-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logos-track { animation: logos-scroll 40s linear infinite; }
+.logos-mask {
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+/* Logos a un solo tono según el cielo: blancos de noche, oscuros de día */
+html[data-time='noche'] .logo-mono, html[data-time='tarde'] .logo-mono { filter: brightness(0) invert(1); }
+html[data-time='dia'] .logo-mono { filter: brightness(0) invert(0.12); }
+@media (prefers-reduced-motion: reduce) { .logos-track { animation: none; } }
