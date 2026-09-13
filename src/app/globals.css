@@ -177,7 +177,7 @@ html { scroll-behavior: smooth; }
 
 /* Heading con gradiente frío (hielo → blanco) */
 .hero-heading {
-  background: linear-gradient(180deg, var(--h1) 0%, var(--h2) 55%, var(--h3) 100%);
+  background: linear-gradient(180deg, var(--h1) 0%, var(--h1) 45%, var(--h2) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

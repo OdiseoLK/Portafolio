@@ -284,7 +284,7 @@ export default function Hero({ data, whatsappUrl }: { data: HeroContent; whatsap
             <motion.span
               {...fadeUp(0.28)}
               aria-hidden="true"
-              className="hook-line hero-heading block font-display text-[clamp(2rem,5.5vw,5rem)] font-bold uppercase leading-[0.95] tracking-[-0.02em]"
+              className="hook-line block font-display text-[clamp(2rem,5.5vw,5rem)] font-bold uppercase leading-[0.95] tracking-[-0.02em] text-fg"
             >
               {en ? EN.hero.hookB : 'que hacen crecer'}
             </motion.span>
