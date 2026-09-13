@@ -27,25 +27,25 @@ type Tile = {
 const TILES: Tile[] = [
   { name: 'Decora', giro: 'Interiorismo · Showroom', tag: 'En línea',
     ink: '#D8B98A', base: '#171310', panel: '#2A2118', layout: 'showroom',
-    img: '/casos/decora-carrusel.jpg', url: 'https://decorashowroom.com' },
+    img: '/casos/decora-carrusel.webp', url: 'https://decorashowroom.com' },
   { name: 'Fundación Zurita', giro: 'Salud visual · Institucional', tag: 'En línea',
     ink: '#5EEAD4', base: '#0A1B1E', panel: '#123036', layout: 'institucional',
-    img: '/casos/zurita-carrusel.jpg', url: 'https://fundacionzurita.com.mx' },
+    img: '/casos/zurita-carrusel.webp', url: 'https://fundacionzurita.com.mx' },
   { name: 'Café Álvarez', giro: 'Cafetería · Pedidos en línea', tag: 'En línea',
     ink: '#C9A074', base: '#141110', panel: '#241C15', layout: 'menu',
-    img: '/casos/cafe-alvarez-carrusel.jpg', url: 'https://alvarez.cafe' },
+    img: '/casos/cafe-alvarez-carrusel.webp', url: 'https://alvarez.cafe' },
   { name: 'Puerta Grande', giro: 'Hospital · Urgencias 24h', tag: 'En línea',
     ink: '#7CC7FF', base: '#0B1526', panel: '#142642', layout: 'hospital',
-    img: '/casos/puerta-grande-carrusel.jpg', url: 'https://hospitalpuertagrande.com.mx' },
+    img: '/casos/puerta-grande-carrusel.webp', url: 'https://hospitalpuertagrande.com.mx' },
   { name: 'A&F Abogados', giro: 'Despacho jurídico', tag: 'En línea',
     ink: '#D4B26A', base: '#0B1428', panel: '#152244', layout: 'institucional',
-    img: '/casos/ayf-carrusel.jpg', url: 'https://ayfabogados.com.mx' },
+    img: '/casos/ayf-carrusel.webp', url: 'https://ayfabogados.com.mx' },
   { name: 'Aborigen', giro: 'Cocina de brasa', tag: 'En línea',
     ink: '#E07B39', base: '#150D08', panel: '#2A1810', layout: 'menu',
-    img: '/casos/aborigen-carrusel.jpg', url: 'https://aborigenorizaba.com' },
+    img: '/casos/aborigen-carrusel.webp', url: 'https://aborigenorizaba.com' },
   { name: 'Cielo Canela', giro: 'Bistró · Boulangerie', tag: 'En línea',
     ink: '#D9A05B', base: '#1A1210', panel: '#2E2118', layout: 'showroom',
-    img: '/casos/cielo-canela-carrusel.jpg', url: 'https://cielocanela.com' },
+    img: '/casos/cielo-canela-carrusel.webp', url: 'https://cielocanela.com' },
 ];
 
 /** Mini-mockup del sitio: barra de navegador + composición abstracta por giro. */
@@ -205,7 +205,7 @@ export default function MarqueeCasos() {
             <div className="aspect-[16/9]">
               {t.img ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={t.img} alt={`Sitio web de ${t.name}`} className="h-full w-full object-cover object-top" draggable={false} />
+                <img src={t.img} alt={`Sitio web de ${t.name}`} loading="lazy" decoding="async" className="h-full w-full object-cover object-top" draggable={false} />
               ) : (
                 <SiteMock t={t} />
               )}

@@ -68,9 +68,6 @@ export default function Contact({ data }: { data: ContactContent }) {
               </a>
             </div>
 
-            <p className="mt-6 text-xs text-muted">
-              {en ? 'We usually reply within 24–48 h.' : 'Normalmente respondemos en 24–48 h.'}
-            </p>
           </div>
         </motion.div>
       </div>

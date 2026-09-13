@@ -47,16 +47,16 @@ export default function Footer({
       <div aria-hidden="true" className="absolute inset-0">
         {/* Un par de fotos por cielo (desktop panorámica / móvil vertical), con fundido */}
         {[
-          { modo: 'm-noche', d: '/deco/montanas.jpg', m: '/deco/montanas-movil.jpg', extra: 'grayscale contrast-110' },
-          { modo: 'm-tarde', d: '/deco/montanas-tarde.jpg', m: '/deco/montanas-tarde-movil.jpg', extra: '' },
-          { modo: 'm-dia', d: '/deco/montanas-dia.jpg', m: '/deco/montanas-dia-movil.jpg', extra: '' },
+          { modo: 'm-noche', d: '/deco/montanas.webp', m: '/deco/montanas-movil.webp', extra: 'grayscale contrast-110' },
+          { modo: 'm-tarde', d: '/deco/montanas-tarde.webp', m: '/deco/montanas-tarde-movil.webp', extra: '' },
+          { modo: 'm-dia', d: '/deco/montanas-dia.webp', m: '/deco/montanas-dia-movil.webp', extra: '' },
         ].map((s) => (
           <div key={s.modo} className={`${s.modo} absolute inset-0 transition-opacity duration-700`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={s.d}
               alt=""
-              className={`hidden h-full w-full object-cover object-[center_28%] sm:block ${s.extra}`}
+              loading="lazy" decoding="async" className={`hidden h-full w-full object-cover object-[center_28%] sm:block ${s.extra}`}
               style={{
                 maskImage: 'linear-gradient(180deg, transparent 0%, black 38%)',
                 WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, black 38%)',
@@ -66,7 +66,7 @@ export default function Footer({
             <img
               src={s.m}
               alt=""
-              className={`h-full w-full object-cover object-top sm:hidden ${s.extra}`}
+              loading="lazy" decoding="async" className={`h-full w-full object-cover object-top sm:hidden ${s.extra}`}
               style={{
                 maskImage: 'linear-gradient(180deg, transparent 0%, black 38%)',
                 WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, black 38%)',
@@ -100,7 +100,7 @@ export default function Footer({
         <div className="flex flex-col items-center gap-8 text-center">
           <div className="flex items-center gap-3">
             <Image
-              src="/logo-head.png"
+              src="/logo-head.webp"
               alt="Logo de ODISEO: un husky con lentes"
               width={44}
               height={44}

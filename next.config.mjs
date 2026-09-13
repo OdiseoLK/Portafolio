@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  compress: true,
+  images: { formats: ['image/avif', 'image/webp'] },
   images: {
     remotePatterns: [{ protocol: 'https', hostname: '**.supabase.co' }],
   },

@@ -187,11 +187,12 @@ export default function Hero({ data }: { data: HeroContent }) {
             style={{ background: 'var(--guia-glow)' }}
           />
           <Image
-            src="/logo-mark.png"
+            src="/logo-mark.webp"
             alt=""
             width={1060}
             height={980}
             priority
+            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 60vw, 1100px"
             className="guia-img relative h-auto w-full opacity-[0.20] sm:opacity-[0.26] lg:opacity-[0.34]"
           />
           {/* Los ojos del guía: reflejos del lente que siguen al cursor (se apagan al parpadear) */}

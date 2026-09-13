@@ -48,6 +48,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <head>
+        <link rel="preload" as="image" href="/logo-mark.webp" type="image/webp" />
+      </head>
       <body className="grain bg-bg font-sans text-fg antialiased">{children}</body>
     </html>
   );

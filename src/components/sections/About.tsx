@@ -71,7 +71,7 @@ export default function About({ data }: { data: AboutContent }) {
         <Scramble text={en ? EN.about.ornament : 'bitácora · exp. 001–007'} />
       </motion.div>
       <motion.div aria-hidden="true" {...(reduced ? {} : fadeSide(0.15, 80))} className="pointer-events-none absolute right-[3%] top-[8%] hidden md:block">
-        <Image src="/logo-head.png" alt="" width={110} height={110} className="rounded-2xl border border-line opacity-60" />
+        <Image src="/logo-head.webp" alt="" width={110} height={110} className="rounded-2xl border border-line opacity-60" />
       </motion.div>
       <motion.div aria-hidden="true" {...(reduced ? {} : fadeSide(0.3, 80))} className="pointer-events-none absolute bottom-[12%] right-[7%] hidden md:block">
         <div className="h-16 w-16 rotate-45 border border-fg/10" />

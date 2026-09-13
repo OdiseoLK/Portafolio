@@ -71,7 +71,7 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
           className="flex items-center gap-2.5 font-display text-sm font-medium tracking-[0.28em] text-fg transition-colors hover:text-white"
         >
           <Image
-            src="/logo-mark.png"
+            src="/logo-mark.webp"
             alt=""
             width={30}
             height={30}

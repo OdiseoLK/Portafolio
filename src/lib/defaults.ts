@@ -103,7 +103,7 @@ export const DEFAULT_CONTENT: SiteContent = {
       description:
         'Showroom de interiorismo en Orizaba. Sitio one-page con galería de seis proyectos reales (Mom Fit Studio, Hotel Calle 8, hospitales y residenciales), hero con fotografía propia y videos del showroom. En producción y en iteración continua con el cliente.',
       tags: ['Interiorismo · Showroom', 'One-page', 'Galería real', 'Video', 'Hostinger'],
-      image_url: '/casos/decora-caso.jpg',
+      image_url: '/casos/decora-caso.webp',
       project_url: 'https://decorashowroom.com',
       repo_url: null,
       published: true,
@@ -116,7 +116,7 @@ export const DEFAULT_CONTENT: SiteContent = {
       description:
         'Fundación oftalmológica con presencia en el centro y sur de México. Sitio institucional con carrusel de promociones, video y directorio de sedes; en mantenimiento activo con rondas de cambios directas con el cliente.',
       tags: ['Salud visual · Institucional', 'One-page', 'Promociones', 'Mantenimiento'],
-      image_url: '/casos/zurita-caso.jpg',
+      image_url: '/casos/zurita-caso.webp',
       project_url: 'https://fundacionzurita.com.mx',
       repo_url: null,
       published: true,
@@ -129,7 +129,7 @@ export const DEFAULT_CONTENT: SiteContent = {
       description:
         'Cafetería con cuatro sucursales en Orizaba. Sitio con menú real, carrito y sistema de pedidos por WhatsApp: selección de sucursal, ticket con folio único y panel para actualizar precios. Entregado con capacitación para que el equipo lo opere.',
       tags: ['Cafetería · Pedidos en línea', 'Carrito', 'WhatsApp Business', 'Panel de precios'],
-      image_url: '/casos/cafe-alvarez-caso.jpg',
+      image_url: '/casos/cafe-alvarez-caso.webp',
       project_url: 'https://alvarez.cafe',
       repo_url: null,
       published: true,
@@ -142,7 +142,7 @@ export const DEFAULT_CONTENT: SiteContent = {
       description:
         'Hospital de la Fundación Hernández Zurita en Orizaba, con urgencias 24 horas. Su nueva cara digital: servicios, quirófano, habitaciones y membresías T-Médica, con fotografía real de sus áreas y agenda por WhatsApp.',
       tags: ['Hospital · Urgencias 24h', 'Servicios', 'T-Médica'],
-      image_url: '/casos/puerta-grande-caso.jpg',
+      image_url: '/casos/puerta-grande-caso.webp',
       project_url: 'https://hospitalpuertagrande.com.mx',
       repo_url: null,
       published: true,
@@ -155,7 +155,7 @@ export const DEFAULT_CONTENT: SiteContent = {
       description:
         'Despacho jurídico en el centro de Orizaba, a cargo de la Lic. Alba L. Montiel y el Lic. Félix Vargas. Litigio y asesoría civil, penal, laboral, agraria, mercantil y de amparo, más servicios previsionales. Sitio sobrio con consulta directa por WhatsApp.',
       tags: ['Despacho jurídico', 'Áreas de práctica', 'Previsional', 'WhatsApp'],
-      image_url: '/casos/ayf-caso.jpg',
+      image_url: '/casos/ayf-caso.webp',
       project_url: 'https://ayfabogados.com.mx',
       repo_url: null,
       published: true,
@@ -168,7 +168,7 @@ export const DEFAULT_CONTENT: SiteContent = {
       description:
         'Restaurante de parrilla y ahumados frente al centro de Orizaba. Sitio con fotografía nocturna del local, galería de platillos y carta digital bilingüe (español e inglés) para el turismo del Pueblo Mágico.',
       tags: ['Cocina de brasa', 'Carta bilingüe', 'Galería', 'Turismo'],
-      image_url: '/casos/aborigen-caso.jpg',
+      image_url: '/casos/aborigen-caso.webp',
       project_url: 'https://aborigenorizaba.com',
       repo_url: null,
       published: true,
@@ -181,7 +181,7 @@ export const DEFAULT_CONTENT: SiteContent = {
       description:
         'Bistró y boulangerie en Orizaba: repostería, panadería artesanal y cocina de bistró. Sitio cálido con menú y pedidos directos, pensado para antojar desde el primer scroll.',
       tags: ['Bistró · Boulangerie', 'Menú digital', 'Pedidos'],
-      image_url: '/casos/cielo-canela-caso.jpg',
+      image_url: '/casos/cielo-canela-caso.webp',
       project_url: 'https://cielocanela.com',
       repo_url: null,
       published: true,

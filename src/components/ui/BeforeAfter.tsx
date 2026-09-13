@@ -28,7 +28,7 @@ export default function BeforeAfter({
     <div className="relative h-full w-full select-none overflow-hidden">
       {/* DESPUÉS (fondo) */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={after} alt={alt} className="absolute inset-0 h-full w-full object-cover" draggable={false} />
+      <img src={after} alt={alt} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" draggable={false} />
 
       {/* ANTES (recortado por la manija) */}
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
@@ -37,7 +37,7 @@ export default function BeforeAfter({
           src={before}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover"
           draggable={false}
           onError={onBeforeError}
         />

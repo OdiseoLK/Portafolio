@@ -7,7 +7,7 @@ export default function NotFound() {
     <main className="flex min-h-[100svh] flex-col items-center justify-center gap-8 bg-bg px-6 text-center">
       <div className="relative">
         <div className="absolute inset-0 scale-125 rounded-full bg-fg/[0.06] blur-[80px]" aria-hidden="true" />
-        <Image src="/logo-mark.png" alt="" width={220} height={203} className="relative opacity-90" />
+        <Image src="/logo-mark.webp" alt="" width={220} height={203} className="relative opacity-90" />
       </div>
       <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-muted">404 · fuera de ruta</p>
       <h1 className="hero-heading font-display text-5xl font-bold uppercase leading-none tracking-tight md:text-7xl">

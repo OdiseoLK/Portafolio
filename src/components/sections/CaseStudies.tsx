@@ -38,7 +38,7 @@ function flavorFor(p: Project) {
 
 /** Capturas del sitio anterior del cliente (antes/después). */
 const ANTES: Record<string, string> = {
-  'caso-puerta-grande': '/casos/puerta-grande-antes.jpg',
+  'caso-puerta-grande': '/casos/puerta-grande-antes.webp',
 };
 
 function Card({ project, index, en, reduced }: { project: Project; index: number; en: boolean; reduced: boolean }) {
