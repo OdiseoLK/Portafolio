@@ -118,6 +118,7 @@ export default function Testimonials({ items }: { items: Testimonial[] }) {
             );
           })}
         </div>
+
             </div>
     </section>
   );

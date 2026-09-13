@@ -76,7 +76,7 @@ export default async function Home() {
             durationOfWarranty: { '@type': 'QuantitativeValue', value: 1, unitCode: 'ANN' },
           },
         },
-        sameAs: [content.socials.linkedin, content.socials.instagram].filter(Boolean),
+        sameAs: [content.socials.linkedin, content.socials.instagram, 'https://share.google/ZQsfLlxwsYAbW9cdK'].filter(Boolean),
         contactPoint: {
           '@type': 'ContactPoint',
           contactType: 'sales',
