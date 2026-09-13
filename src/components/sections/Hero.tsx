@@ -270,31 +270,31 @@ export default function Hero({ data, whatsappUrl }: { data: HeroContent; whatsap
           </motion.p>
 
           {/* EL HOOK — lo primero y más grande */}
-          <h1 className="relative z-[2] max-w-[16ch]">
+          <h1 className="relative z-[2] max-w-[18ch] text-balance">
             <span className="sr-only">
-              {en ? 'Your business deserves a website that sells.' : 'Tu negocio merece una página web que venda.'}
+              {en ? 'Websites that grow your business.' : 'Páginas web que hacen crecer tu negocio.'}
             </span>
             <motion.span
               {...fadeUp(0.18)}
               aria-hidden="true"
-              className="block font-display text-[clamp(2.6rem,8.5vw,7rem)] font-bold uppercase leading-[0.92] tracking-[-0.02em] text-fg"
+              className="block font-display text-[clamp(2.4rem,6vw,5.5rem)] font-bold uppercase leading-[0.95] tracking-[-0.02em] text-fg"
             >
-              {en ? EN.hero.hookA : 'Tu negocio merece'}
+              {en ? EN.hero.hookA : 'Páginas web'}
             </motion.span>
             <motion.span
               {...fadeUp(0.28)}
               aria-hidden="true"
-              className="hero-heading block font-display text-[clamp(2.6rem,8.5vw,7rem)] font-bold uppercase leading-[0.92] tracking-[-0.02em]"
+              className="hero-heading block font-display text-[clamp(2.4rem,6vw,5.5rem)] font-bold uppercase leading-[0.95] tracking-[-0.02em]"
             >
-              {en ? EN.hero.hookB : 'una página web'}
+              {en ? EN.hero.hookB : 'que hacen crecer'}
             </motion.span>
             <motion.span
               {...fadeUp(0.36)}
               aria-hidden="true"
-              className="block font-display text-[clamp(2.6rem,8.5vw,7rem)] font-bold uppercase leading-[0.92] tracking-[-0.02em]"
+              className="block font-display text-[clamp(2.4rem,6vw,5.5rem)] font-bold uppercase leading-[0.95] tracking-[-0.02em]"
               style={{ color: 'var(--marca)' }}
             >
-              {en ? EN.hero.hookC : 'que venda.'}
+              {en ? EN.hero.hookC : 'tu negocio.'}
             </motion.span>
           </h1>
 

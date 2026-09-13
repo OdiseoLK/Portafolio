@@ -375,3 +375,5 @@ html[data-time='dia'] .btn-marca { color: #ffffff; }
 /* Contraste del hook del hero: sombra sutil que lo despega del fondo */
 #inicio h1 span { text-shadow: 0 2px 24px rgb(var(--bg) / 0.5); }
 html[data-time='dia'] #inicio h1 span { text-shadow: 0 2px 20px rgba(227,240,252,0.85); }
+
+.text-balance { text-wrap: balance; }

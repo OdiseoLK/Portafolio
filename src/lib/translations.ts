@@ -18,9 +18,9 @@ export const EN = {
   },
   hero: {
     eyebrow: 'Web design & development · Orizaba, Mexico',
-    hookA: 'Your business',
-    hookB: 'deserves a website',
-    hookC: 'that sells.',
+    hookA: 'Websites',
+    hookB: 'that grow',
+    hookC: 'your business.',
     sub: 'We design and build fast, custom websites that turn visitors into customers. From idea to launch — and we stay after.',
     availability: 'Available for new projects',
     cta: 'Start on WhatsApp',
