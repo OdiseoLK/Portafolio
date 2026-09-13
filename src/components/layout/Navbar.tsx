@@ -181,17 +181,25 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
                   </a>
                 </motion.li>
               ))}
-              <motion.li
-                variants={{
-                  hidden: { opacity: 0, y: 14 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-                }}
-                className="mt-8 flex flex-wrap items-center gap-4"
-              >
-                <TimeToggle />
-                <LangToggle />
-              </motion.li>
             </motion.ul>
+
+            {/* Barra fija inferior: siempre visible, sin necesidad de scrollear */}
+            <div className="wrap shrink-0 border-t border-line/60 py-5">
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] uppercase tracking-[0.25em] text-muted">
+                    {lang === 'en' ? 'Sky' : 'Cielo'}
+                  </span>
+                  <TimeToggle />
+                </div>
+                <div className="flex flex-col items-end gap-1">
+                  <span className="text-[10px] uppercase tracking-[0.25em] text-muted">
+                    {lang === 'en' ? 'Language' : 'Idioma'}
+                  </span>
+                  <LangToggle />
+                </div>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

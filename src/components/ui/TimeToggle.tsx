@@ -43,11 +43,11 @@ export default function TimeToggle({ className = '' }: { className?: string }) {
           aria-pressed={momento === id}
           aria-label={lang === 'en' ? en : es}
           title={lang === 'en' ? en : es}
-          className={`grid h-7 w-7 place-items-center rounded-full transition-colors duration-300 ${
+          className={`grid h-9 w-9 place-items-center rounded-full transition-colors duration-300 sm:h-7 sm:w-7 ${
             listo && momento === id ? 'bg-fg text-bg' : 'text-muted hover:text-fg'
           }`}
         >
-          <Icon size={13} aria-hidden="true" />
+          <Icon size={15} aria-hidden="true" className="sm:h-[13px] sm:w-[13px]" />
         </button>
       ))}
     </div>
