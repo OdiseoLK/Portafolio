@@ -266,7 +266,7 @@ export default function Hero({ data, whatsappUrl }: { data: HeroContent; whatsap
         <div className="wrap">
           <motion.p {...fadeUp(0.1)} className="eyebrow mb-6 flex items-center gap-3">
             <span className="inline-block h-px w-8 bg-fg/30" />
-            <Scramble text={en ? EN.hero.eyebrow : 'Diseño y desarrollo web · Orizaba, México'} trigger="load" />
+            <Scramble text={en ? EN.hero.eyebrow : 'Estudio de diseño y desarrollo web'} trigger="load" />
           </motion.p>
 
           {/* EL HOOK — lo primero y más grande */}

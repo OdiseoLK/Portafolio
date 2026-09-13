@@ -17,7 +17,7 @@ export const EN = {
     ],
   },
   hero: {
-    eyebrow: 'Web design & development · Orizaba, Mexico',
+    eyebrow: 'Web design & development studio',
     hookA: 'Websites',
     hookB: 'that grow',
     hookC: 'your business.',
