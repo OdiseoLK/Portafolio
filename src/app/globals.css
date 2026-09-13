@@ -377,3 +377,11 @@ html[data-time='dia'] .btn-marca { color: #ffffff; }
 html[data-time='dia'] #inicio h1 span { text-shadow: 0 2px 20px rgba(227,240,252,0.85); }
 
 .text-balance { text-wrap: balance; }
+
+/* Líneas del hook: nunca se cortan ni desbordan */
+.hook-line {
+  max-width: 100%;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
+}
