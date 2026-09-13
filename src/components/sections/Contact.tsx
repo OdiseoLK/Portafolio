@@ -22,7 +22,7 @@ export default function Contact({ data }: { data: ContactContent }) {
   return (
     <section id="contacto" className="scroll-mt-24 py-20 md:py-28">
       <div className="wrap">
-        <Cap n="06" es="Contacto" en="Contact" />
+        <Cap n="08" es="Contacto" en="Contact" />
 
         <motion.div
           initial={reduced ? false : { opacity: 0, y: 28 }}
@@ -52,7 +52,7 @@ export default function Contact({ data }: { data: ContactContent }) {
                 href={data.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-8 py-4 text-base font-semibold text-[#04120a] transition-transform duration-300 hover:scale-[1.03]"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-8 py-3.5 text-[15px] font-semibold text-[#04120a] transition-transform duration-300 hover:-translate-y-0.5"
               >
                 <svg viewBox="0 0 24 24" role="img" aria-hidden="true" className="h-5 w-5 fill-current">
                   <path d={siWhatsapp.path} />

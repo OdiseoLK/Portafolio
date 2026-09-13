@@ -119,7 +119,7 @@ function Card({ project, index, en, reduced }: { project: Project; index: number
               href={project.project_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex shrink-0 items-center gap-1 text-[12px] font-medium text-fg transition-colors hover:text-hielo"
+              className="inline-flex shrink-0 items-center gap-1 text-[12px] font-medium transition-opacity duration-300 hover:opacity-70" style={{ color: flavor.ink }}
             >
               {en ? EN.cases.visit : 'Visitar'}
               <ArrowUpRight size={13} aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -141,7 +141,7 @@ export default function CaseStudies({ projects }: { projects: Project[] }) {
   return (
     <section id="casos" className="scroll-mt-24 py-20 md:py-28">
       <div className="wrap">
-        <Cap n="04" es="Bitácora" en="Logbook" />
+        <Cap n="05" es="Bitácora" en="Logbook" />
 
         <div className="mb-10 grid gap-5 md:mb-12 md:grid-cols-[1.2fr,1fr] md:items-end">
           <motion.h2
@@ -168,7 +168,7 @@ export default function CaseStudies({ projects }: { projects: Project[] }) {
         <div className="mt-8 text-center">
           <a
             href="#contacto"
-            className="group inline-flex items-center gap-2.5 rounded-full border border-fg/20 px-8 py-3.5 text-sm font-medium text-fg transition-colors duration-300 hover:border-hielo/60 hover:text-hielo"
+            className="btn-marca group inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm"
           >
             {en ? EN.cases.cta : '¿Tu negocio es la siguiente expedición?'}
             <ArrowUpRight size={15} aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

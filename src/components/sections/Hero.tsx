@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { siWhatsapp } from 'simple-icons';
 
 import type { HeroContent } from '@/lib/types';
 import Scramble from '@/components/ui/Scramble';
@@ -20,7 +21,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
  *   tras la entrada. En reposo no hay filtro activo (el reposo ES el diseño).
  * - Con prefers-reduced-motion: sin rig, sin líquido, todo visible al primer paint.
  */
-export default function Hero({ data }: { data: HeroContent }) {
+export default function Hero({ data, whatsappUrl }: { data: HeroContent; whatsappUrl: string }) {
   const { lang } = useLang();
   const en = lang === 'en';
   const reduced = useReducedMotion();
@@ -164,7 +165,7 @@ export default function Hero({ data }: { data: HeroContent }) {
 
       {/* CAPA 0 · el guía monumental — fundido con la noche, tras la tipografía */}
       <div
-        className="pointer-events-none absolute inset-y-0 right-[-18%] flex w-[120vw] items-center justify-end sm:right-[-10%] sm:w-[92vw] lg:right-[-3%] lg:w-[62vw] lg:max-w-[1100px]"
+        className="pointer-events-none absolute bottom-0 right-[-15%] flex h-[52%] w-[78vw] items-end justify-end sm:inset-y-0 sm:bottom-auto sm:right-[-8%] sm:h-auto sm:w-[70vw] sm:items-center lg:right-[-2%] lg:w-[56vw] lg:max-w-[1000px]"
         style={{ perspective: '1200px' }}
       >
         <motion.div
@@ -193,7 +194,7 @@ export default function Hero({ data }: { data: HeroContent }) {
             height={980}
             priority
             sizes="(max-width: 640px) 90vw, (max-width: 1024px) 60vw, 1100px"
-            className="guia-img relative h-auto w-full opacity-[0.20] sm:opacity-[0.26] lg:opacity-[0.34]"
+            className="guia-img relative h-auto w-full max-h-full object-contain opacity-[0.14] sm:opacity-[0.24] lg:opacity-[0.32]"
           />
           {/* Los ojos del guía: reflejos del lente que siguen al cursor (se apagan al parpadear) */}
           <span
@@ -253,73 +254,109 @@ export default function Hero({ data }: { data: HeroContent }) {
         </svg>
       </div>
 
-      {/* ESQUELETO EDITORIAL · contenido */}
+      {/* Velo de legibilidad: asegura contraste del texto sobre el husky/cielo */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{ background: 'linear-gradient(100deg, rgb(var(--bg) / 0.55) 0%, rgb(var(--bg) / 0.25) 42%, transparent 68%)' }}
+      />
+
+      {/* HOOK primero: promesa grande, marca en segundo plano */}
       <div className="relative z-10 flex flex-1 flex-col justify-center">
         <div className="wrap">
-          <motion.p {...fadeUp(0.1)} className="eyebrow mb-8 flex items-center gap-3">
-            <span className="inline-block h-px w-10 bg-fg/30" />
-            <Scramble text={en ? EN.hero.eyebrow : 'Estudio de diseño y desarrollo web'} trigger="load" />
+          <motion.p {...fadeUp(0.1)} className="eyebrow mb-6 flex items-center gap-3">
+            <span className="inline-block h-px w-8 bg-fg/30" />
+            <Scramble text={en ? EN.hero.eyebrow : 'Diseño y desarrollo web · Orizaba, México'} trigger="load" />
           </motion.p>
 
-          <div className="overflow-hidden">
-            <motion.h1
-              {...fadeUp(0.2)}
-              className={`hero-heading font-display text-[clamp(4.2rem,13vw,12rem)] font-bold uppercase leading-[0.86] tracking-[-0.03em] ${liquid ? 'is-liquid' : ''}`}
+          {/* EL HOOK — lo primero y más grande */}
+          <h1 className="relative z-[2] max-w-[16ch]">
+            <span className="sr-only">
+              {en ? 'Your business deserves a website that sells.' : 'Tu negocio merece una página web que venda.'}
+            </span>
+            <motion.span
+              {...fadeUp(0.18)}
+              aria-hidden="true"
+              className="block font-display text-[clamp(2.6rem,8.5vw,7rem)] font-bold uppercase leading-[0.92] tracking-[-0.02em] text-fg"
             >
-              Odiseo
-            </motion.h1>
-          </div>
+              {en ? EN.hero.hookA : 'Tu negocio merece'}
+            </motion.span>
+            <motion.span
+              {...fadeUp(0.28)}
+              aria-hidden="true"
+              className="hero-heading block font-display text-[clamp(2.6rem,8.5vw,7rem)] font-bold uppercase leading-[0.92] tracking-[-0.02em]"
+            >
+              {en ? EN.hero.hookB : 'una página web'}
+            </motion.span>
+            <motion.span
+              {...fadeUp(0.36)}
+              aria-hidden="true"
+              className="block font-display text-[clamp(2.6rem,8.5vw,7rem)] font-bold uppercase leading-[0.92] tracking-[-0.02em]"
+              style={{ color: 'var(--marca)' }}
+            >
+              {en ? EN.hero.hookC : 'que venda.'}
+            </motion.span>
+          </h1>
+
+          {/* Subtítulo que explica en una línea */}
           <motion.p
-            {...fadeUp(0.32)}
-            className="-mt-[0.5em] pl-[0.08em] font-serif text-[clamp(2rem,6vw,5.2rem)] italic leading-none text-aurora/90"
+            {...fadeUp(0.46)}
+            className="relative z-[2] mt-6 max-w-xl text-[15px] font-medium leading-relaxed text-fg/80 md:text-base"
           >
-            studio<span className="text-fg/30">*</span>
+            {en ? EN.hero.sub : 'Diseñamos y desarrollamos sitios web rápidos y a la medida que convierten visitas en clientes. De la idea al lanzamiento, y nos quedamos después.'}
           </motion.p>
+
+          {/* CTAs claros */}
+          <motion.div {...fadeUp(0.56)} className="mt-9 flex flex-wrap items-center gap-3">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-7 py-3.5 text-[15px] font-semibold text-[#04120a] transition-transform duration-300 hover:-translate-y-0.5"
+            >
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true" className="h-5 w-5 fill-current">
+                <path d={siWhatsapp.path} />
+              </svg>
+              {en ? EN.hero.cta : 'Empezar por WhatsApp'}
+            </a>
+            <a
+              href="#casos"
+              className="group inline-flex items-center gap-2 rounded-full border border-fg/25 px-6 py-3.5 text-sm font-medium text-fg transition-colors duration-300 hover:border-fg/50"
+            >
+              {en ? EN.hero.cta2 : 'Ver nuestro trabajo'}
+              <ArrowUpRight size={15} aria-hidden="true" className="transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          </motion.div>
 
           {data.availability.enabled && (
-            <motion.div {...fadeUp(0.45)} className="mt-10 inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/60 px-4 py-2 backdrop-blur-sm">
+            <motion.div {...fadeUp(0.66)} className="mt-8 inline-flex items-center gap-2.5">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lima opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-lima" />
               </span>
-              <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-fg/70">
-                {en ? EN.hero.availability : 'Disponible para nuevas expediciones'}
+              <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-fg/60">
+                {en ? EN.hero.availability : 'Disponible para nuevos proyectos'}
               </span>
             </motion.div>
           )}
         </div>
       </div>
 
-      {/* Barra inferior editorial */}
+      {/* Marca discreta abajo + scroll (el logo pasa a segundo término) */}
       <div className="relative z-10 pb-8">
         <div className="wrap">
-          <div className="rule mb-6" />
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <motion.p
-              {...fadeUp(0.55)}
-              className="max-w-sm text-sm leading-relaxed text-muted md:text-[15px]"
-            >
-              {en ? EN.hero.description : 'Cada negocio es una expedición. Nosotros conocemos la ruta: diseñamos y desarrollamos el sitio que lo lleva de idea a destino.'}
-            </motion.p>
-            <motion.div {...fadeUp(0.65)} className="flex items-center gap-6">
-              <span className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-fg/30 md:block">
-                <Scramble text="Scroll ↓" trigger="load" speed={45} />
-              </span>
-              <a
-                href="#casos"
-                className="group inline-flex items-center gap-2.5 rounded-full border border-fg/20 px-7 py-3 text-sm font-medium tracking-wide text-fg transition-colors duration-300 hover:border-hielo/60 hover:text-hielo"
-              >
-                {en ? EN.hero.cta : 'Ver la bitácora'}
-                <ArrowUpRight
-                  size={15}
-                  aria-hidden="true"
-                  className="transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </a>
-            </motion.div>
+          <div className="rule mb-5" />
+          <div className="flex items-center justify-between">
+            <span className="font-display text-xs font-medium tracking-[0.28em] text-fg/50">
+              ODISEO<span className="font-serif italic tracking-normal text-fg/30">&nbsp;studio</span>
+            </span>
+            <span className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-fg/30 md:block">
+              <Scramble text={en ? 'Scroll ↓' : 'Scroll ↓'} trigger="load" speed={45} />
+            </span>
           </div>
         </div>
       </div>
+
     </section>
   );
 }

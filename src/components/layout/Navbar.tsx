@@ -14,6 +14,7 @@ const LINKS = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'El estudio', href: '#estudio' },
   { label: 'Servicios', href: '#servicios' },
+  { label: 'Respaldo', href: '#respaldo' },
   { label: 'Casos', href: '#casos' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Contacto', href: '#contacto' },
@@ -68,7 +69,7 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
       <nav className="wrap flex h-16 items-center justify-between" aria-label="Principal">
         <a
           href="#inicio"
-          className="flex items-center gap-2.5 font-display text-sm font-medium tracking-[0.28em] text-fg transition-colors hover:text-white"
+          className="flex items-center gap-2 font-display text-sm font-medium tracking-[0.12em] text-fg transition-colors hover:text-white sm:gap-2.5 sm:tracking-[0.28em]"
         >
           <Image
             src="/logo-mark.webp"
@@ -76,9 +77,9 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
             width={30}
             height={30}
             priority
-            className="h-[30px] w-[30px] object-contain"
+            className="h-7 w-7 object-contain sm:h-[30px] sm:w-[30px]"
           />
-          ODISEO<span className="font-serif italic tracking-normal text-muted">&nbsp;studio</span>
+          ODISEO<span className="hidden font-serif italic tracking-normal text-muted xs:inline sm:inline">&nbsp;studio</span>
         </a>
 
         {/* Enlaces desktop */}
@@ -120,20 +121,16 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
           </div>
         </div>
 
-        {/* Toggle móvil */}
-        <div className="flex items-center gap-2 md:hidden">
-        <TimeToggle />
-        <LangToggle />
+        {/* Botón de menú móvil (los toggles viven dentro del menú) */}
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-md border border-line text-fg"
+          className="grid h-10 w-10 place-items-center rounded-md border border-line text-fg md:hidden"
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={open}
         >
           {open ? <X size={18} /> : <Menu size={18} />}
         </button>
-        </div>
       </nav>
 
       {/* Menú móvil */}
@@ -143,14 +140,29 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 top-16 z-40 bg-bg/95 backdrop-blur-md md:hidden"
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 top-0 z-[90] flex flex-col bg-bg md:hidden"
           >
+            {/* Barra superior del menú (logo + cerrar) */}
+            <div className="wrap flex h-16 shrink-0 items-center justify-between border-b border-line/60">
+              <span className="flex items-center gap-2 font-display text-sm font-medium tracking-[0.12em] text-fg">
+                <Image src="/logo-mark.webp" alt="" width={28} height={28} className="h-7 w-7 object-contain" />
+                ODISEO
+              </span>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="grid h-10 w-10 place-items-center rounded-md border border-line text-fg"
+                aria-label="Cerrar menú"
+              >
+                <X size={18} />
+              </button>
+            </div>
             <motion.ul
               initial="hidden"
               animate="visible"
-              variants={{ visible: { transition: { staggerChildren: 0.06, delayChildren: 0.08 } } }}
-              className="wrap flex flex-col gap-1 pt-10"
+              variants={{ visible: { transition: { staggerChildren: 0.05, delayChildren: 0.05 } } }}
+              className="wrap flex flex-1 flex-col gap-1 overflow-y-auto pt-6"
             >
               {links.map((link) => (
                 <motion.li
@@ -174,8 +186,10 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
                   hidden: { opacity: 0, y: 14 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
                 }}
+                className="mt-8 flex flex-wrap items-center gap-4"
               >
-                <LangToggle className="mt-6" />
+                <TimeToggle />
+                <LangToggle />
               </motion.li>
             </motion.ul>
           </motion.div>

@@ -137,7 +137,7 @@ export default function CieloFX() {
       <canvas
         ref={canvasRef}
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-[55] opacity-70"
+        className="pointer-events-none fixed inset-0 z-[8] opacity-70"
       />
       {/* Enfoques lumínicos por cielo */}
       <div aria-hidden="true" className="fx-fogata pointer-events-none fixed inset-x-0 bottom-0 z-[5] h-[45vh]" />

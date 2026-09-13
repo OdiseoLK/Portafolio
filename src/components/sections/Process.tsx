@@ -57,7 +57,7 @@ export default function Process({ data: _data }: { data: ProcessContent }) {
       className="scroll-mt-24 border-y border-line/60 bg-gradient-to-b from-surface/70 to-surface/30 py-24 backdrop-blur-md md:py-32"
     >
       <div className="wrap">
-        <Cap n="03" es="La travesía" en="The journey" />
+        <Cap n="04" es="La travesía" en="The journey" />
         <div className="mb-10 flex flex-col gap-4 md:mb-6 md:flex-row md:items-end md:justify-between">
           <motion.h2
             initial={reduced ? false : { opacity: 0, y: 30 }}
@@ -125,17 +125,17 @@ export default function Process({ data: _data }: { data: ProcessContent }) {
 
         <div className="relative">
           {/* Ruta vertical móvil: fantasma + trazo que se dibuja con el scroll */}
-          <div aria-hidden="true" className="absolute bottom-2 left-[7px] top-2 w-px lg:hidden"
+          <div aria-hidden="true" className="absolute bottom-2 left-1 top-2 w-px sm:hidden"
             style={{ backgroundImage: 'repeating-linear-gradient(180deg, rgb(var(--fg) / 0.15) 0 3px, transparent 3px 10px)' }} />
           <motion.div
             aria-hidden="true"
-            className="absolute bottom-2 left-[7px] top-2 w-px origin-top lg:hidden"
+            className="absolute bottom-2 left-1 top-2 w-px origin-top sm:hidden"
             style={{
               scaleY: reduced ? 1 : drawn,
               backgroundImage: 'repeating-linear-gradient(180deg, rgb(var(--fg)) 0 3px, transparent 3px 10px)',
             }}
           />
-        <ol className="grid gap-10 pl-9 sm:grid-cols-2 lg:mt-2 lg:grid-cols-4 lg:pl-0">
+        <ol className="grid gap-10 pl-8 sm:grid-cols-2 sm:pl-0 lg:mt-2 lg:grid-cols-4 lg:pl-0">
           {camps.map((step, i) => (
             <motion.li
               key={step.title}
@@ -145,7 +145,7 @@ export default function Process({ data: _data }: { data: ProcessContent }) {
               transition={{ duration: 0.7, ease: EASE, delay: i * 0.12 }}
               className="relative border-t border-line pt-5 lg:border-t-0 lg:pt-0"
             >
-              <span aria-hidden="true" className="absolute -left-9 top-5 lg:hidden">
+              <span aria-hidden="true" className="absolute -left-[27px] top-5 sm:hidden">
                 {i === camps.length - 1 ? (
                   <svg width="16" height="16" viewBox="0 0 26 26" className="twinkle -ml-1 drop-shadow-[0_0_8px_rgba(124,199,255,0.9)]">
                     <path d="M13 0 L15 11 L26 13 L15 15 L13 26 L11 15 L0 13 L11 11 Z" fill="#DCEFFF" />
@@ -157,10 +157,7 @@ export default function Process({ data: _data }: { data: ProcessContent }) {
                   </svg>
                 )}
               </span>
-              <p className="font-mono text-xs tracking-[0.3em] text-menta">
-                <Scramble text={`${String(i + 1).padStart(2, '0')} /`} speed={50} />
-              </p>
-              <h3 className="mt-4 font-display text-lg font-medium uppercase tracking-wide text-fg">
+              <h3 className="font-display text-lg font-medium uppercase tracking-wide text-fg">
                 {step.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-muted">{step.text}</p>

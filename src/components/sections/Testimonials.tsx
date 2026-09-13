@@ -60,7 +60,7 @@ export default function Testimonials({ items }: { items: Testimonial[] }) {
       <span aria-hidden="true" className="pointer-events-none absolute bottom-8 right-6 hidden font-mono text-[10px] tracking-[0.3em] text-fg/25 md:block">/ 26</span>
 
       <div className="wrap relative">
-        <Cap n="05" es="Señales" en="Signals" />
+        <Cap n="06" es="Señales" en="Signals" />
         <div className="mb-6 flex flex-col items-center gap-3 text-center">
           <p className="eyebrow">
             <Scramble text={en ? EN.testimonials.eyebrow : 'Señales desde el destino'} />

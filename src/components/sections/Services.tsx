@@ -92,7 +92,7 @@ export default function Services({ data }: { data: ServicesContent }) {
 
                 <a
                   href="#contacto"
-                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-fg transition-colors duration-300 hover:text-hielo"
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium transition-opacity duration-300 hover:opacity-70" style={{ color: 'var(--marca)' }}
                 >
                   {en ? EN.quote : 'Cotizar'}
                   <ArrowUpRight size={14} aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

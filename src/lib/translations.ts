@@ -10,17 +10,21 @@ export const EN = {
       { label: 'Home', href: '#inicio' },
       { label: 'The studio', href: '#estudio' },
       { label: 'Services', href: '#servicios' },
+      { label: 'Support', href: '#respaldo' },
       { label: 'Work', href: '#casos' },
       { label: 'FAQ', href: '#faq' },
       { label: 'Contact', href: '#contacto' },
     ],
   },
   hero: {
-    eyebrow: 'Web design & development studio',
-    description:
-      'Every business is an expedition. We know the route: we design and build the site that takes it from idea to destination.',
-    availability: 'Available for new expeditions',
-    cta: 'View the logbook',
+    eyebrow: 'Web design & development · Orizaba, Mexico',
+    hookA: 'Your business',
+    hookB: 'deserves a website',
+    hookC: 'that sells.',
+    sub: 'We design and build fast, custom websites that turn visitors into customers. From idea to launch — and we stay after.',
+    availability: 'Available for new projects',
+    cta: 'Start on WhatsApp',
+    cta2: 'See our work',
     scroll: 'Scroll ↓',
   },
   marquee: {
@@ -134,6 +138,15 @@ export const EN = {
       },
     } as Record<string, { cat: string; d: string; tags: string[] }>,
   },
+  respaldo: {
+    title: 'Your safety net, after arrival',
+    items: [
+      { Icon: 'ShieldCheck', title: '1-year warranty', text: 'Any error on our side — a broken link, a failing section or any technical glitch — we fix it at no extra cost.' },
+      { Icon: 'CalendarHeart', title: 'One month of support, free', text: 'The first month you get direct access to us for any change, tweak or question. Your month to explore the site, test it and refine what you want.' },
+      { Icon: 'Clock', title: '24/7 attention', text: 'We are available anytime. If something looks off or you have a question, message us whenever.' },
+      { Icon: 'Wrench', title: 'Affordable maintenance', text: 'From the second month, changes and updates have an accessible cost based on the type of adjustment. We gladly share the details.' },
+    ],
+  },
   faq: {
     eyebrow: 'Frequent questions',
     title: 'Everything clear before we start',
@@ -181,6 +194,7 @@ export const EN = {
     links: [
       { label: 'The studio', href: '#estudio' },
       { label: 'Services', href: '#servicios' },
+      { label: 'Support', href: '#respaldo' },
       { label: 'Work', href: '#casos' },
       { label: 'Reviews', href: '#opiniones' },
       { label: 'Contact', href: '#contacto' },

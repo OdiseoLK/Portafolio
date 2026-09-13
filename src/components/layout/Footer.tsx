@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowUp, Mail } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { buildSocialLinks } from '@/components/sections/Social';
 import type { FooterContent, SocialsContent } from '@/lib/types';
 import { useLang } from '@/components/ui/LanguageContext';
@@ -79,7 +79,7 @@ export default function Footer({
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgb(var(--bg) / 0.92) 0%, rgb(var(--bg) / 0.12) 34%, rgb(var(--bg) / 0.55) 58%, rgb(var(--bg) / 0.92) 82%, rgb(var(--bg)) 100%)',
+              'linear-gradient(180deg, rgb(var(--bg) / 0.85) 0%, rgb(var(--bg) / 0.55) 22%, rgb(var(--bg) / 0.82) 48%, rgb(var(--bg) / 0.95) 70%, rgb(var(--bg)) 100%)',
           }}
         />
       </div>
@@ -111,7 +111,7 @@ export default function Footer({
             </p>
           </div>
 
-          <p className="max-w-md text-sm leading-relaxed text-fg/70">{footer.tagline}</p>
+          <p className="max-w-md text-sm leading-relaxed text-fg/85">{footer.tagline}</p>
 
           <nav aria-label={en ? 'Footer links' : 'Enlaces del pie'}>
             <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3">
@@ -119,7 +119,7 @@ export default function Footer({
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-fg/70 transition-colors duration-300 hover:text-fg"
+                    className="text-sm font-medium text-fg/85 transition-colors duration-300 hover:text-fg"
                   >
                     {link.label}
                   </a>
@@ -129,15 +129,6 @@ export default function Footer({
           </nav>
 
           <div className="flex items-center gap-3">
-            {socials.email && (
-              <a
-                href={`mailto:${socials.email}`}
-                aria-label={en ? 'Email us' : 'Escríbenos por correo'}
-                className="grid h-10 w-10 place-items-center rounded-full border border-fg/25 bg-bg/40 text-fg/80 backdrop-blur-[2px] transition-colors duration-300 hover:border-hielo/70 hover:text-hielo"
-              >
-                <Mail size={15} aria-hidden="true" />
-              </a>
-            )}
             {socialLinks.map((s) => (
               <a
                 key={s.label}
@@ -163,17 +154,17 @@ export default function Footer({
           <div className="w-full max-w-3xl">
             <div className="rule mb-5" />
             <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
-              <small className="font-mono text-[10px] uppercase tracking-[0.22em] text-fg/45">
+              <small className="font-mono text-[10px] uppercase tracking-[0.22em] text-fg/60">
                 {en ? EN.footer.rights : 'Fin de la bitácora · Todos los derechos reservados.'} © {new Date().getFullYear()}
               </small>
               <div className="flex items-center gap-5">
-                <a href="https://www.webzi.mx/tos/privacy" target="_blank" rel="noopener noreferrer" className="text-xs text-fg/45 transition-colors duration-300 hover:text-fg">
+                <a href="https://www.webzi.mx/tos/privacy" target="_blank" rel="noopener noreferrer" className="text-xs text-fg/60 transition-colors duration-300 hover:text-fg">
                   {en ? 'Privacy' : 'Privacidad'}
                 </a>
-                <a href="https://www.webzi.mx/tos/cookies" target="_blank" rel="noopener noreferrer" className="text-xs text-fg/45 transition-colors duration-300 hover:text-fg">
+                <a href="https://www.webzi.mx/tos/cookies" target="_blank" rel="noopener noreferrer" className="text-xs text-fg/60 transition-colors duration-300 hover:text-fg">
                   Cookies
                 </a>
-                <a href="https://www.webzi.mx/tos" target="_blank" rel="noopener noreferrer" className="text-xs text-fg/45 transition-colors duration-300 hover:text-fg">
+                <a href="https://www.webzi.mx/tos" target="_blank" rel="noopener noreferrer" className="text-xs text-fg/60 transition-colors duration-300 hover:text-fg">
                   Legal
                 </a>
               </div>

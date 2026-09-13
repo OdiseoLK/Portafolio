@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Anti-desbordamiento horizontal en móvil */
+html, body { overflow-x: hidden; max-width: 100%; }
+
+
 :root {
   color-scheme: dark;
 }
@@ -354,3 +358,20 @@ html[data-time='dia'] .el-dia { opacity: 1; }
 html[data-time='noche'] .logo-mono, html[data-time='tarde'] .logo-mono { filter: brightness(0) invert(1); }
 html[data-time='dia'] .logo-mono { filter: brightness(0) invert(0.12); }
 @media (prefers-reduced-motion: reduce) { .logos-track { animation: none; } }
+
+/* ===== CTA de marca: sólido y limpio, sin ruido ===== */
+.btn-marca {
+  background: var(--marca);
+  color: #0a0a0c;
+  font-weight: 600;
+  transition: transform .25s cubic-bezier(.22,1,.36,1), filter .25s ease;
+}
+.btn-marca:hover { transform: translateY(-1px); filter: brightness(1.06); }
+html[data-time='dia'] .btn-marca { color: #ffffff; }
+
+/* .btn-pulse queda neutralizado (sin animación) */
+.btn-pulse { animation: none; }
+
+/* Contraste del hook del hero: sombra sutil que lo despega del fondo */
+#inicio h1 span { text-shadow: 0 2px 24px rgb(var(--bg) / 0.5); }
+html[data-time='dia'] #inicio h1 span { text-shadow: 0 2px 20px rgba(227,240,252,0.85); }

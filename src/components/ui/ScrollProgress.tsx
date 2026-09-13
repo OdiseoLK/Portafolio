@@ -42,7 +42,7 @@ export default function ScrollProgress() {
   }, []);
 
   return (
-    <div ref={ref} aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-[80] h-7">
+    <div ref={ref} aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-[45] h-7">
       {/* Ruta fantasma */}
       <div
         className="absolute left-0 right-0 top-[5px] h-[3px]"
