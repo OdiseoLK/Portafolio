@@ -41,6 +41,12 @@ const ANTES: Record<string, string> = {
   'caso-puerta-grande': '/casos/puerta-grande-antes.webp',
 };
 
+/** Las imágenes migraron a WebP; si la base trae rutas .jpg viejas, se corrigen aquí. */
+function imgSrc(url: string | null) {
+  if (!url) return null;
+  return url.startsWith('/casos/') ? url.replace(/\.(jpe?g|png)$/i, '.webp') : url;
+}
+
 function Card({ project, index, en, reduced }: { project: Project; index: number; en: boolean; reduced: boolean }) {
   const tr = en ? matchCase(project.title) : null;
   const flavor = flavorFor(project);
@@ -48,6 +54,7 @@ function Card({ project, index, en, reduced }: { project: Project; index: number
   const category = tr?.cat ?? tags[0] ?? 'Caso de estudio';
   const stack = (tr?.tags ?? tags.slice(1)).slice(0, 3);
   const description = tr?.d ?? project.description;
+  const cover = imgSrc(project.image_url);
   const antesSrc = ANTES[project.id];
   const [antesFail, setAntesFail] = useState(false);
 
@@ -69,18 +76,18 @@ function Card({ project, index, en, reduced }: { project: Project; index: number
         >
           {en ? EN.cases.stamp : 'Destino alcanzado'}
         </span>
-        {project.image_url && antesSrc && !antesFail ? (
+        {cover && antesSrc && !antesFail ? (
           <BeforeAfter
             before={antesSrc}
-            after={project.image_url}
+            after={cover}
             beforeLabel={en ? 'Before' : 'Antes'}
             afterLabel={en ? 'After' : 'Después'}
             alt={`Sitio web de ${project.title}`}
             onBeforeError={() => setAntesFail(true)}
           />
-        ) : project.image_url ? (
+        ) : cover ? (
           <Image
-            src={project.image_url}
+            src={cover}
             alt={`Sitio web de ${project.title}`}
             fill
             sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
