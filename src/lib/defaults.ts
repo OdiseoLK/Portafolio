@@ -127,8 +127,8 @@ export const DEFAULT_CONTENT: SiteContent = {
       id: 'caso-alvarez',
       title: 'Café Álvarez',
       description:
-        'Cafetería con cuatro sucursales en Orizaba. Sitio con menú real, carrito y sistema de pedidos por WhatsApp: selección de sucursal, ticket con folio único y panel para actualizar precios. Entregado con capacitación para que el equipo lo opere.',
-      tags: ['Cafetería · Pedidos en línea', 'Carrito', 'WhatsApp Business', 'Panel de precios'],
+        'Cafetería con cuatro sucursales. Menú interactivo por secciones: el cliente elige categoría, arma su platillo con las reglas de la casa y el pedido llega con folio al WhatsApp de su sucursal. 15 secciones, 112 productos y panel propio para actualizar precios.',
+      tags: ['Cafetería · Menú interactivo', 'Pedidos por WhatsApp', 'Folio por sucursal', 'Panel de precios'],
       image_url: '/casos/cafe-alvarez-caso.webp',
       project_url: 'https://alvarez.cafe',
       repo_url: null,

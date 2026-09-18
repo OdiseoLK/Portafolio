@@ -6,6 +6,7 @@ import { useLang } from '@/components/ui/LanguageContext';
 /** Los negocios que ya viajaron con nosotros: logos en marquee CSS infinito. */
 const LOGOS = [
   { src: '/clientes/decora.webp', alt: 'Decora — Interiorismo que transforma' },
+  { src: '/clientes/cafe-alvarez.webp', alt: 'Café Álvarez' },
   { src: '/clientes/fdhz.webp', alt: 'Fundación Doctor Hernández Zurita' },
   { src: '/clientes/puerta-grande.webp', alt: 'Hospital Puerta Grande' },
 ];

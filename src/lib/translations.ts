@@ -33,7 +33,7 @@ export const EN = {
     giros: {
       'Interiorismo · Showroom': 'Interior design · Showroom',
       'Salud visual · Institucional': 'Eye care · Institutional',
-      'Cafetería · Pedidos en línea': 'Coffee shop · Online orders',
+      'Cafetería · Menú interactivo': 'Coffee shop · Interactive menu',
       'Hospital · Urgencias 24h': 'Hospital · 24h ER',
       'Despacho jurídico': 'Law firm',
       'Cocina de brasa': 'Grill & smokehouse',
@@ -112,9 +112,9 @@ export const EN = {
         tags: ['One-page', 'Promotions', 'Maintenance'],
       },
       alvarez: {
-        cat: 'Coffee shop · Online orders',
-        d: 'Coffee shop with four branches in Orizaba. Site with a real menu, cart and WhatsApp ordering system: branch selection, ticket with a unique order ID and a price admin panel. Delivered with training so the team runs it on their own.',
-        tags: ['Cart', 'WhatsApp Business', 'Price panel'],
+        cat: 'Coffee shop · Interactive menu',
+        d: 'Coffee shop with four branches. Interactive menu by sections: customers pick a category, build their order with the house rules, and it lands with an order ID in their branch\'s WhatsApp. 15 sections, 112 products and an admin panel for prices.',
+        tags: ['WhatsApp orders', 'Order ID per branch', 'Price panel'],
       },
       puerta: {
         cat: 'Hospital · 24h ER',

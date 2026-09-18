@@ -31,7 +31,7 @@ const TILES: Tile[] = [
   { name: 'Fundación Zurita', giro: 'Salud visual · Institucional', tag: 'En línea',
     ink: '#5EEAD4', base: '#0A1B1E', panel: '#123036', layout: 'institucional',
     img: '/casos/zurita-carrusel.webp', url: 'https://fundacionzurita.com.mx' },
-  { name: 'Café Álvarez', giro: 'Cafetería · Pedidos en línea', tag: 'En línea',
+  { name: 'Café Álvarez', giro: 'Cafetería · Menú interactivo', tag: 'En línea',
     ink: '#C9A074', base: '#141110', panel: '#241C15', layout: 'menu',
     img: '/casos/cafe-alvarez-carrusel.webp', url: 'https://alvarez.cafe' },
   { name: 'Puerta Grande', giro: 'Hospital · Urgencias 24h', tag: 'En línea',
