@@ -20,8 +20,7 @@ const FLAVORS: Record<string, { tone: string; ink: string; mono: string }> = {
   alvarez: { tone: 'linear-gradient(150deg, #1b1512 0%, #0b0a09 70%)', ink: '#c9a074', mono: 'A.' },
   puerta:  { tone: 'linear-gradient(150deg, #0c1526 0%, #080a12 70%)', ink: '#7cc7ff', mono: 'P.' },
   ayf:     { tone: 'linear-gradient(150deg, #0d1730 0%, #090d1a 70%)', ink: '#d4b26a', mono: 'A&F' },
-  aborigen:{ tone: 'linear-gradient(150deg, #1c110a 0%, #0d0806 70%)', ink: '#e07b39', mono: 'AB.' },
-  cielo:   { tone: 'linear-gradient(150deg, #201510 0%, #100b08 70%)', ink: '#d9a05b', mono: 'C.' },
+  sir:     { tone: 'linear-gradient(150deg, #1c1410 0%, #0d0a08 70%)', ink: '#f47a20', mono: 'SIR' },
 };
 
 function flavorFor(p: Project) {
@@ -31,8 +30,7 @@ function flavorFor(p: Project) {
   if (t.includes('álvarez') || t.includes('alvarez')) return FLAVORS.alvarez;
   if (t.includes('puerta')) return FLAVORS.puerta;
   if (t.includes('a&f') || t.includes('abogado')) return FLAVORS.ayf;
-  if (t.includes('aborigen')) return FLAVORS.aborigen;
-  if (t.includes('cielo')) return FLAVORS.cielo;
+  if (t.includes('rivadeneyra')) return FLAVORS.sir;
   return { tone: 'linear-gradient(150deg, #14141c 0%, #0a0a10 70%)', ink: '#7cc7ff', mono: 'O.' };
 }
 

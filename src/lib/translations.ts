@@ -36,8 +36,7 @@ export const EN = {
       'Cafetería · Menú interactivo': 'Coffee shop · Interactive menu',
       'Hospital · Urgencias 24h': 'Hospital · 24h ER',
       'Despacho jurídico': 'Law firm',
-      'Cocina de brasa': 'Grill & smokehouse',
-      'Bistró · Boulangerie': 'Bistro · Boulangerie',
+      'Carpintería · Remodelación': 'Carpentry · Remodeling',
     } as Record<string, string>,
   },
   about: {
@@ -45,11 +44,11 @@ export const EN = {
     paragraph:
       "We don't make web pages: we guide expeditions. We take your business at its starting point and lead it to its digital destination — a fast, custom-built site of your own, working for you around the clock. Design, development and a guide who stays: we don't let go of your hand after arrival.",
     stats: [
-      { n: '07', l: 'Expeditions completed' },
-      { n: '07', l: 'Destinations live' },
+      { n: '06', l: 'Expeditions completed' },
+      { n: '05', l: 'Destinations live' },
       { n: '00', l: 'Shipwrecks' },
     ],
-    ornament: 'logbook · exp. 001–007',
+    ornament: 'logbook · exp. 001–006',
   },
   services: {
     title: 'Our solutions',
@@ -126,15 +125,10 @@ export const EN = {
         d: 'Law firm in downtown Orizaba, led by Alba L. Montiel and Félix Vargas. Litigation and counsel in civil, criminal, labor, agrarian, commercial and amparo matters, plus pension services. A sober site with direct WhatsApp consultation.',
         tags: ['Practice areas', 'Pension services', 'WhatsApp'],
       },
-      aborigen: {
-        cat: 'Grill & smokehouse',
-        d: "Grill and smokehouse restaurant facing downtown Orizaba. Site with night photography of the venue, a dish gallery and a bilingual digital menu (Spanish and English) for the Pueblo Mágico's tourism.",
-        tags: ['Bilingual menu', 'Gallery', 'Tourism'],
-      },
-      cielo: {
-        cat: 'Bistro · Boulangerie',
-        d: 'Bistro and boulangerie in Orizaba: pastry, artisan bread and bistro cooking. A warm site with a digital menu and direct orders, designed to make you hungry from the first scroll.',
-        tags: ['Digital menu', 'Orders'],
+      sir: {
+        cat: 'Carpentry · Remodeling',
+        d: 'Carpentry, aluminum, glass and remodeling workshop in Orizaba. Multi-page site organized by area (home, residential and industrial), with project pages, a WhatsApp quote tool that draws a plan with your measurements, "Measure with a photo" and "Design your furniture". Two color versions.',
+        tags: ['Multi-page', 'WhatsApp quote tool', 'Furniture designer'],
       },
     } as Record<string, { cat: string; d: string; tags: string[] }>,
   },
@@ -211,7 +205,6 @@ export function matchCase(title: string) {
   if (t.includes('álvarez') || t.includes('alvarez')) return EN.cases.byTitle.alvarez;
   if (t.includes('puerta')) return EN.cases.byTitle.puerta;
   if (t.includes('a&f') || t.includes('abogado')) return EN.cases.byTitle.ayf;
-  if (t.includes('aborigen')) return EN.cases.byTitle.aborigen;
-  if (t.includes('cielo')) return EN.cases.byTitle.cielo;
+  if (t.includes('rivadeneyra')) return EN.cases.byTitle.sir;
   return null;
 }

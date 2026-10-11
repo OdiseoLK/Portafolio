@@ -3,9 +3,10 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 
 type Lang = 'es' | 'en';
-const LangContext = createContext<{ lang: Lang; toggle: () => void }>({
+const LangContext = createContext<{ lang: Lang; toggle: () => void; setLang: (l: Lang) => void }>({
   lang: 'es',
   toggle: () => {},
+  setLang: () => {},
 });
 
 /** Proveedor de idioma: persiste en localStorage y actualiza <html lang>. */
@@ -24,26 +25,37 @@ export function LangProvider({ children }: { children: ReactNode }) {
 
   const toggle = () => setLang((l) => (l === 'es' ? 'en' : 'es'));
 
-  return <LangContext.Provider value={{ lang, toggle }}>{children}</LangContext.Provider>;
+  return <LangContext.Provider value={{ lang, toggle, setLang }}>{children}</LangContext.Provider>;
 }
 
 export function useLang() {
   return useContext(LangContext);
 }
 
-/** Botón ES/EN para la navbar. */
+/** Idioma como píldora segmentada: ES | EN, el activo resaltado. */
 export function LangToggle({ className = '' }: { className?: string }) {
-  const { lang, toggle } = useLang();
+  const { lang, setLang } = useLang();
   return (
-    <button
-      type="button"
-      onClick={toggle}
-      aria-label={lang === 'es' ? 'Switch to English' : 'Cambiar a español'}
-      className={`inline-flex items-center gap-1 rounded-full border border-line px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors duration-300 hover:border-fg/50 hover:text-fg ${className}`}
+    <div
+      role="group"
+      aria-label={lang === 'en' ? 'Language' : 'Idioma'}
+      className={`inline-flex items-center gap-0.5 rounded-full border border-line bg-surface/70 p-1 backdrop-blur-sm ${className}`}
     >
-      <span className={lang === 'es' ? 'text-fg' : ''}>ES</span>
-      <span className="text-fg/25">/</span>
-      <span className={lang === 'en' ? 'text-fg' : ''}>EN</span>
-    </button>
+      {(['es', 'en'] as const).map((l) => (
+        <button
+          key={l}
+          type="button"
+          lang={l}
+          title={l === 'es' ? 'Español' : 'English'}
+          onClick={() => setLang(l)}
+          aria-pressed={lang === l}
+          className={`rounded-full px-2.5 py-2 text-[11px] font-semibold uppercase leading-none tracking-[0.08em] transition-colors duration-300 sm:py-1.5 ${
+            lang === l ? 'bg-fg text-bg' : 'text-muted hover:text-fg'
+          }`}
+        >
+          {l}
+        </button>
+      ))}
+    </div>
   );
 }

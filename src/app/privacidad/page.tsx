@@ -68,10 +68,10 @@ export default function PrivacidadPage() {
           u Oposición (ARCO) sobre tus datos personales, así como solicitar el retiro de un
           testimonio publicado. Para hacerlo, envía tu solicitud al correo{' '}
           <a
-            href="mailto:Developerlk23@gmail.com"
+            href="mailto:contacto@odiseo.dev"
             className="text-fg underline decoration-line underline-offset-4 transition-colors hover:decoration-accent"
           >
-            Developerlk23@gmail.com
+            contacto@odiseo.dev
           </a>{' '}
           indicando tu nombre y el derecho que deseas ejercer. Tu solicitud será atendida en un
           plazo máximo de 20 días hábiles.

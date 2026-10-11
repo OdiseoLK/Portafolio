@@ -40,12 +40,9 @@ const TILES: Tile[] = [
   { name: 'A&F Abogados', giro: 'Despacho jurídico', tag: 'En línea',
     ink: '#D4B26A', base: '#0B1428', panel: '#152244', layout: 'institucional',
     img: '/casos/ayf-carrusel.webp', url: 'https://ayfabogados.com.mx' },
-  { name: 'Aborigen', giro: 'Cocina de brasa', tag: 'En línea',
-    ink: '#E07B39', base: '#150D08', panel: '#2A1810', layout: 'menu',
-    img: '/casos/aborigen-carrusel.webp', url: 'https://aborigenorizaba.com' },
-  { name: 'Cielo Canela', giro: 'Bistró · Boulangerie', tag: 'En línea',
-    ink: '#D9A05B', base: '#1A1210', panel: '#2E2118', layout: 'showroom',
-    img: '/casos/cielo-canela-carrusel.webp', url: 'https://cielocanela.com' },
+  { name: 'Rivadeneyra', giro: 'Carpintería · Remodelación', tag: 'Entregado',
+    ink: '#F47A20', base: '#151311', panel: '#2A2420', layout: 'showroom',
+    img: '/casos/sir-carrusel.webp' },
 ];
 
 /** Mini-mockup del sitio: barra de navegador + composición abstracta por giro. */

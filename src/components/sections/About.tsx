@@ -68,7 +68,7 @@ export default function About({ data }: { data: AboutContent }) {
         <div className="h-28 w-28 rounded-full border border-aurora/25" />
       </motion.div>
       <motion.div aria-hidden="true" {...(reduced ? {} : fadeSide(0.25, -80))} className="pointer-events-none absolute bottom-[10%] left-[6%] hidden font-mono text-[10px] uppercase tracking-[0.3em] text-fg/20 md:block">
-        <Scramble text={en ? EN.about.ornament : 'bitácora · exp. 001–007'} />
+        <Scramble text={en ? EN.about.ornament : 'bitácora · exp. 001–006'} />
       </motion.div>
       <motion.div aria-hidden="true" {...(reduced ? {} : fadeSide(0.15, 80))} className="pointer-events-none absolute right-[3%] top-[8%] hidden md:block">
         <Image src="/logo-head.webp" alt="" width={110} height={110} className="rounded-2xl border border-line opacity-60" />
@@ -100,8 +100,8 @@ export default function About({ data }: { data: AboutContent }) {
                 { n: EN.about.stats[2].n, l: EN.about.stats[2].l, c: 'text-fg' },
               ]
             : [
-                { n: '07', l: 'Expediciones completadas', c: 'text-fg' },
-                { n: '07', l: 'Destinos en línea', c: 'text-fg' },
+                { n: '06', l: 'Expediciones completadas', c: 'text-fg' },
+                { n: '05', l: 'Destinos en línea', c: 'text-fg' },
                 { n: '00', l: 'Naufragios', c: 'text-fg' },
               ]
           ).map((s, i) => (

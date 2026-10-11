@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: '%s — ODISEO Studio',
   },
   description:
-    'Estudio de diseño y desarrollo web en Orizaba, Veracruz. Creamos sitios web a la medida, tiendas en línea y catálogos con pedidos por WhatsApp para negocios en México, Latinoamérica y Estados Unidos. 7 proyectos reales en línea.',
+    'Estudio de diseño y desarrollo web en Orizaba, Veracruz. Creamos sitios web a la medida, tiendas en línea y catálogos con pedidos por WhatsApp para negocios en México, Latinoamérica y Estados Unidos.',
   keywords: [
     'diseño web Orizaba',
     'desarrollo web Orizaba',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'ODISEO Studio — Diseño y desarrollo web',
     description:
-      'Sitios web a la medida para negocios en México, Latinoamérica y EE.UU. Desde Orizaba, Veracruz. 7 proyectos reales en línea.',
+      'Sitios web a la medida para negocios en México, Latinoamérica y EE.UU. Desde Orizaba, Veracruz.',
     images: ['/og.png'],
   },
   robots: {

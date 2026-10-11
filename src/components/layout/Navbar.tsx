@@ -8,6 +8,7 @@ import { Menu, X } from 'lucide-react';
 import Scramble from '@/components/ui/Scramble';
 import { LangToggle, useLang } from '@/components/ui/LanguageContext';
 import TimeToggle from '@/components/ui/TimeToggle';
+import PistaCielo from '@/components/ui/PistaCielo';
 import { EN } from '@/lib/translations';
 
 const LINKS = [
@@ -22,6 +23,7 @@ const LINKS = [
 
 export default function Navbar({ cvUrl }: { cvUrl: string }) {
   const { lang } = useLang();
+  const [cieloVisto, setCieloVisto] = useState(false);
   const links = lang === 'en' ? EN.nav.links : LINKS;
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -69,7 +71,8 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
       <nav className="wrap flex h-16 items-center justify-between" aria-label="Principal">
         <a
           href="#inicio"
-          className="flex items-center gap-2 font-display text-sm font-medium tracking-[0.12em] text-fg transition-colors hover:text-white sm:gap-2.5 sm:tracking-[0.28em]"
+          aria-label="ODISEO Studio"
+          className="flex shrink-0 items-center gap-2 font-display text-sm font-medium tracking-[0.12em] text-fg transition-colors hover:text-white sm:gap-2.5 sm:tracking-[0.28em]"
         >
           <Image
             src="/logo-mark.webp"
@@ -79,7 +82,8 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
             priority
             className="h-7 w-7 object-contain sm:h-[30px] sm:w-[30px]"
           />
-          ODISEO<span className="hidden font-serif italic tracking-normal text-muted xs:inline sm:inline">&nbsp;studio</span>
+          <span className="hidden min-[430px]:inline md:inline">ODISEO</span>
+          <span className="hidden font-serif italic tracking-normal text-muted md:inline">&nbsp;studio</span>
         </a>
 
         {/* Enlaces desktop */}
@@ -116,21 +120,31 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
             })}
           </ul>
           <div className="flex items-center gap-2">
-            <TimeToggle />
+            <div className="relative">
+              <TimeToggle onPick={() => setCieloVisto(true)} />
+              <PistaCielo visto={cieloVisto} centrada />
+            </div>
             <LangToggle />
           </div>
         </div>
 
-        {/* Botón de menú móvil (los toggles viven dentro del menú) */}
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-md border border-line text-fg md:hidden"
-          aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
-          aria-expanded={open}
-        >
-          {open ? <X size={18} /> : <Menu size={18} />}
-        </button>
+        {/* Celular: cielo e idioma a la vista, junto al menú */}
+        <div className="flex items-center gap-1.5 md:hidden">
+          <div className="relative">
+            <TimeToggle activa onPick={() => setCieloVisto(true)} />
+            {!open && <PistaCielo visto={cieloVisto} centrada />}
+          </div>
+          <LangToggle />
+          <button
+            type="button"
+            onClick={() => { setOpen((v) => !v); setCieloVisto(true); }}
+            className="grid h-10 w-10 place-items-center rounded-md border border-line text-fg"
+            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={open}
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </nav>
 
       {/* Menú móvil */}
@@ -190,7 +204,7 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
                   <span className="text-[10px] uppercase tracking-[0.25em] text-muted">
                     {lang === 'en' ? 'Sky' : 'Cielo'}
                   </span>
-                  <TimeToggle />
+                  <TimeToggle onPick={() => setCieloVisto(true)} />
                 </div>
                 <div className="flex flex-col items-end gap-1">
                   <span className="text-[10px] uppercase tracking-[0.25em] text-muted">

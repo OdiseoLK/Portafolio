@@ -385,3 +385,9 @@ html[data-time='dia'] #inicio h1 span { text-shadow: 0 2px 20px rgba(227,240,252
   word-break: keep-all;
   hyphens: none;
 }
+
+/* Entrada de la pista del cielo */
+@keyframes pista {
+  from { opacity: 0; transform: translateY(-6px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}

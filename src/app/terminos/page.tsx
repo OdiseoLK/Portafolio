@@ -75,10 +75,10 @@ export default function TerminosPage() {
           controversia se resolverá preferentemente de manera amistosa a través del correo de
           contacto:{' '}
           <a
-            href="mailto:Developerlk23@gmail.com"
+            href="mailto:contacto@odiseo.dev"
             className="text-fg underline decoration-line underline-offset-4 transition-colors hover:decoration-accent"
           >
-            Developerlk23@gmail.com
+            contacto@odiseo.dev
           </a>
           .
         </p>
