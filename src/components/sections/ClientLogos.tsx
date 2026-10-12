@@ -9,6 +9,8 @@ const LOGOS = [
   { src: '/clientes/cafe-alvarez.webp', alt: 'Café Álvarez' },
   { src: '/clientes/fdhz.webp', alt: 'Fundación Doctor Hernández Zurita' },
   { src: '/clientes/puerta-grande.webp', alt: 'Hospital Puerta Grande' },
+  { src: '/clientes/sir.webp', alt: 'Soluciones Integrales Rivadeneyra' },
+  { src: '/clientes/ventuno.webp', alt: 'Ventuno Arquitectura' },
 ];
 
 export default function ClientLogos() {
@@ -17,7 +19,7 @@ export default function ClientLogos() {
   const row = [...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS];
 
   return (
-    <section aria-label={en ? 'Client logos' : 'Logos de clientes'} className="border-y border-line/60 bg-surface/40 py-12 backdrop-blur-md md:py-16">
+    <section aria-label={en ? 'Client logos' : 'Logos de clientes'} className="border-y border-line/60 bg-surface/70 py-12 md:py-16">
       <p className="wrap mb-8 text-center text-sm text-muted md:text-[15px]">
         {en ? 'Businesses that already travelled with us' : 'Negocios que ya viajaron con nosotros'}
       </p>

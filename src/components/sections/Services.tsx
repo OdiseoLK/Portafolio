@@ -56,7 +56,7 @@ export default function Services({ data }: { data: ServicesContent }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '50px' }}
                 transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
-                className="group relative flex flex-col rounded-2xl border border-line bg-card/80 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-fg/40"
+                className="group relative flex flex-col rounded-2xl border border-line bg-card/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-fg/40"
               >
                 <div className="mb-5 flex items-center justify-between">
                   <span className="font-display text-3xl font-bold leading-none text-fg/20 transition-colors duration-300 group-hover:text-fg/40">

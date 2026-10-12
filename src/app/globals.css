@@ -162,7 +162,7 @@ html { scroll-behavior: smooth; }
 .grain::after {
   content: '';
   position: fixed;
-  inset: -50%;
+  inset: 0;
   z-index: 60;
   pointer-events: none;
   opacity: 0.04;
@@ -321,9 +321,12 @@ html[data-time='tarde'] { --ojo: #FFAE5C; }
 html[data-time='dia'] { --ojo: #7CC7FF; }
 
 /* ===== Escena del cielo por modo ===== */
-.sky-el { opacity: 0; transition: opacity 0.9s ease; }
-html[data-time='tarde'] .el-tarde { opacity: 1; }
-html[data-time='dia'] .el-dia { opacity: 1; }
+.sky-el { opacity: 0; visibility: hidden; transition: opacity 0.9s ease, visibility 0s linear 0.9s; }
+html[data-time='tarde'] .el-tarde,
+html[data-time='dia'] .el-dia { opacity: 1; visibility: visible; transition: opacity 0.9s ease, visibility 0s; }
+/* Un cielo que no se ve no anima (ahorra batería y cuadros en celular) */
+html:not([data-time='tarde']) .el-tarde *,
+html:not([data-time='dia']) .el-dia * { animation-play-state: paused; }
 
 @keyframes sol-late { 0%, 100% { transform: scale(1); opacity: 0.95; } 50% { transform: scale(1.06); opacity: 1; } }
 @keyframes rayos-gira { to { transform: rotate(360deg); } }
@@ -343,6 +346,24 @@ html[data-time='dia'] .el-dia { opacity: 1; }
 }
 .liquid-glass { animation: wa-pulse 7s ease-out infinite; }
 @media (prefers-reduced-motion: reduce) { .liquid-glass { animation: none; } }
+
+/* Botón flotante de WhatsApp: siempre en pantalla, así que nada que se recalcule al hacer scroll.
+   Celular: fondo sólido. Escritorio: vidrio. El latido usa transform/opacity (no repinta). */
+.wa-float { background: rgb(var(--bg) / 0.82); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12); }
+@media (min-width: 768px) {
+  .wa-float { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+}
+.wa-float::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.35); opacity: 0;
+  animation: wa-latido 7s ease-out infinite;
+}
+@keyframes wa-latido {
+  0%, 86% { opacity: 0; transform: scale(1); }
+  90% { opacity: 1; transform: scale(1.1); }
+  97%, 100% { opacity: 0; transform: scale(1.45); }
+}
+@media (prefers-reduced-motion: reduce) { .wa-float::after { animation: none; } }
 
 /* Texto remarcado con el color de marca del cielo activo */
 .marca { color: var(--marca); font-weight: 600; }
@@ -390,4 +411,13 @@ html[data-time='dia'] #inicio h1 span { text-shadow: 0 2px 20px rgba(227,240,252
 @keyframes pista {
   from { opacity: 0; transform: translateY(-6px) scale(0.96); }
   to { opacity: 1; transform: none; }
+}
+
+/* ===== Entrada del hero en CSS (no espera al JS: la primera pintura llega antes) ===== */
+@keyframes hero-entra { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes guia-entra { from { opacity: 0; scale: 0.97; } to { opacity: 1; scale: 1; } }
+[data-entra] { animation: hero-entra 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+[data-entra-guia] { animation: guia-entra 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both; }
+@media (prefers-reduced-motion: reduce) {
+  [data-entra], [data-entra-guia] { animation: none; }
 }

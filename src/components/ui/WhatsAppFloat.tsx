@@ -16,7 +16,7 @@ export default function WhatsAppFloat({ url }: { url: string }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escríbenos por WhatsApp"
-      className="liquid-glass group fixed bottom-6 right-6 z-40 flex items-center gap-0 overflow-hidden rounded-full border border-line/60 px-[18px] py-[18px] transition-all duration-500 ease-out hover:border-[#25D366]/50 hover:shadow-[0_0_28px_rgba(37,211,102,0.35)] md:bottom-8 md:right-8"
+      className="wa-float group fixed bottom-6 right-6 z-40 flex items-center gap-0 rounded-full border border-line/60 px-[18px] py-[18px] transition-all duration-500 ease-out hover:border-[#25D366]/50 hover:shadow-[0_0_28px_rgba(37,211,102,0.35)] md:bottom-8 md:right-8"
     >
       <svg
         viewBox="0 0 24 24"

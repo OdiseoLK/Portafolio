@@ -33,6 +33,8 @@ export const EN = {
     giros: {
       'Interiorismo · Showroom': 'Interior design · Showroom',
       'Salud visual · Institucional': 'Eye care · Institutional',
+      'Salud visual · Mérida': 'Eye care · Mérida',
+      'Arquitectura · Renders': 'Architecture · Renders',
       'Cafetería · Menú interactivo': 'Coffee shop · Interactive menu',
       'Hospital · Urgencias 24h': 'Hospital · 24h ER',
       'Despacho jurídico': 'Law firm',
@@ -44,11 +46,11 @@ export const EN = {
     paragraph:
       "We don't make web pages: we guide expeditions. We take your business at its starting point and lead it to its digital destination — a fast, custom-built site of your own, working for you around the clock. Design, development and a guide who stays: we don't let go of your hand after arrival.",
     stats: [
-      { n: '06', l: 'Expeditions completed' },
-      { n: '05', l: 'Destinations live' },
+      { n: '08', l: 'Expeditions completed' },
+      { n: '07', l: 'Destinations live' },
       { n: '00', l: 'Shipwrecks' },
     ],
-    ornament: 'logbook · exp. 001–006',
+    ornament: 'logbook · exp. 001–008',
   },
   services: {
     title: 'Our solutions',
@@ -125,6 +127,16 @@ export const EN = {
         d: 'Law firm in downtown Orizaba, led by Alba L. Montiel and Félix Vargas. Litigation and counsel in civil, criminal, labor, agrarian, commercial and amparo matters, plus pension services. A sober site with direct WhatsApp consultation.',
         tags: ['Practice areas', 'Pension services', 'WhatsApp'],
       },
+      merida: {
+        cat: 'Eye care · Mérida',
+        d: "The Doctor Hernández Zurita Foundation's eye clinic in Mérida, Yucatán. A launch site with a promotions carousel up top, services and surgeries (cataract, pterygium and retina checks for people with diabetes), the clinic's technology, an online vision test, a map and WhatsApp scheduling.",
+        tags: ['Promotions', 'Vision test', 'WhatsApp scheduling'],
+      },
+      ventuno: {
+        cat: 'Architecture · Renders',
+        d: "Architectural visualization, design and construction studio. A site that lets you see the house before it's built: the Proyecto ME facade by day, in fog and at night, Proyecto J's kitchen in three materials, a natural vs. artificial light slider, plus mission, vision and values.",
+        tags: ['See it before building', 'Interactive materials', 'Mission & vision'],
+      },
       sir: {
         cat: 'Carpentry · Remodeling',
         d: 'Carpentry, aluminum, glass and remodeling workshop in Orizaba. Multi-page site organized by area (home, residential and industrial), with project pages, a WhatsApp quote tool that draws a plan with your measurements, "Measure with a photo" and "Design your furniture". Two color versions.',
@@ -159,12 +171,21 @@ export const EN = {
     signal: 'Signal',
     corner: 'radio · signals',
     byId: {
-      'seed-fdhz': {
-        role: 'Communication & Marketing Team',
-        quote:
-          "Working with Alexis on the web design for Hospital Puerta Grande and the Doctor Hernández Zurita Foundation has been a great experience. I'd highlight his willingness to listen to our ideas, contribute proposals and find solutions that reflect each institution's identity. Communication is close and there's always openness to review details and make adjustments. As part of the Communication and Marketing team, I really value having someone who gets involved in the projects and helps us shape them. I definitely recommend his work for his professionalism, creativity and commitment.",
-      },
+      'seed-fdhz': { role: 'Communication & Marketing Team', quote: "Working with Alexis on the web design for Hospital Puerta Grande and the Doctor Hernández Zurita Foundation has been a great experience. I'd highlight his willingness to listen to our ideas, contribute proposals and find solutions that reflect each institution's identity. Communication is close and there's always openness to review details and make adjustments. As part of the Communication and Marketing team, I really value having someone who gets involved in the projects and helps us shape them. I definitely recommend his work for his professionalism, creativity and commitment." },
+      'seed-hpg': { role: 'Google review', quote: 'Working with Alexis on the Hospital Puerta Grande website has been a very positive experience. He listened to our needs and helped us project a professional image, with clear information about our services. I highlight his attention, his proposals and his willingness to make adjustments. I recommend him for his commitment and how easy he is to work with as a team.' },
+      'seed-fdhz-2': { role: 'Google review', quote: "What I value most about working with Alexis is his interest in understanding the Doctor Hernández Zurita Foundation's mission and reflecting it on our website. He has helped us shape our ideas and present our services in a warm, accessible way. His openness to listen, propose and answer questions makes the work very practical. I definitely recommend his work." },
+      'seed-decora': { role: 'Decora · Google review', quote: '10/10 excellent service' },
     } as Record<string, { role: string; quote: string }>,
+    /** Filas de Supabase (id uuid): se reconocen por los primeros 40 caracteres del texto */
+    byQuote: {
+      'Trabajar con Alexis en el diseño web del': 'seed-fdhz',
+      'Trabajar con Alexis en la página web del': 'seed-hpg',
+      'Lo que más valoro de trabajar con Alexis': 'seed-fdhz-2',
+      '10/10 excelente servicio': 'seed-decora',
+    } as Record<string, string>,
+    leave: 'Leave us a review on Google',
+    all: 'See all on Google',
+    stars: '5 out of 5 stars',
   },
   emphasis: { services: 'Services', faq: 'FAQ' },
   contact: {
@@ -201,10 +222,12 @@ export const EN = {
 export function matchCase(title: string) {
   const t = title.toLowerCase();
   if (t.includes('decora')) return EN.cases.byTitle.decora;
+  if (t.includes('mérida') || t.includes('merida')) return EN.cases.byTitle.merida;
   if (t.includes('zurita') && !t.includes('puerta')) return EN.cases.byTitle.zurita;
   if (t.includes('álvarez') || t.includes('alvarez')) return EN.cases.byTitle.alvarez;
   if (t.includes('puerta')) return EN.cases.byTitle.puerta;
   if (t.includes('a&f') || t.includes('abogado')) return EN.cases.byTitle.ayf;
   if (t.includes('rivadeneyra')) return EN.cases.byTitle.sir;
+  if (t.includes('ventuno')) return EN.cases.byTitle.ventuno;
   return null;
 }

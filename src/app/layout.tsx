@@ -1,10 +1,21 @@
 import type { Metadata, Viewport } from 'next';
 import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+import localFont from 'next/font/local';
 import '@fontsource-variable/archivo';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
+
+// Geist Mono sin precarga: solo vive en etiquetas pequeñas y no debe frenar la primera pintura
+const GeistMono = localFont({
+  src: '../../node_modules/geist/dist/fonts/geist-mono/GeistMono-Variable.woff2',
+  variable: '--font-geist-mono',
+  weight: '100 900',
+  display: 'swap',
+  preload: false,
+  adjustFontFallback: false,
+  fallback: ['ui-monospace', 'SFMono-Regular', 'Roboto Mono', 'Menlo', 'Monaco', 'Liberation Mono', 'DejaVu Sans Mono', 'Courier New', 'monospace'],
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 

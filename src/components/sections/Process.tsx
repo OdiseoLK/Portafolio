@@ -54,7 +54,7 @@ export default function Process({ data: _data }: { data: ProcessContent }) {
     <section
       id="proceso"
       ref={sectionRef}
-      className="scroll-mt-24 border-y border-line/60 bg-gradient-to-b from-surface/70 to-surface/30 py-24 backdrop-blur-md md:py-32"
+      className="scroll-mt-24 border-y border-line/60 bg-gradient-to-b from-surface/80 to-surface/55 py-24 md:py-32"
     >
       <div className="wrap">
         <Cap n="04" es="La travesía" en="The journey" />

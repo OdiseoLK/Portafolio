@@ -52,7 +52,7 @@ export default function Hero({ data, whatsappUrl }: { data: HeroContent; whatsap
 
   // Entrada líquida: se activa al montar y se apaga sola.
   useEffect(() => {
-    if (reduced) return;
+    if (reduced || window.matchMedia('(pointer: coarse)').matches) return;
     setLiquid(true);
     const t = setTimeout(() => setLiquid(false), 1400);
     return () => clearTimeout(t);
@@ -94,11 +94,8 @@ export default function Hero({ data, whatsappUrl }: { data: HeroContent; whatsap
     };
   }, [reduced]);
 
-  const fadeUp = (delay: number) => ({
-    initial: reduced ? false : { opacity: 0, y: 24 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.9, ease: EASE, delay },
-  });
+  // Entrada del hero con CSS: arranca en la primera pintura, sin esperar a que cargue el JS
+  const fadeUp = (delay: number) => ({ 'data-entra': true, style: { animationDelay: `${delay}s` } });
 
   return (
     <section
@@ -174,9 +171,7 @@ export default function Hero({ data, whatsappUrl }: { data: HeroContent; whatsap
           aria-label="Saludar al guía"
           onClick={wof}
           onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); wof(); } }}
-          initial={reduced ? false : { opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.6, ease: EASE, delay: 0.35 }}
+          data-entra-guia
           className={`pointer-events-auto relative w-full cursor-pointer outline-offset-8 ${liquid ? 'is-liquid' : ''}`}
           style={{
             transform: 'rotateX(calc(var(--rx, 0deg) * 0.6)) rotateY(calc(var(--ry, 0deg) * 0.6))',
@@ -270,7 +265,7 @@ export default function Hero({ data, whatsappUrl }: { data: HeroContent; whatsap
           </motion.p>
 
           {/* EL HOOK — lo primero y más grande */}
-          <h1 className="relative z-[2] w-full max-w-[min(100%,20ch)] text-balance">
+          <h1 className="relative z-[2] w-full max-w-[min(100%,20ch)] text-balance text-[clamp(2rem,5.5vw,5rem)] font-bold uppercase tracking-[-0.02em]">
             <span className="sr-only">
               {en ? 'Websites that grow your business.' : 'Páginas web que hacen crecer tu negocio.'}
             </span>
@@ -289,10 +284,10 @@ export default function Hero({ data, whatsappUrl }: { data: HeroContent; whatsap
               {en ? EN.hero.hookB : 'que hacen crecer'}
             </motion.span>
             <motion.span
-              {...fadeUp(0.36)}
+              data-entra
               aria-hidden="true"
               className="hook-line block font-display text-[clamp(2rem,5.5vw,5rem)] font-bold uppercase leading-[0.95] tracking-[-0.02em]"
-              style={{ color: 'var(--marca)' }}
+              style={{ color: 'var(--marca)', animationDelay: '0.36s' }}
             >
               {en ? EN.hero.hookC : 'tu negocio.'}
             </motion.span>

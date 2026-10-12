@@ -26,11 +26,13 @@ const FLAVORS: Record<string, { tone: string; ink: string; mono: string }> = {
 function flavorFor(p: Project) {
   const t = p.title.toLowerCase();
   if (t.includes('decora')) return FLAVORS.decora;
+  if (t.includes('mérida') || t.includes('merida')) return { ...FLAVORS.zurita, ink: '#9bcb4b', mono: 'M.' };
   if (t.includes('zurita') && !t.includes('puerta')) return FLAVORS.zurita;
   if (t.includes('álvarez') || t.includes('alvarez')) return FLAVORS.alvarez;
   if (t.includes('puerta')) return FLAVORS.puerta;
   if (t.includes('a&f') || t.includes('abogado')) return FLAVORS.ayf;
   if (t.includes('rivadeneyra')) return FLAVORS.sir;
+  if (t.includes('ventuno')) return { tone: 'linear-gradient(150deg, #1a1a1a 0%, #0b0b0b 70%)', ink: '#d6d3cc', mono: '21' };
   return { tone: 'linear-gradient(150deg, #14141c 0%, #0a0a10 70%)', ink: '#7cc7ff', mono: 'O.' };
 }
 
@@ -63,13 +65,13 @@ function Card({ project, index, en, reduced }: { project: Project; index: number
       viewport={{ once: true, margin: '40px' }}
       transition={{ duration: 0.6, ease: EASE, delay: (index % 3) * 0.08 }}
       data-scramble-parent
-      className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-card/85 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-fg/40"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-card/95 transition-all duration-300 hover:-translate-y-1 hover:border-fg/40"
     >
       {/* Portada */}
       <div className="relative aspect-[16/10] overflow-hidden" style={{ background: flavor.tone }}>
         <span
           aria-hidden="true"
-          className="absolute right-3 top-3 z-10 -rotate-6 rounded border-2 px-2 py-0.5 text-[8px] uppercase tracking-[0.22em] backdrop-blur-[2px]"
+          className="absolute right-3 top-3 z-10 -rotate-6 rounded border-2 px-2 py-0.5 text-[8px] uppercase tracking-[0.22em]"
           style={{ borderColor: flavor.ink, color: flavor.ink, background: 'rgba(4,6,12,0.45)' }}
         >
           {en ? EN.cases.stamp : 'Destino alcanzado'}

@@ -42,7 +42,7 @@ export default function Respaldo() {
   const reduced = useReducedMotion();
 
   return (
-    <section id="respaldo" className="scroll-mt-24 border-y border-line/60 bg-surface/40 py-20 backdrop-blur-md md:py-28">
+    <section id="respaldo" className="scroll-mt-24 border-y border-line/60 bg-surface/65 py-20 md:py-28">
       <div className="wrap">
         <Cap n="03" es="El guía se queda" en="The guide stays" />
 
@@ -71,7 +71,7 @@ export default function Respaldo() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '40px' }}
               transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
-              className="group flex flex-col rounded-2xl border border-line bg-card/80 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-fg/40"
+              className="group flex flex-col rounded-2xl border border-line bg-card/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-fg/40"
             >
               <span
                 className="mb-4 grid h-11 w-11 place-items-center rounded-xl border border-line"

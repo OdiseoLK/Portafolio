@@ -29,7 +29,7 @@ export default function Contact({ data }: { data: ContactContent }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '50px' }}
           transition={{ duration: 0.8, ease: EASE }}
-          className="relative mx-auto max-w-4xl overflow-hidden rounded-[28px] border border-line bg-card/80 p-8 text-center backdrop-blur-md md:p-14"
+          className="relative mx-auto max-w-4xl overflow-hidden rounded-[28px] border border-line bg-card/90 p-8 text-center md:p-14"
         >
           {/* Glow de marca sutil */}
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-60" style={{ background: 'radial-gradient(ellipse 60% 80% at 50% 0%, color-mix(in srgb, var(--marca) 14%, transparent), transparent 60%)' }} />

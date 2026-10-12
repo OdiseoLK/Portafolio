@@ -152,7 +152,7 @@ export default function Footer({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="grid h-10 w-10 place-items-center rounded-full border border-fg/25 bg-bg/40 text-fg/80 backdrop-blur-[2px] transition-colors duration-300 hover:border-hielo/70 hover:text-hielo"
+                className="grid h-10 w-10 place-items-center rounded-full border border-fg/25 bg-bg/60 text-fg/80 transition-colors duration-300 hover:border-hielo/70 hover:text-hielo"
               >
                 {s.icon}
               </a>
@@ -161,7 +161,7 @@ export default function Footer({
               type="button"
               onClick={scrollToTop}
               aria-label={en ? 'Back to basecamp (top)' : 'Volver al campamento base (inicio)'}
-              className="grid h-10 w-10 place-items-center rounded-full border border-fg/25 bg-bg/40 text-fg/80 backdrop-blur-[2px] transition-colors duration-300 hover:border-hielo/70 hover:text-hielo"
+              className="grid h-10 w-10 place-items-center rounded-full border border-fg/25 bg-bg/60 text-fg/80 transition-colors duration-300 hover:border-hielo/70 hover:text-hielo"
             >
               <ArrowUp size={15} aria-hidden="true" />
             </button>

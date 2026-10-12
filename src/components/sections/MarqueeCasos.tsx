@@ -43,6 +43,12 @@ const TILES: Tile[] = [
   { name: 'Rivadeneyra', giro: 'Carpintería · Remodelación', tag: 'Entregado',
     ink: '#F47A20', base: '#151311', panel: '#2A2420', layout: 'showroom',
     img: '/casos/sir-carrusel.webp' },
+  { name: 'Zurita Mérida', giro: 'Salud visual · Mérida', tag: 'En línea',
+    ink: '#9BCB4B', base: '#0A1B14', panel: '#123024', layout: 'institucional',
+    img: '/casos/merida-carrusel.webp', url: 'https://elaborate-chimera-04681f.netlify.app/' },
+  { name: 'Ventuno', giro: 'Arquitectura · Renders', tag: 'En línea',
+    ink: '#D6D3CC', base: '#121212', panel: '#2A2A2A', layout: 'showroom',
+    img: '/casos/ventuno-carrusel.webp', url: 'https://velvety-pothos-c1e282.netlify.app/' },
 ];
 
 /** Mini-mockup del sitio: barra de navegador + composición abstracta por giro. */
@@ -127,18 +133,27 @@ export default function MarqueeCasos() {
     const SPEED = 0.8;
     let offset = 0, velocity = 0, dragging = false;
     let dragStartX = 0, dragStartOffset = 0, lastX = 0, lastT = 0, raf = 0;
+    let half = track.scrollWidth / 2, activo = true;
+    const ro = new ResizeObserver(() => { half = track.scrollWidth / 2; });
+    ro.observe(track);
 
     const frame = () => {
       if (!dragging) {
         if (Math.abs(velocity) > 0.1) { offset += velocity; velocity *= 0.95; }
         else { velocity = 0; if (!reduced) offset -= SPEED; }
       }
-      const half = track.scrollWidth / 2;
       if (offset <= -half) offset += half;
       if (offset > 0) offset -= half;
       track.style.transform = `translate3d(${offset}px, 0, 0)`;
-      raf = requestAnimationFrame(frame);
+      if (activo) raf = requestAnimationFrame(frame);
     };
+
+    // Fuera de pantalla no se anima: libera el hilo principal mientras haces scroll
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !activo) { activo = true; raf = requestAnimationFrame(frame); }
+      else if (!e.isIntersecting && activo) { activo = false; cancelAnimationFrame(raf); }
+    }, { rootMargin: '100px 0px' });
+    io.observe(track);
 
     const down = (e: PointerEvent) => {
       dragging = true; velocity = 0;
@@ -170,6 +185,8 @@ export default function MarqueeCasos() {
     raf = requestAnimationFrame(frame);
     return () => {
       cancelAnimationFrame(raf);
+      io.disconnect();
+      ro.disconnect();
       track.removeEventListener('pointerdown', down);
       track.removeEventListener('pointermove', move);
       track.removeEventListener('pointerup', up);
@@ -180,7 +197,7 @@ export default function MarqueeCasos() {
   const tiles = [...TILES, ...TILES];
 
   return (
-    <section aria-label="Clientes del estudio" className="relative overflow-hidden border-y border-line/60 bg-surface/50 py-6 backdrop-blur-md">
+    <section aria-label="Clientes del estudio" className="relative overflow-hidden border-y border-line/60 bg-surface/75 py-6">
       <p className="wrap eyebrow mb-5"><Scramble text={en ? EN.marquee.eyebrow : 'Expediciones completadas'} /></p>
       <div
         ref={trackRef}
@@ -202,7 +219,7 @@ export default function MarqueeCasos() {
             <div className="aspect-[16/9]">
               {t.img ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={t.img} alt={`Sitio web de ${t.name}`} loading="lazy" decoding="async" className="h-full w-full object-cover object-top" draggable={false} />
+                <img src={t.img} alt={`Sitio web de ${t.name}`} loading="lazy" decoding="async" fetchPriority="low" width={800} height={450} className="h-full w-full object-cover object-top" draggable={false} />
               ) : (
                 <SiteMock t={t} />
               )}

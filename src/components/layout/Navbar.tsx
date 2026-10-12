@@ -64,7 +64,7 @@ export default function Navbar({ cvUrl }: { cvUrl: string }) {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'border-b border-line/70 bg-bg/70 backdrop-blur-md'
+          ? 'border-b border-line/70 bg-bg/90 md:bg-bg/70 md:backdrop-blur-md'
           : 'border-b border-transparent bg-transparent'
       }`}
     >

@@ -39,7 +39,7 @@ export function LangToggle({ className = '' }: { className?: string }) {
     <div
       role="group"
       aria-label={lang === 'en' ? 'Language' : 'Idioma'}
-      className={`inline-flex items-center gap-0.5 rounded-full border border-line bg-surface/70 p-1 backdrop-blur-sm ${className}`}
+      className={`inline-flex items-center gap-0.5 rounded-full border border-line bg-surface/70 p-1 ${className}`}
     >
       {(['es', 'en'] as const).map((l) => (
         <button

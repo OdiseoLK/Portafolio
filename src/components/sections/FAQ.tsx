@@ -52,7 +52,7 @@ export default function FAQ() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '40px' }}
                   transition={{ duration: 0.5, ease: EASE, delay: i * 0.05 }}
-                  className={`overflow-hidden rounded-2xl border bg-card/80 backdrop-blur-md transition-colors duration-300 ${isOpen ? 'border-fg/40' : 'border-line'}`}
+                  className={`overflow-hidden rounded-2xl border bg-card/90 transition-colors duration-300 ${isOpen ? 'border-fg/40' : 'border-line'}`}
                 >
                   <button
                     type="button"

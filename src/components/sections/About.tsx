@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { motion, useMotionValueEvent, useReducedMotion, useScroll } from 'framer-motion';
 import type { AboutContent } from '@/lib/types';
 import Scramble from '@/components/ui/Scramble';
 import { Cap, Topo } from '@/components/ui/Expedicion';
@@ -21,29 +21,40 @@ function AnimatedText({ text }: { text: string }) {
   });
 
   const chars = Array.from(text);
+  const pintadas = useRef<number[]>([]);
+
+  // Un solo escritor: cada cuadro calcula la opacidad de cada letra y solo toca las que cambian
+  const pinta = (p: number) => {
+    const el = ref.current;
+    if (!el || reduced) return;
+    const letras = el.children;
+    const n = letras.length;
+    for (let i = 0; i < n; i++) {
+      const t = Math.min(1, Math.max(0, p * n - i));
+      const o = Math.round((0.18 + 0.82 * t) * 100) / 100;
+      if (pintadas.current[i] !== o) {
+        pintadas.current[i] = o;
+        (letras[i] as HTMLElement).style.opacity = String(o);
+      }
+    }
+  };
+  useMotionValueEvent(scrollYProgress, 'change', pinta);
+  useEffect(() => {
+    pintadas.current = [];
+    pinta(scrollYProgress.get());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [text, reduced]);
+
   return (
     <p
       ref={ref}
       className="mx-auto max-w-2xl text-center text-[clamp(1.1rem,2.1vw,1.55rem)] font-light leading-[1.5] text-fg"
     >
       {chars.map((c, i) => (
-        <Char key={i} char={c} index={i} total={chars.length} progress={scrollYProgress} reduced={!!reduced} />
+        <span key={i} style={reduced ? undefined : { opacity: 0.18 }}>{c}</span>
       ))}
     </p>
   );
-}
-
-function Char({
-  char, index, total, progress, reduced,
-}: {
-  char: string; index: number; total: number;
-  progress: ReturnType<typeof useScroll>['scrollYProgress']; reduced: boolean;
-}) {
-  const start = index / total;
-  const end = start + 1 / total;
-  const opacity = useTransform(progress, [start, end], [0.18, 1]);
-  if (reduced) return <span>{char}</span>;
-  return <motion.span style={{ opacity }}>{char}</motion.span>;
 }
 
 const fadeSide = (delay: number, x: number) => ({
@@ -68,7 +79,7 @@ export default function About({ data }: { data: AboutContent }) {
         <div className="h-28 w-28 rounded-full border border-aurora/25" />
       </motion.div>
       <motion.div aria-hidden="true" {...(reduced ? {} : fadeSide(0.25, -80))} className="pointer-events-none absolute bottom-[10%] left-[6%] hidden font-mono text-[10px] uppercase tracking-[0.3em] text-fg/20 md:block">
-        <Scramble text={en ? EN.about.ornament : 'bitácora · exp. 001–006'} />
+        <Scramble text={en ? EN.about.ornament : 'bitácora · exp. 001–008'} />
       </motion.div>
       <motion.div aria-hidden="true" {...(reduced ? {} : fadeSide(0.15, 80))} className="pointer-events-none absolute right-[3%] top-[8%] hidden md:block">
         <Image src="/logo-head.webp" alt="" width={110} height={110} className="rounded-2xl border border-line opacity-60" />
@@ -100,8 +111,8 @@ export default function About({ data }: { data: AboutContent }) {
                 { n: EN.about.stats[2].n, l: EN.about.stats[2].l, c: 'text-fg' },
               ]
             : [
-                { n: '06', l: 'Expediciones completadas', c: 'text-fg' },
-                { n: '05', l: 'Destinos en línea', c: 'text-fg' },
+                { n: '08', l: 'Expediciones completadas', c: 'text-fg' },
+                { n: '07', l: 'Destinos en línea', c: 'text-fg' },
                 { n: '00', l: 'Naufragios', c: 'text-fg' },
               ]
           ).map((s, i) => (

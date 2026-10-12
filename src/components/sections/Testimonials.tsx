@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
+import { Star } from 'lucide-react';
 import type { Testimonial } from '@/lib/types';
 import Scramble, { DotsDivider } from '@/components/ui/Scramble';
 import { Cap } from '@/components/ui/Expedicion';
@@ -9,6 +10,10 @@ import { EN } from '@/lib/translations';
 import { DEFAULT_CONTENT } from '@/lib/defaults';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+
+/** Perfil de Google de ODISEO Studio: dejar opinión y ver todas */
+const RESENA_URL = 'https://g.page/r/Cc8jbHQA_aMWEAE/review';
+const PERFIL_URL = 'https://share.google/ZQsfLlxwsYAbW9cdK';
 
 /**
  * Opiniones sobre el panel "deep" del cielo activo (vidrio).
@@ -28,7 +33,7 @@ export default function Testimonials({ items }: { items: Testimonial[] }) {
   return (
     <section
       id="opiniones"
-      className="relative scroll-mt-24 overflow-hidden border-y border-line/60 py-20 backdrop-blur-md md:py-28"
+      className="relative scroll-mt-24 overflow-hidden border-y border-line/60 py-20 md:py-28"
       style={{ background: 'var(--deep)' }}
     >
       {/* Retícula de puntos de fondo */}
@@ -78,9 +83,10 @@ export default function Testimonials({ items }: { items: Testimonial[] }) {
 
         <DotsDivider />
 
-        <div className="mt-10 grid gap-4 md:mt-14 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mx-auto mt-10 grid max-w-5xl gap-4 md:mt-14 md:grid-cols-2">
           {list.map((t, i) => {
-            const tr = en ? EN.testimonials.byId[t.id] : null;
+            const trId = EN.testimonials.byId[t.id] ? t.id : EN.testimonials.byQuote[t.quote.slice(0, 40)];
+            const tr = en && trId ? EN.testimonials.byId[trId] : null;
             const num = String(i + 1).padStart(2, '0');
             return (
               <motion.figure
@@ -90,13 +96,17 @@ export default function Testimonials({ items }: { items: Testimonial[] }) {
                 viewport={{ once: true, margin: '40px' }}
                 transition={{ duration: 0.6, ease: EASE, delay: (i % 3) * 0.08 }}
                 data-scramble-parent
-                className="group relative flex flex-col rounded-2xl border border-line bg-card/80 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-fg/40"
+                className="group relative flex flex-col rounded-2xl border border-line bg-card/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-fg/40"
               >
                 <div className="mb-3 flex items-center justify-between">
                   <span className="text-[10px] uppercase tracking-[0.25em]" style={{ color: 'var(--marca)' }}>
                     <Scramble text={`${en ? EN.testimonials.signal : 'Señal'} ${num}`} trigger="hover" speed={26} />
                   </span>
-                  <span aria-hidden="true" className="text-3xl italic leading-none text-fg/15">“</span>
+                  <span className="flex gap-0.5" role="img" aria-label={en ? EN.testimonials.stars : '5 de 5 estrellas'}>
+                    {[0, 1, 2, 3, 4].map((k) => (
+                      <Star key={k} size={13} aria-hidden="true" fill="currentColor" strokeWidth={0} style={{ color: 'var(--marca)' }} />
+                    ))}
+                  </span>
                 </div>
 
                 <blockquote className="flex-1 text-[15px] font-light leading-relaxed text-fg/90">
@@ -119,7 +129,27 @@ export default function Testimonials({ items }: { items: Testimonial[] }) {
           })}
         </div>
 
-            </div>
+        {/* Invitación a opinar en Google */}
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row md:mt-12">
+          <a
+            href={RESENA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-marca inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm"
+          >
+            <Star size={15} aria-hidden="true" fill="currentColor" strokeWidth={0} />
+            {en ? EN.testimonials.leave : 'Déjanos tu opinión en Google'}
+          </a>
+          <a
+            href={PERFIL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-fg/25 px-6 py-3 text-sm text-fg transition-colors duration-300 hover:border-fg/50"
+          >
+            {en ? EN.testimonials.all : 'Ver todas en Google'}
+          </a>
+        </div>
+      </div>
     </section>
   );
 }

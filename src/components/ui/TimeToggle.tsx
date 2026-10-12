@@ -60,7 +60,7 @@ export default function TimeToggle({
     <div
       role="group"
       aria-label={lang === 'en' ? 'Sky of the expedition' : 'Cielo de la expedición'}
-      className={`inline-flex items-center gap-0.5 rounded-full border border-line bg-surface/70 p-1 backdrop-blur-sm ${className}`}
+      className={`inline-flex items-center gap-0.5 rounded-full border border-line bg-surface/70 p-1 ${className}`}
     >
       {MODES.map(({ id, Icon, es, en }) => {
         const active = listo && momento === id;
